@@ -1,12 +1,11 @@
 .container {
-    display: grid;
-    place-items: center;
+    display: flex;
 }
 
 .conteudo {
     background-color: #10141E;
     width: 350px;
-    border-radius: 5px;
+    border-radius: 10px;
     color: #fff;
     padding: 20px;
     display: flex;

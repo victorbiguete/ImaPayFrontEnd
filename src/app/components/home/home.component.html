@@ -1,0 +1,82 @@
+
+<div class="container-home">
+
+    <!-- Cartão de crédito -->
+    <div class="container-cartao">
+        <h2>Cartão de crédito</h2>
+        <app-cartao-credito
+            nomeCartao="SimpliBank"
+            srcImgBandeira="../../../assets/imgs/Mastercard.png"
+            altImgBandeira="bandeira do cartão"
+            numCartao="5375 **** **** 0954"
+            nomeTitular="Donald Flinch Cortez"
+            validade="06/24">
+        </app-cartao-credito>
+
+        <div class="info-limite">
+            
+        </div>
+
+    </div>
+
+
+    <!-- Ações rápidas -->
+    <div class="container-acao-rapida">
+        <div class="content-acao-rapida">
+            <h4>Ações rápidas</h4>
+            <div class="grid-icones">
+                <div class="item-acao-rapida">
+                    <img class=img-acao-rapida src="../../assets/imgs/pix.png" alt="Pix">
+                    <p class="nome-icone">Área Pix</p>
+                </div>
+                <div class="item-acao-rapida">
+                    <img class="img-acao-rapida" src="../../assets/imgs/transf.png" alt="Pix">
+                    <p class="nome-icone">Transferir</p>
+                </div>
+                <div class="item-acao-rapida">
+                    <img class=img-acao-rapida src="../../assets/imgs/transacao.png" alt="Pix">
+                    <p class="nome-icone">Transações</p>
+                </div>
+                <div class="item-acao-rapida">
+                    <img class=img-acao-rapida src="../../assets/imgs/add.png" alt="Pix">
+                    <p class="nome-icone">Adicionar atalhos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minha carteira -->
+    <div class="container-minha-carteira">
+        <h2>Minha carteira</h2>
+
+        <div class="content-minha-carteira">
+            <!-- Saldo -->
+            <app-card 
+                tituloCard="Saldo"
+                srcIcone="../../assets/imgs/saldo.png"
+                altIcone="saldo" 
+                valor="67.000,00"
+                textoCard="Saldo disponível">
+            </app-card>
+            
+            <!-- Despesas -->
+            <app-card 
+                tituloCard="Despesas"
+                srcIcone="../../assets/imgs/despesas.png" 
+                altIcone="despesas" 
+                valor="22.000,00"
+                textoCard="Despesas dos últimos 30 dias">
+            </app-card>
+
+            <!-- Investimentos -->
+            <app-card 
+                tituloCard="Investimentos"
+                srcIcone="../../assets/imgs/investimentos.png" 
+                altIcone="investimentos" 
+                valor="170.000,00"
+                textoCard="Investimentos dos últimos 30 dias">
+            </app-card>
+        </div>
+    </div>
+      
+</div>
