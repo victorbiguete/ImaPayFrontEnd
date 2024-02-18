@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: "Poppins", sans-serif;
     src: url('assets/fonts/Poppins-1/Poppins-Regular.ttf');
@@ -10,8 +9,9 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 body {
-    font-family: 'Poppins', sans-serif;
     font-size: 12px;
+    background-color: #E6E5E5;
 }
