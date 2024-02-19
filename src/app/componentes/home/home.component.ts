@@ -62,13 +62,12 @@ export class HomeComponent {
             "descricao": ""
           },
           {
-            "tipo": "Pag. débito",
-            "data": "22/12/2024",
-            "nome": "Açai",
-            "valor": "1450,00",
-            "descricao": ""
+            "tipo": "Transferência enviada",
+            "data": "23/12/2024",
+            "nome": "Cleide da Silva",
+            "valor": "500,00",
+            "descricao": "Pix"
           },
-
           {
             "tipo": "Pag. crédito",
             "data": "22/12/2024",
