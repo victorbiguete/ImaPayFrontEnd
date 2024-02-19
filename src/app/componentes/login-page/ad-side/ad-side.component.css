@@ -1,0 +1,51 @@
+.ad{
+    background-color: #264653;
+    width: 100%;
+    height: 100%;
+    font-family: "Inter", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: whitesmoke;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-wraper{
+    height: 70%;
+    width: 70%;
+    margin: auto;
+    justify-self: flex-end;
+}
+
+.img-wraper img{
+    width: 100%;
+    /* height: 100%; */
+    object-fit: contain;
+    display: block;
+    margin-top: auto;
+}
+
+.content-wrapper{
+    height: 30%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.content-wrapper h1{
+    font-size: 2.4rem;
+    line-height: 38.73px;
+    font-weight: 500;
+    padding-bottom: 1rem;
+}
+
+.content-wrapper p{
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 21.78px;
+    display: flex;
+    gap: 1rem;
+}
+
+.content-wrapper p span{
+    display: block;
+}
