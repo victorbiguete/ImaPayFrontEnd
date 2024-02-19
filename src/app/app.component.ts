@@ -6,18 +6,25 @@ import { HomeComponent } from "./componentes/home/home.component";
 import { CardComponent } from './componentes/card/card.component';
 import { GraficoDonutComponent } from './componentes/grafico-donut/grafico-donut.component';
 import { BarraProgressoComponent } from './componentes/barra-progresso/barra-progresso.component';
+import { TransacoesComponent } from './componentes/transacoes/transacoes.component';
+import { PerfilComponent } from "./perfil/perfil.component";
+
+
+
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [CommonModule, 
+    imports: [CommonModule,
               RouterOutlet,
-              CartaoCreditoComponent, 
+              CartaoCreditoComponent,
               HomeComponent,
               CardComponent,
               GraficoDonutComponent,
-              BarraProgressoComponent]
+              BarraProgressoComponent,
+              TransacoesComponent,
+              PerfilComponent]
 })
 export class AppComponent {
   title = 'ImaPayFrontEnd';

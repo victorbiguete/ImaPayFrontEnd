@@ -1,5 +1,7 @@
 .container {
     display: flex;
+    width: 350px;
+    padding:0;
 }
 
 .conteudo {
@@ -10,17 +12,15 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+
 }
 
 .grid-bandeira {
     display: grid;
     align-items: center;
-    font-size: 16px;
     grid-template-columns: 2fr 1fr;
     align-items: center;
     font-size: 20px;
-    font-weight: bold;
 }
 
 .justificar-direita {
