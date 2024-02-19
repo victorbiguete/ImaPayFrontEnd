@@ -1,0 +1,8 @@
+th{
+    background-color: var(--background-primario);
+    color: #fff;
+    font-size: 14px;
+}
+tr:hover{
+    cursor: pointer;
+}

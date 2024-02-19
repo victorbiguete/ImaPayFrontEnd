@@ -8,8 +8,7 @@ import { GraficoDonutComponent } from './componentes/grafico-donut/grafico-donut
 import { BarraProgressoComponent } from './componentes/barra-progresso/barra-progresso.component';
 import { TransacoesComponent } from './componentes/transacoes/transacoes.component';
 import { PerfilComponent } from "./perfil/perfil.component";
-
-
+import { TabelaComponent } from './componentes/tabela/tabela.component';
 
 @Component({
     selector: 'app-root',
@@ -24,7 +23,9 @@ import { PerfilComponent } from "./perfil/perfil.component";
               GraficoDonutComponent,
               BarraProgressoComponent,
               TransacoesComponent,
-              PerfilComponent]
+              PerfilComponent,
+              TabelaComponent
+            ]
 })
 export class AppComponent {
   title = 'ImaPayFrontEnd';

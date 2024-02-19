@@ -4,6 +4,7 @@
     --background-fundo-principal:#E6E5E5;
     --background-fundo-secundario:#fff;
     --cor-texto-primario:rgba(16, 66, 85, 0.88);
+    --cor-texto-secundario:rgb(0, 0, 0);
 }
 
 @font-face {
