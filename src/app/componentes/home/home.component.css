@@ -1,0 +1,230 @@
+/* Home */
+.container-home{
+    background-color: var(--background-fundo-principal);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container-geral{
+    display: flex;
+    gap:10px;
+    box-sizing: border-box;
+    max-width: 1000px;
+    width: 100%;
+    padding:10px;
+}
+
+
+h2{
+    font-size: 1.3rem;
+    padding:10px 0;
+}
+
+h4{
+    font-size: 1.1rem;
+}
+
+.ver-mais{
+    color: var(--cor-texto-primario);
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 15px 0 5px 0;
+}
+
+/* Ação rápida */
+.container-acao-rapida{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    padding-bottom: 20px;
+}
+
+.content-acao-rapida{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 10px;
+    gap:15px;
+    background-color: var(--background-primario) ;
+    border-radius: 10px;
+    color:white;
+    height: 130px;
+}
+
+.grid-icones{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 10px 5px; 
+    border-radius: 10px;
+}
+
+.item-acao-rapida{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap:4px;
+    cursor: pointer;
+}
+
+.img-acao-rapida{
+    width: 24px;
+}
+
+.nome-icone{
+    font-size: 14px;
+}
+
+.icon-card{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative; 
+    background-color: var(--background-fundo-principal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Cartão de Crédito */
+
+.container-cartao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+}
+
+.separador{
+    width: 100%;
+    height: 1px;
+    background-color: #62626239;
+}
+
+.container-fatura{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-fundo-secundario);
+    padding:10px;
+    border-radius: 10px; 
+    max-width: 350px;
+    width: 100%;
+    box-sizing: border-box;
+    gap:8px;
+}
+
+.grafico-donuts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-detalhes-fatura{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    padding: 15px 0;
+}
+
+.fatura-aberta{
+    display: flex;
+    justify-content: space-between;
+}
+
+.vencimento{
+    color:#8787877a;
+    font-size: 0.8rem;
+}
+
+.valor{
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.container-melhor-data{
+    display: flex;
+    align-items: center;
+    gap:15px;
+    padding: 20px;
+    font-size: 0.8rem;
+}
+
+.calendario{
+    width: 26px;
+}
+
+/* Minha carteira */
+.content-minha-carteira{ 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:10px;
+    justify-content: space-around;
+    border-radius: 15px;
+}
+
+.container-minha-carteira{
+    display: flex;
+    max-width: 650px;
+    width: 100%;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+@media (max-width: 768px){
+    .container-geral{
+        display: flex;
+        flex-direction: column;
+        padding: 20px 12px;
+        gap:20px;
+        height: auto;
+    }
+
+    /* Ação rápida */
+    h4{
+        font-size: 1rem;
+    }
+    .content-acao-rapida{
+        padding: 0 10px;
+        height: auto;
+    }
+    .nome-icone{
+        font-size: 12px;
+    }
+
+    /* Minha carteira */
+    .content-minha-carteira{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        align-items: center;
+        max-width: 350px;
+    }
+
+    .container-geral{
+        align-items: center;
+        justify-content: center;
+        max-width: 700px;
+    }
+
+
+}
+
+@media (max-width: 1000px){
+
+    .content-minha-carteira{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .container-cartao{
+        align-items: flex-start;
+    }
+
+
+}

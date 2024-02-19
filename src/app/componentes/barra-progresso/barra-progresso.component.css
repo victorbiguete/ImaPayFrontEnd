@@ -1,28 +1,31 @@
 .container {
     text-align: center;
+    padding:10px 0;
 }
 
 .barra {
     height: 20px;
     margin-bottom: 5px;
-    background-color: #5DA55C ;
+    background-color: var(--background-secundario);
     border-radius: 15px;
 }
 
 .barra-progresso {
     text-align: center;
     line-height: 20px;
-    background-color: #104255;
+    background-color: var(--background-primario);
     border-radius: 15px;
-    color: #104255;
-
+    color: var(--background-primario);
 }
 
 .container-legenda{
     display: flex;
     justify-content: space-between;
+    padding: 0 5px;
+    font-size: 1.1rem;
 }
-.valores{
+
+.valor{
     font-weight: bold;
     font-size: 1rem;
 }

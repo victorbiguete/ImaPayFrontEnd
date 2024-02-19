@@ -22,10 +22,10 @@ export class GraficoDonutComponent implements OnInit {
     const donutChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
-        labels: ['30% usado', '70% disponível'],
+        labels: ['70% disponível', '30% usado'],
         datasets: [{
-          data: [usado, disponivel],
-          backgroundColor: ['#C23E2C', '#5DA55C'],
+          data: [disponivel, usado],
+          backgroundColor: [ '#5DA55C', '#104255'],
         }],
       },
       options: {

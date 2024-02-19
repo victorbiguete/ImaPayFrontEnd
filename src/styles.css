@@ -1,3 +1,10 @@
+:root{
+    --background-primario: #104255;
+    --background-secundario: #5DA55C;
+    --background-fundo-principal:#E6E5E5;
+    --background-fundo-secundario:#fff;
+    --cor-texto-primario:rgba(16, 66, 85, 0.88);
+}
 
 @font-face {
     font-family: "Poppins", sans-serif;
