@@ -1,1 +1,60 @@
-<p>login-form works!</p>
+<section class="login-form">
+  <h3>
+    <span
+      ><img src="../../../../assets/imgs/login-cadastro/wallet-logo.svg" alt=""
+    /></span>
+    <span>e</span>Wallet
+  </h3>
+  <h2>
+    Feliz em ver você de novo!
+    <span
+      ><img src="../../../../assets/imgs/login-cadastro/emoji-hand.svg" alt=""
+    /></span>
+  </h2>
+
+  <p>Faça login em sua conta para continuar</p>
+  <!-- 
+    //TODO validar login no TS e redirecionar para dashboard
+   -->
+  <form action="">
+    <div class="input-icons">
+      <img src="../../../../assets/imgs/login-cadastro/u_user.svg" alt="" />
+      <input type="text" name="userId" id="userId" placeholder="Usuario" />
+    </div>
+    <div class="input-icons">
+      <img src="../../../../assets/imgs/login-cadastro/u_lock.svg" alt="" />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Senha"
+      />
+    </div>
+    <p>
+      <!-- 
+            //TODO criar rota para recuperar senha
+         -->
+      <a
+        routerLink="/recuperar-senha"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        Esqueceu sua senha?</a
+      >
+    </p>
+    <button type="submit">Logar</button>
+  </form>
+  <!-- 
+    //TODO criar rota para cadastro
+   -->
+  <p>
+    Não possui uma conta?
+    <a
+      class="cadastre"
+      routerLink="/cadastro"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      >Cadastre-se</a
+    >
+  </p>
+</section>
