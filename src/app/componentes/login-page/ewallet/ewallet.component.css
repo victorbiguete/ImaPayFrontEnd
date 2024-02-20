@@ -1,0 +1,15 @@
+h3{
+    padding-bottom: 1.25rem;
+    font-size: 1.7rem;
+    line-height: 24.2px;
+    font-weight: 800;
+}
+
+h3 span:first-of-type{
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+h3 span:last-of-type{
+    color: #2A9D8F;
+}

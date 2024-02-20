@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { EwalletComponent } from '../ewallet/ewallet.component';
 import { ButtonComponent } from '../button/button.component';
+import { EwalletComponent } from '../ewallet/ewallet.component';
 
 @Component({
-  selector: 'app-login-form',
+  selector: 'app-cadastro-form',
   standalone: true,
   imports: [
     CommonModule,
@@ -14,7 +14,7 @@ import { ButtonComponent } from '../button/button.component';
     EwalletComponent,
     ButtonComponent,
   ],
-  templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.css',
+  templateUrl: './cadastro-form.component.html',
+  styleUrl: './cadastro-form.component.css',
 })
-export class LoginFormComponent {}
+export class CadastroFormComponent {}

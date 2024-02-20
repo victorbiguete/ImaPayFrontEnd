@@ -1,0 +1,62 @@
+<section class="cadastro-form">
+  <app-ewallet></app-ewallet>
+
+  <h2>Controle para suas Finanças! Junte-se a nós HOJE!</h2>
+
+  <p>Preencha o formulário abaixo para realizar seu cadastro.</p>
+  <!-- 
+    //TODO validar login no TS e redirecionar para dashboard
+   -->
+  <form action="">
+    <div class="input-icons">
+      <img
+        src="../../../../assets/imgs/login-cadastro/fi_mail.svg"
+        alt="Email Icon"
+      />
+      <input type="email" name="userEmail" id="userEmail" placeholder="Email" />
+    </div>
+    <div class="input-icons">
+      <img
+        src="../../../../assets/imgs/login-cadastro/u_user.svg"
+        alt="User Icon"
+      />
+      <input type="text" name="userId" id="userId" placeholder="Usuario" />
+    </div>
+    <div class="input-icons">
+      <img
+        src="../../../../assets/imgs/login-cadastro/u_lock.svg"
+        alt="Lock Icon"
+      />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Nova Senha"
+      />
+    </div>
+    <div class="input-icons">
+      <img
+        src="../../../../assets/imgs/login-cadastro/u_lock.svg"
+        alt="Lock Icon"
+      />
+      <input
+        type="password"
+        name="password-confirmation"
+        id="password-confirmation"
+        placeholder="Confirme sua Senha"
+      />
+    </div>
+
+    <app-button [text]="'Registrar'"></app-button>
+  </form>
+  <p>
+    Já possui conta?<a
+      class="cadastre"
+      routerLink="/"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      Log In</a
+    >
+  </p>
+</section>

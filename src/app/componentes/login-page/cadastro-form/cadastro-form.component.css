@@ -1,8 +1,7 @@
-.login-form{
+.cadastro-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
     height: 100%;
     width: 70%;
     padding: 0 1rem;
@@ -12,10 +11,10 @@
 
 h2{
     font-weight: 600;
-    font-size: 3rem;
-    line-height: 50.23px;
+    font-size: 2rem;
+    line-height: 1.1em;
     text-wrap: balance;
-    margin-bottom: 1.4rem;
+    /* margin-bottom: 1.2rem; */
 }
 
 h2 span{
@@ -34,14 +33,14 @@ form{
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 form input{
     width: 100%;
     padding-left: 40px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border: none;
     border-radius: 10px;
     color: #264653;
@@ -67,13 +66,13 @@ form img{
 
 form p{
     align-self: flex-end;
-    font-size: 1rem;
 }
 
 p:last-of-type{
     font-weight: 600;
     line-height: 19.53px;
     font-size: 1.5rem;
+    text-wrap: balance;
 }
 
 .cadastre{
@@ -91,28 +90,29 @@ a:active{
 }
 
 @media(max-width: 1920px) {
-    .login-form{
+    .cadastro-form{
         width: 50%;
     }
 }
 
 @media(max-width: 1440px) {
-    .login-form{
+    .cadastro-form{
         width: 60%;
     }
 }
 
 @media (max-width: 1024px) {
-    .login-form{
+    .cadastro-form{
         width: 80%;
     }
     h2{
         font-size: 2rem;
+        margin-top: -1rem;
     }
 }
 
 @media (max-width: 768px) {
-    .login-form{
+    .cadastro-form{
         width: 90%;
     }
 }

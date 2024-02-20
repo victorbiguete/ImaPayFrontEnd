@@ -1,10 +1,6 @@
 <section class="login-form">
-  <h3>
-    <span
-      ><img src="../../../../assets/imgs/login-cadastro/wallet-logo.svg" alt=""
-    /></span>
-    <span>e</span>Wallet
-  </h3>
+  <app-ewallet></app-ewallet>
+
   <h2>
     Feliz em ver você de novo!
     <span
@@ -42,11 +38,8 @@
         Esqueceu sua senha?</a
       >
     </p>
-    <button type="submit">Logar</button>
+    <app-button [text]="'Logar'"></app-button>
   </form>
-  <!-- 
-    //TODO criar rota para cadastro
-   -->
   <p>
     Não possui uma conta?
     <a
