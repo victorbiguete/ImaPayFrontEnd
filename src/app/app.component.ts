@@ -4,6 +4,9 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { HomeComponent } from "./componentes/home/home.component";
 import { TransacoesComponent } from './componentes/transacoes/transacoes.component';
 import { PerfilComponent } from "./perfil/perfil.component";
+import { BodyComponent } from "./componentes/body/body.component";
+import { NavbarComponent } from "./componentes/navbar/navbar.component";
+
 @Component({
     selector: 'app-root',
     standalone: true,
@@ -14,9 +17,11 @@ import { PerfilComponent } from "./perfil/perfil.component";
               HomeComponent,
               TransacoesComponent,
               PerfilComponent,
-              RouterLink
+              RouterLink,
+              NavbarComponent,
+              BodyComponent
             ]
 })
 export class AppComponent {
-  title = 'ImaPayFrontEnd';
+  title = 'perfil';
 }

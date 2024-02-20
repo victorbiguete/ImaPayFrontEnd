@@ -10,7 +10,7 @@ import { MenuComponent } from '../menu/menu.component';
   styleUrl: './transacoes.component.css'
 })
 export class TransacoesComponent {
-  
+
   transacoes = [
     //Dados apenas para teste:
     {
