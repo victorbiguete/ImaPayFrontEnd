@@ -1,6 +1,6 @@
 /* Home */
 .container-home{
-    background-color: var(--background-fundo-principal);
+    background-color: var(--background-neutro-primario);
     display: flex;
     justify-content: center;
     min-height: 100vh;
@@ -17,14 +17,15 @@
 }
 
 h2{
-    font-size: 1.3rem;
+    font-size: 22px;
     color: var(--cor-texto-secundario);
     padding-left: 2px;
-    font-weight: 600;
+
 }
 
 h4{
-    font-size: 1rem;
+    font-size: 14px;
+    color: var(--cor-subtitulo-primaria);
 }
 
 .mais{
@@ -34,6 +35,8 @@ h4{
     font-weight: bold;
     color: var(--cor-texto-primario);
 }
+
+
 .ver-mais{
     font-size: 0.9rem;
     text-align: center;
@@ -51,14 +54,12 @@ h4{
     flex-direction: column;
     gap:15px;
 }
-
-
 /* Ação rápida */
 .container-acao-rapida{
     display: flex;
     flex-direction: column;
     min-width: 350px;
-    background-color: var(--background-fundo-secundario);
+    background-color: var(--background-neutro-secundario);
     padding:10px;
     padding-bottom: 0;
     border-radius: 10px;
@@ -69,7 +70,6 @@ h4{
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* background-color: var(--background-primario) ; */
     border-radius: 10px;
 }
 
@@ -102,7 +102,7 @@ h4{
     overflow: hidden;
     border-radius: 50%;
     position: relative; 
-    background-color: var(--background-fundo-principal);
+    background-color: var(--background-neutro-primario);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,7 +113,7 @@ h4{
     display: flex;
     flex-direction: column;
     gap:10px;
-    background-color: var(--background-fundo-secundario);
+    background-color: var(--background-neutro-secundario);
     padding: 10px 10px 5px;
     width: 350px;
     box-sizing: border-box;
@@ -129,7 +129,7 @@ h4{
 .container-fatura{
     display: flex;
     flex-direction: column;
-    background-color: var(--background-fundo-secundario);
+    background-color: var(--background-neutro-secundario);
     padding:10px;
     padding-bottom: 0;
     border-radius: 10px; 
@@ -153,6 +153,7 @@ h4{
 .fatura-aberta{
     display: flex;
     justify-content: space-between;
+    padding: 8px 0;
 }
 
 .vencimento{
@@ -209,7 +210,7 @@ h4{
     width: 100%;
     flex-direction: column;
     padding-bottom: 20px;
-    background-color: var(--background-fundo-secundario);
+    background-color: var(--background-neutro-secundario);
     padding:10px;
     border-radius: 10px;
 }
@@ -222,7 +223,7 @@ h4{
     width: 100%;
     border-radius: 13px;
     background-color: white;
-    padding: 8px;  
+    padding: 10px;  
     box-sizing: border-box;
 }
 
@@ -245,9 +246,6 @@ h4{
     }
     .nome-icone{
         font-size: 12px;
-    }
-    h4{
-        font-size: 1rem;
     }
     .grid-icones{
         padding: 12px 5px 0; 
@@ -301,6 +299,9 @@ h4{
         display: flex;
         align-items: center;
         background-color: red;
+    }
+    h4{
+        font-size: 12px;
     }
 }
 

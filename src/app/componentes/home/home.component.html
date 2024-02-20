@@ -1,11 +1,11 @@
+<app-menu></app-menu>
 <div class="container-home">
-
+    
     <div class="container-geral">
 
         <div class="container-side">
             
             <!-- Cartão de crédito -->
-            
             <div class="container-cartao">
                 <h2>Cartão de crédito</h2>
                 <app-cartao-credito
@@ -127,7 +127,7 @@
                 <h2>Transações recentes</h2>
                 <div class="container-subtitulo">
                     <h4>Veja seu histórico de transação</h4>
-                    <div class="mais">Ver mais ></div>
+                    <div><a href="/transacoes" class="mais">Ver mais ></a></div>
                 </div>
                        
                 <app-tabela [transacoes]="transacoes"></app-tabela>

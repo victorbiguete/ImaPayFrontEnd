@@ -1,10 +1,12 @@
 :root{
     --background-primario: #104255;
     --background-secundario: #5DA55C;
-    --background-fundo-principal:#E6E5E5;
-    --background-fundo-secundario:#fff;
+    --background-neutro-primario:#E6E5E5;
+    --background-neutro-secundario:#fff;
     --cor-texto-primario:rgba(16, 66, 85, 0.88);
-    --cor-texto-secundario:rgb(0, 0, 0);
+    --cor-texto-secundario:#264653;
+    --cor-texto-terciario: #5DA55C;
+    --cor-subtitulo-primaria: #808080;
 }
 
 @font-face {

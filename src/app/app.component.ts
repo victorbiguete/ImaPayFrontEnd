@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { HomeComponent } from "./componentes/home/home.component";
 import { TransacoesComponent } from './componentes/transacoes/transacoes.component';
 import { PerfilComponent } from "./perfil/perfil.component";
-
 @Component({
     selector: 'app-root',
     standalone: true,
@@ -14,7 +13,8 @@ import { PerfilComponent } from "./perfil/perfil.component";
               RouterOutlet,
               HomeComponent,
               TransacoesComponent,
-              PerfilComponent
+              PerfilComponent,
+              RouterLink
             ]
 })
 export class AppComponent {

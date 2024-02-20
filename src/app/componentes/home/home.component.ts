@@ -4,6 +4,7 @@ import { CartaoCreditoComponent } from '../cartao-credito/cartao-credito.compone
 import { GraficoDonutComponent } from '../grafico-donut/grafico-donut.component';
 import { BarraProgressoComponent } from '../barra-progresso/barra-progresso.component';
 import { TabelaComponent } from '../tabela/tabela.component';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
     selector: 'app-home',
@@ -14,7 +15,8 @@ import { TabelaComponent } from '../tabela/tabela.component';
               CartaoCreditoComponent, 
               GraficoDonutComponent,
               BarraProgressoComponent,
-              TabelaComponent]
+              TabelaComponent,
+              MenuComponent]
 })
 
 export class HomeComponent {

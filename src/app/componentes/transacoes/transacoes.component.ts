@@ -1,10 +1,11 @@
 import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-transacoes',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MenuComponent],
   templateUrl: './transacoes.component.html',
   styleUrl: './transacoes.component.css'
 })

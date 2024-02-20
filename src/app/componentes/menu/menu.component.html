@@ -1,0 +1,21 @@
+<header>
+        <div class="container-menu">
+            <div class="conteudo-menu">
+                <div class="hamburger-menu" (click)="toggleMenu()"><img src="../../../assets/imgs/menu.png" class="icon-menu" alt="menu"></div>
+                <div class="logo">Simplify<span class="pay">Pay</span></div>
+                <nav>  
+                    <div class="nav-list" [ngClass]="{'show': isMenuOpen}">
+                        <a href="/home" class="link" (click) = "mudarEstilo('home')" [ngClass]="boldText">Home</a>
+                        <a href="/transacoes" class="link" (click) = "mudarEstilo('transacoes')" [ngClass]="boldText">Transações</a>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="perfil">
+                <div class="item-perfil"><img class="icon icon-perfil" src="../../../assets/imgs/pesquisa.png" alt="pesquisa"></div>
+                <div class="item-perfil"><img class="icon icon-perfil" src="../../../assets/imgs/notificacao.png" alt="notificacao"></div>
+                <div class="img-perfil"><img class="icon" src="../../../assets/imgs/pessoa.png" alt=""></div>
+            </div>
+        </div>
+      
+  </header>
