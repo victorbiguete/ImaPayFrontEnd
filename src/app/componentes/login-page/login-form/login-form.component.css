@@ -116,3 +116,9 @@ a:active{
         width: 90%;
     }
 }
+
+@media (max-width: 425px) {
+    .login-form{
+        width: 100%;
+    }
+}
