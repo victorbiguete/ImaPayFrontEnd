@@ -7,6 +7,7 @@
     padding: 0 1rem;
     margin: auto;
     font-family: "Inter" ,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
 }
 
 h2{
@@ -38,9 +39,7 @@ form{
 
 form input{
     width: 100%;
-    padding-left: 40px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding:10px 40px;
     border: none;
     border-radius: 10px;
     color: #264653;
@@ -51,7 +50,7 @@ form input{
 
 form input:focus,
 form input:active{
-    /* outline: none; */
+    outline: none;
     border-color: #264653b6;
 }
 
@@ -61,7 +60,15 @@ form .input-icons{
 
 form img{
     position: absolute;
-    padding: 15px;
+    padding: 17px;
+}
+
+form i{
+    color: red;
+    position: absolute;
+    padding-top: 15px;
+    margin-left: -35px;
+    font-size: 1.3rem;
 }
 
 form p{
@@ -87,6 +94,14 @@ a{
 a:hover,
 a:active{
     color: #264653b6
+}
+
+.red{
+    border: 1px solid red !important;
+}
+
+.green{
+    border: 1px solid green !important;
 }
 
 @media(max-width: 1920px) {
