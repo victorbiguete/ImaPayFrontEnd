@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ButtonComponent } from '../button/button.component';
 import { EwalletComponent } from '../ewallet/ewallet.component';
 import { LocalStorageService } from '../../../services/localStorage/local-storage.service';
@@ -31,9 +31,12 @@ export class CadastroFormComponent {
   userId = new FormControl('');
   userPassword = new FormControl('');
   userConfirmPassword = new FormControl('');
-  cadastroForm: FormGroup;
+  cadastroForm!: FormGroup;
 
-  constructor(private localStorageService: LocalStorageService) {
+  constructor(
+    private localStorageService: LocalStorageService,
+    private router: Router
+  ) {
     this.cadastroForm = new FormGroup(
       {
         userEmail: new FormControl(this.userEmail.value, [
@@ -80,7 +83,6 @@ export class CadastroFormComponent {
         ?.setErrors({ require: true });
       return;
     }
-    console.log(this.cadastroForm.value);
 
     const users = this.localStorageService.get();
     if (users?.length > 0) {
@@ -113,5 +115,6 @@ export class CadastroFormComponent {
       ]);
     }
     this.cadastroForm.reset();
+    this.router.navigate(['/home']);
   }
 }
