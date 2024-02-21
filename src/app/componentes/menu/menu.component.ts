@@ -1,25 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
   isMenuOpen = false;
-  estiloSelecionado: string = '';
-  ativarLink: string = '';
-  boldText: string = '';
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  mudarEstilo(link: string) {
-    this.ativarLink = link;
-    this.boldText = link === 'home' ? 'home' : '';
-  }
 }
