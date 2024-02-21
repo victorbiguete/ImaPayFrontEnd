@@ -33,7 +33,6 @@
         placeholder="Email"
         formControlName="userEmail"
         autocomplete="off"
-        autofocus
         #userEmail
         required
         [ngClass]="
@@ -52,6 +51,15 @@
         "
         class="fa-solid fa-circle-exclamation"
       ></i>
+      <div
+        *ngIf="
+          cadastroForm.get('userEmail')?.invalid && cadastroForm.get('userEmail')?.errors?.['userExists'] &&
+          (cadastroForm.get('userEmail')?.touched ||
+            cadastroForm.get('userEmail')?.dirty)
+        "
+      >
+        <p class="alert alert-danger">Email em uso.</p>
+      </div>
     </div>
     <div class="input-icons">
       <img
@@ -83,6 +91,15 @@
         "
         class="fa-solid fa-circle-exclamation"
       ></i>
+      <div
+        *ngIf="
+          cadastroForm.get('userId')?.invalid && cadastroForm.get('userId')?.errors?.['userExists'] &&
+          (cadastroForm.get('userId')?.touched ||
+            cadastroForm.get('userId')?.dirty)
+        "
+      >
+        <p class="alert alert-danger">Nome de usuario em uso</p>
+      </div>
     </div>
     <div class="input-icons">
       <img
@@ -97,15 +114,19 @@
         formControlName="password"
         #password
         required
-        [ngClass]="cadastroForm.errors?.['mismatch'] &&
-        (cadastroForm.get('passwordConfirmation')?.touched ||
-          cadastroForm.get('passwordConfirmation')?.dirty) ? 'red' : 'green'"
+        [ngClass]="
+          cadastroForm.get('password')?.invalid &&
+          (cadastroForm.get('password')?.touched ||
+            cadastroForm.get('password')?.dirty)
+            ? 'red'
+            : 'green'
+        "
       />
       <i
         *ngIf="
-          cadastroForm.errors?.['mismatch'] &&
-          (cadastroForm.get('passwordConfirmation')?.touched ||
-          cadastroForm.get('passwordConfirmation')?.dirty)
+          cadastroForm.get('password')?.invalid &&
+          (cadastroForm.get('password')?.touched ||
+            cadastroForm.get('password')?.dirty)
         "
         class="fa-solid fa-circle-exclamation"
       ></i>
@@ -123,15 +144,19 @@
         formControlName="passwordConfirmation"
         #passwordConfirmation
         required
-        [ngClass]="cadastroForm.errors?.['mismatch'] &&
-        (cadastroForm.get('passwordConfirmation')?.touched ||
-          cadastroForm.get('passwordConfirmation')?.dirty) ? 'red' : 'green'"
+        [ngClass]="
+          cadastroForm.get('passwordConfirmation')?.invalid &&
+          (cadastroForm.get('passwordConfirmation')?.touched ||
+            cadastroForm.get('passwordConfirmation')?.dirty)
+            ? 'red'
+            : 'green'
+        "
       />
       <i
         *ngIf="
-          cadastroForm.errors?.['mismatch'] &&
+          cadastroForm.get('passwordConfirmation')?.invalid &&
           (cadastroForm.get('passwordConfirmation')?.touched ||
-          cadastroForm.get('passwordConfirmation')?.dirty)
+            cadastroForm.get('passwordConfirmation')?.dirty)
         "
         class="fa-solid fa-circle-exclamation"
       ></i>

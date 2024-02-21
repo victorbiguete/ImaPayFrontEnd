@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ButtonComponent } from '../button/button.component';
 import { EwalletComponent } from '../ewallet/ewallet.component';
+import { LocalStorageService } from '../../../services/localStorage/local-storage.service';
 import {
   AbstractControl,
   FormControl,
@@ -32,7 +33,7 @@ export class CadastroFormComponent {
   userConfirmPassword = new FormControl('');
   cadastroForm: FormGroup;
 
-  constructor() {
+  constructor(private localStorageService: LocalStorageService) {
     this.cadastroForm = new FormGroup(
       {
         userEmail: new FormControl(this.userEmail.value, [
@@ -72,7 +73,45 @@ export class CadastroFormComponent {
 
   onSubmit(e: any) {
     e.preventDefault();
-    if (this.cadastroForm.invalid) return;
+    if (this.cadastroForm.invalid) {
+      this.cadastroForm.get('password')?.setErrors({ require: true });
+      this.cadastroForm
+        .get('passwordConfirmation')
+        ?.setErrors({ require: true });
+      return;
+    }
     console.log(this.cadastroForm.value);
+
+    const users = this.localStorageService.get();
+    if (users?.length > 0) {
+      if (users.some((user) => user.id === this.cadastroForm.value.userId)) {
+        this.cadastroForm.get('userId')?.setErrors({ userExists: true });
+        this.cadastroForm.get('password')?.reset();
+        this.cadastroForm.get('passwordConfirmation')?.reset();
+        return; // UserID already exists
+      } else if (
+        users.some((user) => user.email === this.cadastroForm.value.userEmail)
+      ) {
+        this.cadastroForm.get('userEmail')?.setErrors({ userExists: true });
+        this.cadastroForm.get('password')?.reset();
+        this.cadastroForm.get('passwordConfirmation')?.reset();
+        return; // UserEmail already exists
+      }
+      users.push({
+        id: this.cadastroForm.value.userId,
+        email: this.cadastroForm.value.userEmail,
+        password: this.cadastroForm.value.password,
+      });
+      this.localStorageService.set(users);
+    } else {
+      this.localStorageService.set([
+        {
+          id: this.cadastroForm.value.userId,
+          email: this.cadastroForm.value.userEmail,
+          password: this.cadastroForm.value.password,
+        },
+      ]);
+    }
+    this.cadastroForm.reset();
   }
 }
