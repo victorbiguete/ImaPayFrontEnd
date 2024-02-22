@@ -1,8 +1,16 @@
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MenuComponent } from '../menu/menu.component';
 import { FormsModule } from '@angular/forms';
 
+
+interface Transacao {
+	tipo: string;
+	data: string;
+	nome: string;
+	valor: string;
+  descricao: string;
+}
 @Component({
   selector: 'app-transacoes',
   standalone: true,
@@ -16,147 +24,114 @@ export class TransacoesComponent {
   transacoes = [
     //Dados apenas para teste:
     {
-      "tipo": "Remuneração/salário",
-      "data": "28/12/2023",
-      "nome": "Amazon Services",
-      "valor": "15,00",
-      "descricao": ""
-    },
-    {
       "tipo": "Transferência enviada",
-      "data": "25/11/2023",
-      "nome": "Editora Democritus",
-      "valor": "50,00",
+      "data": "23/02/2024",
+      "nome": "Stronger Sports",
+      "valor": "150,00",
       "descricao": "Pix"
     },
     {
       "tipo": "Transferência recebida",
-      "data": "31/10/2023",
-      "nome": "Roberto B",
-      "valor": "47,00",
+      "data": "23/02/2024",
+      "nome": "Ana Mariana Silva",
+      "valor": "600,00",
       "descricao": "Pix"
     },
     {
       "tipo": "Pag. débito",
-      "data": "15/09/2023",
+      "data": "23/02/2024",
       "nome": "Grupo Casas Bahia",
       "valor": "450,00",
       "descricao": ""
     },
     {
-      "tipo": "Pag. crédito",
-      "data": "08/09/2023",
-      "nome": "Auto Posto Cesar",
-      "valor": "120,00",
-      "descricao": ""
-    },
-    {
-      "tipo": "Depósito",
-      "data": "08/09/2023",
-      "nome": "Mobile",
-      "valor": "35,00",
-      "descricao": ""
-    },
-    {
-      "tipo": "Remuneração/salário",
-      "data": "28/12/2023",
-      "nome": "Amazon Services",
-      "valor": "15,00",
-      "descricao": ""
-    },
-    {
       "tipo": "Transferência enviada",
-      "data": "25/11/2023",
-      "nome": "Editora Democritus",
-      "valor": "50,00",
-      "descricao": "Pix"
-    },
-    {
-      "tipo": "Transferência recebida",
-      "data": "31/10/2023",
-      "nome": "Roberto B",
-      "valor": "47,00",
+      "data": "23/02/2024",
+      "nome": "João da Silva",
+      "valor": "200,00",
       "descricao": "Pix"
     },
     {
       "tipo": "Pag. débito",
-      "data": "15/09/2023",
-      "nome": "Grupo Casas Bahia",
-      "valor": "450,00",
+      "data": "23/02/2024",
+      "nome": "Ifood",
+      "valor": "250,00",
       "descricao": ""
     },
     {
       "tipo": "Pag. crédito",
-      "data": "08/09/2023",
+      "data": "23/02/2024",
       "nome": "Auto Posto Cesar",
-      "valor": "120,00",
-      "descricao": ""
-    },
-    {
-      "tipo": "Depósito",
-      "data": "08/09/2023",
-      "nome": "Mobile",
-      "valor": "35,00",
-      "descricao": ""
-    },
-    {
-      "tipo": "Remuneração/salário",
-      "data": "28/12/2023",
-      "nome": "Amazon Services",
-      "valor": "15,00",
+      "valor": "50,00",
       "descricao": ""
     },
     {
       "tipo": "Transferência enviada",
-      "data": "25/11/2023",
-      "nome": "Editora Democritus",
-      "valor": "50,00",
+      "data": "23/02/2024",
+      "nome": "Cleide da Silva",
+      "valor": "500,00",
       "descricao": "Pix"
     },
     {
-      "tipo": "Pag. crédito",
-      "data": "08/09/2023",
-      "nome": "Auto Posto Cesar",
-      "valor": "120,00",
+      "tipo": "Pag. débito",
+      "data": "22/02/2024",
+      "nome": "Ifood",
+      "valor": "150,00",
       "descricao": ""
     },
     {
-      "tipo": "Depósito",
-      "data": "08/09/2023",
-      "nome": "Mobile",
-      "valor": "35,00",
+      "tipo": "Pag. crédito",
+      "data": "22/02/2024",
+      "nome": "Strong Sports",
+      "valor": "350,00",
       "descricao": ""
     },
+    {
+      "tipo": "Pag. débito",
+      "data": "21/02/2024",
+      "nome": "Ifood",
+      "valor": "150,00",
+      "descricao": ""
+    },
+    {
+      "tipo": "Remuneração/salário",
+      "data": "21/02/2024",
+      "nome": "Amazon Services",
+      "valor": "15.000,00",
+      "descricao": ""
+    },
+
+    {
+      "tipo": "Pag. crédito",
+      "data": "20/02/2024",
+      "nome": "Coco Bambu",
+      "valor": "450,00",
+      "descricao": ""
+    },
+
+    {
+      "tipo": "Pag. débito",
+      "data": "19/02/2024",
+      "nome": "Ifood",
+      "valor": "97,45",
+      "descricao": ""
+    }
   ]
 
-  filtro = {
-    tipo: '',
-    data: '',
-    nome: '',
-    valor: '',
-    descricao: ''
-  };
+  transacoesOriginal: Transacao[] = [...this.transacoes];
 
-  transacoesFiltradas = this.transacoes; // Inicialmente, exibe todas as transações
+  filtroTipo: keyof Transacao = 'tipo';
+  filtroValor: any = '';
 
-  aplicarFiltro() {
-    this.transacoesFiltradas = this.transacoes.filter(transacao =>
-      transacao.tipo.includes(this.filtro.tipo) &&
-      transacao.data.includes(this.filtro.data) &&
-      transacao.nome.includes(this.filtro.nome) &&
-      transacao.valor.includes(this.filtro.valor) &&
-      transacao.descricao.includes(this.filtro.descricao)
-    );
-  }
+  aplicarFiltros(): void {
+    console.log("filtroTipo=" +this.filtroTipo)
+    if (this.filtroValor !== '') {
 
-  limparFiltro() {
-    this.filtro = {
-      tipo: '',
-      data: '',
-      nome: '',
-      valor: '',
-      descricao: ''
-    };
-    this.transacoesFiltradas = this.transacoes; // Retorna para exibir todas as transações
+      this.transacoes = this.transacoesOriginal.filter(transacao => {
+        return transacao[this.filtroTipo].toString().toLowerCase().includes(this.filtroValor.toString().toLowerCase());
+      });
+    } else {
+      this.transacoes = this.transacoesOriginal;
+    }
   }
 }
