@@ -62,6 +62,8 @@ h4{
     padding-bottom: 0;
     border-radius: 10px;
     height: 140px;
+    align-items: center;
+
 }
 
 .content-acao-rapida{
@@ -145,13 +147,13 @@ h4{
 .container-detalhes-fatura{
     display: flex;
     flex-direction: column;
-    padding: 10px 0 0;
+    padding: 6px 0 0;
 }
 
 .fatura-aberta{
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    padding-top: 8px;
 }
 
 .vencimento{
@@ -168,7 +170,7 @@ h4{
     display: flex;
     align-items: center;
     gap:15px;
-    padding: 20px;
+    padding: 10px;
     font-size: 0.8rem;
 }
 
@@ -204,23 +206,30 @@ span{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 20px 10px;
+    padding: 15px 10px;
 }
 .data{
     font-size: 12px;
     color: #fff;
 }
-
+.container-bem-vindo{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
 .txt-bem-vindo{
     font-size: 16px;
     color: #fff;
 }
+.item-bem-vindo{
+    padding-bottom:15px;
+}
 .txt-simplify{
-    font-size: 14px;
+    font-size: 18px;
     
 }
 .txt-divulgacao{
-    font-size: 10px;
+    font-size: 12px;
     color: #fff;
 }
 .container-img-invest{
@@ -260,6 +269,7 @@ span{
 .container-historico{
     display: flex;
     flex-direction: column;
+    min-height: 542px;
     max-width: 650px;
     width: 100%;
     border-radius: 13px;
@@ -268,25 +278,24 @@ span{
     box-sizing: border-box;
 }
 
+.container-banner{
+    display: none;
+}
+
 @media (max-width: 1000px){
-    .content-minha-carteira{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+    .content-minha-carteira{ 
+        grid-template-columns: repeat(2, 1fr);
     }
-    .container-cartao{
-        align-items: flex-start;
-    }
-    .container-principal{
-        display: flex;
-        align-items: center;
-    }
-    .nome-icone{
-        font-size: 12px;
-    }
+    
 }
 
 @media (max-width: 768px){
+    .container-side{
+        padding-top:20px;
+    }
+    .container-banner{
+        display: flex;
+    }
     .container-cartao{
         align-items: center;
     }
@@ -302,16 +311,8 @@ span{
         display: none;
     }
     /* Minha carteira */
-    .container-minha-carteira{
-        align-items: center;
-    }
-    .content-minha-carteira{
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 10px;
-        align-items: center;
-        max-width: 350px;
-        width: 100%;
+    .content-minha-carteira{ 
+        grid-template-columns: repeat(3, 1fr);
     }
     .container-geral{
         align-items: center;
@@ -337,3 +338,10 @@ span{
         font-size: 12px;
     }
 }
+
+@media (max-width: 550px){
+    .content-minha-carteira {
+        grid-template-columns: 1fr;
+      }
+}
+

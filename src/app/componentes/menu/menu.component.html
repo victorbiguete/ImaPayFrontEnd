@@ -2,7 +2,7 @@
         <div class="container-menu">
             <div class="conteudo-menu">
                 <div class="hamburger-menu" (click)="toggleMenu()"><img src="../../../assets/imgs/menu.png" class="icon-menu" alt="menu"></div>
-                <div class="logo">Simplify<span class="pay">Pay</span></div>
+                <div class="logo"><a routerLink="/home">Simplify<span class="pay">Pay</span></a></div>
                 <nav>  
                     <div class="nav-list" [ngClass]="{'show': isMenuOpen}">
                         <a routerLink="/home" class="link">Home</a>

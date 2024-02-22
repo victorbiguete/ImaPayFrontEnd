@@ -1,14 +1,16 @@
 import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { MenuComponent } from '../menu/menu.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-transacoes',
   standalone: true,
-  imports: [CommonModule, MenuComponent],
+  imports: [CommonModule, MenuComponent, FormsModule],
   templateUrl: './transacoes.component.html',
   styleUrl: './transacoes.component.css'
 })
+
 export class TransacoesComponent {
 
   transacoes = [
@@ -127,4 +129,34 @@ export class TransacoesComponent {
     },
   ]
 
+  filtro = {
+    tipo: '',
+    data: '',
+    nome: '',
+    valor: '',
+    descricao: ''
+  };
+
+  transacoesFiltradas = this.transacoes; // Inicialmente, exibe todas as transações
+
+  aplicarFiltro() {
+    this.transacoesFiltradas = this.transacoes.filter(transacao =>
+      transacao.tipo.includes(this.filtro.tipo) &&
+      transacao.data.includes(this.filtro.data) &&
+      transacao.nome.includes(this.filtro.nome) &&
+      transacao.valor.includes(this.filtro.valor) &&
+      transacao.descricao.includes(this.filtro.descricao)
+    );
+  }
+
+  limparFiltro() {
+    this.filtro = {
+      tipo: '',
+      data: '',
+      nome: '',
+      valor: '',
+      descricao: ''
+    };
+    this.transacoesFiltradas = this.transacoes; // Retorna para exibir todas as transações
+  }
 }

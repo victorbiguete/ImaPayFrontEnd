@@ -58,7 +58,7 @@ export class HomeComponent {
           },
           {
             "tipo": "Pag. crédito",
-            "data": "22/12/2024",
+            "data": "23/12/2024",
             "nome": "Auto Posto Cesar",
             "valor": "50,00",
             "descricao": ""
@@ -69,6 +69,13 @@ export class HomeComponent {
             "nome": "Cleide da Silva",
             "valor": "500,00",
             "descricao": "Pix"
+          },
+          {
+            "tipo": "Pag. débito",
+            "data": "22/12/2024",
+            "nome": "Ifood",
+            "valor": "150,00",
+            "descricao": ""
           },
           {
             "tipo": "Pag. crédito",
@@ -92,4 +99,5 @@ export class HomeComponent {
             "descricao": ""
           },
     ];
+
 }
