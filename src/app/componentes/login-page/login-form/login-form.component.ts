@@ -65,6 +65,8 @@ export class LoginFormComponent {
       this.router.navigate(['/home']);
     }
 
+    this.loginForm.get('userEmail')?.setErrors({ required: true });
+    this.loginForm.get('password')?.setErrors({ required: true });
     this.failedLogin = true;
   }
 }

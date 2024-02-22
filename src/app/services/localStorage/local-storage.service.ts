@@ -33,7 +33,7 @@ export class LocalStorageService {
     } catch (e) {
       alert('Something went wrong');
       console.warn(e);
-      throw e;
+      return [{ name: 'exemple', email: 'email@mail.com', password: ' 123' }];
     }
   }
 }
