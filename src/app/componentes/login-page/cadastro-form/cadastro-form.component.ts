@@ -50,6 +50,7 @@ export class CadastroFormComponent {
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(80),
+          Validators.pattern('[a-zA-Z ]*'),
         ]),
         password: new FormControl(this.userPassword.value, [
           Validators.required,
