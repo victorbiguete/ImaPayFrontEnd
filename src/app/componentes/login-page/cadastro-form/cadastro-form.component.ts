@@ -28,7 +28,7 @@ import {
 })
 export class CadastroFormComponent {
   userEmail = new FormControl('');
-  userId = new FormControl('');
+  userName = new FormControl('');
   userPassword = new FormControl('');
   userConfirmPassword = new FormControl('');
   cadastroForm!: FormGroup;
@@ -46,11 +46,10 @@ export class CadastroFormComponent {
           Validators.maxLength(50),
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
         ]),
-        userId: new FormControl(this.userId.value, [
+        userName: new FormControl(this.userName.value, [
           Validators.required,
           Validators.minLength(2),
-          Validators.maxLength(50),
-          Validators.pattern('^[a-zA-Z0-9]+$'),
+          Validators.maxLength(80),
         ]),
         password: new FormControl(this.userPassword.value, [
           Validators.required,
@@ -86,12 +85,7 @@ export class CadastroFormComponent {
 
     const users = this.localStorageService.get();
     if (users?.length > 0) {
-      if (users.some((user) => user.id === this.cadastroForm.value.userId)) {
-        this.cadastroForm.get('userId')?.setErrors({ userExists: true });
-        this.cadastroForm.get('password')?.reset();
-        this.cadastroForm.get('passwordConfirmation')?.reset();
-        return; // UserID already exists
-      } else if (
+      if (
         users.some((user) => user.email === this.cadastroForm.value.userEmail)
       ) {
         this.cadastroForm.get('userEmail')?.setErrors({ userExists: true });
@@ -100,7 +94,7 @@ export class CadastroFormComponent {
         return; // UserEmail already exists
       }
       users.push({
-        id: this.cadastroForm.value.userId,
+        name: this.cadastroForm.value.userName,
         email: this.cadastroForm.value.userEmail,
         password: this.cadastroForm.value.password,
       });
@@ -108,7 +102,7 @@ export class CadastroFormComponent {
     } else {
       this.localStorageService.set([
         {
-          id: this.cadastroForm.value.userId,
+          name: this.cadastroForm.value.userName,
           email: this.cadastroForm.value.userEmail,
           password: this.cadastroForm.value.password,
         },

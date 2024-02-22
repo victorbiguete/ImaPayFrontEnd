@@ -6,9 +6,7 @@ import { LoginFormComponent } from './componentes/login-page/login-form/login-fo
 import { CadastroFormComponent } from './componentes/login-page/cadastro-form/cadastro-form.component';
 
 export const routes: Routes = [
-    {path: 'home', component: HomeComponent},
-    {path: 'transacoes', component: TransacoesComponent},
-     {
+  {
     path: '',
     component: LoginPageComponent,
     children: [
@@ -21,5 +19,13 @@ export const routes: Routes = [
         component: CadastroFormComponent, // child route component that the router renders
       },
     ],
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'transacoes',
+    component: TransacoesComponent,
   },
 ];

@@ -9,7 +9,8 @@
 <section id="section-cadastro" class="cadastro-form roll-in-blurred-left">
   <app-ewallet></app-ewallet>
 
-  <h2>Controle para suas Finanças! Junte-se a nós HOJE!</h2>
+  <h2>Junte-se a nós!</h2>
+  <h3>Maior controle para suas finanças!</h3>
 
   <p>Preencha o formulário abaixo para realizar seu cadastro.</p>
   <form
@@ -65,38 +66,29 @@
       />
       <input
         type="text"
-        name="userId"
-        id="userId"
-        placeholder="Usuario"
-        formControlName="userId"
+        name="userName"
+        id="userName"
+        placeholder="Nome Completo"
+        formControlName="userName"
         autocomplete="off"
-        #userId
+        #userName
         required
         [ngClass]="
-          cadastroForm.get('userId')?.invalid &&
-          (cadastroForm.get('userId')?.touched ||
-            cadastroForm.get('userId')?.dirty)
+          cadastroForm.get('userName')?.invalid &&
+          (cadastroForm.get('userName')?.touched ||
+            cadastroForm.get('userName')?.dirty)
             ? 'red'
             : 'green'
         "
       />
       <i
         *ngIf="
-          cadastroForm.get('userId')?.invalid &&
-          (cadastroForm.get('userId')?.touched ||
-            cadastroForm.get('userId')?.dirty)
+          cadastroForm.get('userName')?.invalid &&
+          (cadastroForm.get('userName')?.touched ||
+            cadastroForm.get('userName')?.dirty)
         "
         class="fa-solid fa-circle-exclamation"
       ></i>
-      <div
-        *ngIf="
-          cadastroForm.get('userId')?.invalid && cadastroForm.get('userId')?.errors?.['userExists'] &&
-          (cadastroForm.get('userId')?.touched ||
-            cadastroForm.get('userId')?.dirty)
-        "
-      >
-        <p class="alert alert-danger">Nome de usuario em uso</p>
-      </div>
     </div>
     <div class="input-icons">
       <img
