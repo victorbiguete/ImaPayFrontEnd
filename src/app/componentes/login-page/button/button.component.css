@@ -1,0 +1,18 @@
+ button{
+    width: 100%;
+    display: block ;
+    background-color: #264653;
+    color: whitesmoke;
+    padding: 0.8rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-align: center;
+    border: none;
+    border-radius: 24px;
+    margin-bottom: 1.5rem;
+}
+
+ button:hover,
+ button:active{
+    background-color: #264653b6;
+}
