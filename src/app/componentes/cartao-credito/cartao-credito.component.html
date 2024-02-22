@@ -1,9 +1,9 @@
 <div class="container">
     <div class="conteudo">
         <div class="grid-bandeira">
-            <div>SimpliBank</div>
+            <div>{{nomeCartao}}</div>
             <div class="justificar-direita">
-                <img src="../../../assets/imgs/Mastercard.png" alt="mastercard" class="bandeira">
+                <img [src]="srcImgBandeira" [alt]="altImgBandeira" class="bandeira">
             </div>
         </div>
         <div class="grid-chip">
@@ -12,14 +12,14 @@
         </div>
 
         <div>
-            <div class="numero-cartao sombra">5375 **** **** 0954</div>
+            <div class="numero-cartao sombra">{{numCartao}}</div>
         </div>
 
         <div class="grid-dados sombra">
-            <div class="titular">Donald Flinch Cortez</div>
+            <div class="titular">{{nomeTitular}}</div>
             <div class="grid-validade">
                 <div class="validade">VALID.</div>
-                <div class="justificar-direita">06/24</div>
+                <div class="justificar-direita">{{validade}}</div>
             </div>
         </div>
 

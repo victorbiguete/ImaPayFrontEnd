@@ -1,0 +1,306 @@
+/* Home */
+.container-home{
+    background-color: var(--background-fundo-principal);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container-geral{
+    display: flex;
+    gap:10px;
+    box-sizing: border-box;
+    max-width: 1000px;
+    width: 100%;
+    padding:10px;
+}
+
+h2{
+    font-size: 1.3rem;
+    color: var(--cor-texto-secundario);
+    padding-left: 2px;
+    font-weight: 600;
+}
+
+h4{
+    font-size: 1rem;
+}
+
+.mais{
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--cor-texto-primario);
+}
+.ver-mais{
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 10px 0 0;
+}
+
+.container-subtitulo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 3px; 
+}
+.container-side{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+
+/* Ação rápida */
+.container-acao-rapida{
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+    background-color: var(--background-fundo-secundario);
+    padding:10px;
+    padding-bottom: 0;
+    border-radius: 10px;
+
+}
+
+.content-acao-rapida{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* background-color: var(--background-primario) ; */
+    border-radius: 10px;
+}
+
+.grid-icones{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-top: 10px;
+}
+
+.item-acao-rapida{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap:4px;
+    cursor: pointer;
+}
+
+.img-acao-rapida{
+    width: 24px;
+}
+
+.nome-icone{
+    font-size: 14px;
+}
+
+.icon-card{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative; 
+    background-color: var(--background-fundo-principal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cartão de Crédito */
+.container-cartao{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    background-color: var(--background-fundo-secundario);
+    padding: 10px 10px 5px;
+    width: 350px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.separador{
+    width: 100%;
+    height: 1px;
+    background-color: #62626239;
+}
+
+.container-fatura{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-fundo-secundario);
+    padding:10px;
+    padding-bottom: 0;
+    border-radius: 10px; 
+    max-width: 350px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.grafico-donuts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-detalhes-fatura{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 0;
+}
+
+.fatura-aberta{
+    display: flex;
+    justify-content: space-between;
+}
+
+.vencimento{
+    color:#8787877a;
+    font-size: 0.8rem;
+}
+
+.valor{
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.container-melhor-data{
+    display: flex;
+    align-items: center;
+    gap:15px;
+    padding: 20px;
+    font-size: 0.8rem;
+}
+
+.texto-melhor-data{
+    display: flex;
+    align-items: center;
+}
+
+.calendario{
+    width: 26px;
+}
+
+.container-principal{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    padding:0 10px;
+    box-sizing: border-box;
+    min-width: 350px;
+    width: auto;
+    max-width: 100%;
+    margin-top: -12px;
+}
+
+/* Minha carteira */
+.content-minha-carteira{ 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:10px;
+    justify-content: space-around;
+    border-radius: 15px;
+}
+
+.container-minha-carteira{
+    display: flex;
+    max-width: 650px;
+    width: 100%;
+    flex-direction: column;
+    padding-bottom: 20px;
+    background-color: var(--background-fundo-secundario);
+    padding:10px;
+    border-radius: 10px;
+}
+
+/* Histórico */
+.container-historico{
+    display: flex;
+    flex-direction: column;
+    max-width: 650px;
+    width: 100%;
+    border-radius: 13px;
+    background-color: white;
+    padding: 8px;  
+    box-sizing: border-box;
+}
+
+@media (max-width: 1000px){
+    .content-minha-carteira{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .container-cartao{
+        align-items: flex-start;
+    }
+    .container-principal{
+        padding-left: .8rem;
+        display: flex;
+        align-items: center;
+    }
+    .container-acao-rapida{
+        width: 100%;
+    }
+    .nome-icone{
+        font-size: 12px;
+    }
+    h4{
+        font-size: 1rem;
+    }
+    .grid-icones{
+        padding: 12px 5px 0; 
+    }
+}
+
+@media (max-width: 768px){
+    .container-cartao{
+        align-items: center;
+    }
+    .container-geral{
+        display: flex;
+        flex-direction: column;
+        padding: 20px 12px;
+        gap:20px;
+        height: auto;
+    }
+    .container-acao-rapida{
+        align-items: center;
+        margin-top:20px;
+    }
+
+    /* Minha carteira */
+    .container-minha-carteira{
+        align-items: center;
+    }
+    .content-minha-carteira{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        align-items: center;
+        max-width: 350px;
+        width: 100%;
+    }
+    .container-geral{
+        align-items: center;
+        justify-content: center;
+        max-width: auto;
+        padding: 0;
+    }
+
+    .separador-ativo{
+        margin: 20px 0 -20px 0;
+        width: 100%;
+        height: 1px;
+        background-color: #62626239;
+    }
+    .historico{
+        width: auto;
+        box-sizing: border-box; 
+        display: flex;
+        align-items: center;
+        background-color: red;
+    }
+}
+

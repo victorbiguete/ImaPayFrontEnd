@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { HomeComponent } from "./componentes/home/home.component";
 import { BodyComponent } from "./Componentes/body/body.component";
 import { NavbarComponent } from "./Componentes/navbar/navbar.component";
 import { CartaoCreditoComponent } from './components/cartao-credito/cartao-credito.component';
@@ -24,7 +25,8 @@ import { PerfilComponent } from "./perfil/perfil.component";
     LoginPageComponent,
     BodyComponent,
     NavbarComponent ,
-    CartaoCreditoComponent
+    CartaoCreditoComponent,
+    HomeComponent
   ],
 })
 export class AppComponent {

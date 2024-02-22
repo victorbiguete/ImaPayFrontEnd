@@ -1,5 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
 @import 'bootstrap/dist/css/bootstrap.min.css';
+:root{
+    --background-primario: #104255;
+    --background-secundario: #5DA55C;
+    --background-fundo-principal:#E6E5E5;
+    --background-fundo-secundario:#fff;
+    --cor-texto-primario:rgba(16, 66, 85, 0.88);
+    --cor-texto-secundario:rgb(0, 0, 0);
+}
 @font-face {
     font-family: "Poppins", sans-serif;
     src: url('assets/fonts/Poppins-1/Poppins-Regular.ttf');
@@ -19,9 +26,6 @@ body {
     font-size: 12px;
     background-color: #E6E5E5;
 }
-
-
-
 
 /* Entrada de animação */
 
@@ -64,4 +68,3 @@ body {
   }
 
   /* Saida de animação */
-
