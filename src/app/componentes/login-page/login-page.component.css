@@ -30,11 +30,16 @@
 }
 
 .right{
-    background: rgb(234,248,231);
+    /* background: rgb(234,248,231);
     background: -moz-linear-gradient(90deg, rgba(234,248,231,1) 0%, rgba(237,250,233,1) 99%);
     background: -webkit-linear-gradient(90deg, rgba(234,248,231,1) 0%, rgba(237,250,233,1) 99%);
     background: linear-gradient(90deg, rgba(234,248,231,1) 0%, rgba(237,250,233,1) 99%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eaf8e7",endColorstr="#edfae9",GradientType=1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eaf8e7",endColorstr="#edfae9",GradientType=1); */
+    background: rgb(249,255,245);
+background: -moz-linear-gradient(180deg, rgba(249,255,245,1) 0%, rgba(212,232,207,1) 99%);
+background: -webkit-linear-gradient(180deg, rgba(249,255,245,1) 0%, rgba(212,232,207,1) 99%);
+background: linear-gradient(180deg, rgba(249,255,245,1) 0%, rgba(212,232,207,1) 99%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f9fff5",endColorstr="#d4e8cf",GradientType=1);
 }
 
 @media(max-width: 740px) {
