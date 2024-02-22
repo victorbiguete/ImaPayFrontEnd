@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './componentes/home/home.component';
+import { TransacoesComponent } from './componentes/transacoes/transacoes.component';
 import { LoginPageComponent } from './componentes/login-page/login-page.component';
 import { LoginFormComponent } from './componentes/login-page/login-form/login-form.component';
 import { CadastroFormComponent } from './componentes/login-page/cadastro-form/cadastro-form.component';
@@ -13,10 +15,21 @@ export const routes: Routes = [
         component: LoginFormComponent, // child route component that the router renders
       },
       {
-        path: 'cadastro', // child route path
-        component: CadastroFormComponent, // child route component that the router renders
+        path: 'cadastro',
+        component: CadastroFormComponent,
       },
     ],
   },
-  //   { path: 'recuperar-senha', component: RecuperarSenhaComponent },
+  {
+    path: 'login',
+    redirectTo: '',
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'transacoes',
+    component: TransacoesComponent,
+  },
 ];

@@ -7,14 +7,15 @@
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    background: url('../../../../assets/imgs/login-cadastro/login2.jpg') no-repeat center center ;  
+    background: url('../../../../assets/imgs/login-cadastro/login2.jpg') no-repeat center center;  
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    transform: scale(x.5, y.5);
 }
 
-.img-wraper{
+/* .img-wraper{
     height: 70%;
     width: 70%;
     margin: auto;
@@ -23,7 +24,6 @@
 
 .img-wraper img{
     width: 100%;
-    /* height: 100%; */
     object-fit: contain;
     display: block;
     margin-top: auto;
@@ -53,4 +53,4 @@
 
 .content-wrapper p span{
     display: block;
-}
+} */

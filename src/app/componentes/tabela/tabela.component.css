@@ -1,6 +1,6 @@
 th{
-    background-color: var(--background-primario);
-    color: #fff;
+    color: #6a6969;
+    background-color: #eeeeee;
     font-size: 14px;
 }
 .table-responsive{
@@ -12,7 +12,7 @@ tr:hover{
 
 @media (max-width: 1000px){
     .table-responsive{
-        max-height: 260px;
+        max-height: auto;
     }
 }
 

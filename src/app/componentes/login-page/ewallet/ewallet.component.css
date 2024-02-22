@@ -1,16 +1,15 @@
 h1{
-    padding-bottom: 1.25rem;
+    padding-top: 0.75rem;
+    padding-bottom: 1.0rem;
     font-size: 1.7rem;
     line-height: 24.2px;
     font-weight: 800;
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
 }
 
-h1 span:first-of-type{
+h1 span{
     display: inline-block;
     margin-right: 1rem;
-}
-
-h1 span:last-of-type{
-    color: #2A9D8F;
+    color: #5DA55C;
 }

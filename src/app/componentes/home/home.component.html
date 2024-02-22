@@ -1,11 +1,40 @@
+<app-menu></app-menu>
 <div class="container-home">
-
+    
     <div class="container-geral">
-
         <div class="container-side">
+            <!-- Ação rápida -->
+            <div class="container-acao-rapida">
+                <h2>Ações rápidas</h2>     
+                <div class="content-acao-rapida">
+                    <div class="grid-icones">
+                        <div class="item-acao-rapida">
+                            <div class="icon-card"><img class=img-acao-rapida src="../../assets/imgs/pix.png" alt="Pix"></div>
+                            <p class="nome-icone">Área Pix</p>
+                        </div>
+                        <div class="item-acao-rapida">
+                            <div class="icon-card"><img class=img-acao-rapida src="../../assets/imgs/pagar.png" alt="Pagar"></div>
+                            <p class="nome-icone">Pagar</p>
+                        </div>
+                        <div class="item-acao-rapida">
+                            <div class="icon-card"><img class="img-acao-rapida" src="../../assets/imgs/transf.png" alt="transferencia"></div>
+                            <p class="nome-icone">Transferir</p>
+                        </div>
+                        <div class="item-acao-rapida">
+                            <div class="icon-card"><img class=img-acao-rapida src="../../assets/imgs/investir.png" alt="Investir"></div>
+                            <p class="nome-icone">Investir</p>
+                        </div>
+                        <div class="item-acao-rapida">
+                            <div class="icon-card"><img class=img-acao-rapida src="../../assets/imgs/add.png" alt="adicionar atalho"></div>
+                            <p class="nome-icone">Adicionar atalhos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="separador"></div>
             
             <!-- Cartão de crédito -->
-            
             <div class="container-cartao">
                 <h2>Cartão de crédito</h2>
                 <app-cartao-credito
@@ -44,13 +73,6 @@
 
                     <div class="separador"></div>
 
-                    <div class="container-melhor-data">
-                        <img src="../../../assets/imgs/calendario.png" alt="Calendário" class="calendario">
-                        <div class="texto-melhor-data">Até o dia 07 suas compras serão lançadas nesta fatura</div>
-                    </div>
-
-                    <div class="separador"></div>
-
                     <p class="ver-mais mais">ver fatura ></p>
                 
                 </div>
@@ -59,39 +81,32 @@
         </div>
        
         <div class="container-principal">
-            <div class="separador-ativo"></div>
-            <!-- Ação rápida -->
-            <div class="container-acao-rapida">
-                <h2>Ações rápidas</h2>     
-                <div class="content-acao-rapida">
-                    <div class="grid-icones">
-                        <div class="item-acao-rapida">
-                            <div class="icon-card"><img class=img-acao-rapida src="../../assets/imgs/pix.png" alt="Pix"></div>
-                            <p class="nome-icone">Área Pix</p>
+            
+            <!-- Banner -->
+            <div class="container-divulgacao">
+                <div class="conteudo-divulgacao">
+                    <div class="container-bem-vindo">
+                        <p class="data">23 de Fevereiro de 2024</p>
+                        <div class="item-bem-">
+                            <p class="txt-bem-vindo txt-simplify"> Bem-vindo(a) a <span>SimplifyPay.</span></p>
+                            <p class="txt-divulgacao">Descubra a simplicidade e eficiência do nosso serviço.</p>
                         </div>
-                        <div class="item-acao-rapida">
-                            <div class="icon-card"><img class="img-acao-rapida" src="../../assets/imgs/transf.png" alt="transferencia"></div>
-                            <p class="nome-icone">Transferir</p>
-                        </div>
-                        <div class="item-acao-rapida">
-                            <div class="icon-card"><img class=img-acao-rapida src="../../assets/imgs/investir.png" alt="Investir"></div>
-                            <p class="nome-icone">Investir</p>
-                        </div>
-                        <div class="item-acao-rapida">
-                            <div class="icon-card"><img class=img-acao-rapida src="../../assets/imgs/add.png" alt="adicionar atalho"></div>
-                            <p class="nome-icone">Adicionar atalhos</p>
-                        </div>
+                       
                     </div>
+                    <div class="container-img-invest">
+                        <img class="img-invest" src="../../../assets/imgs/invest.jpg" alt="Investir">
+                    </div>
+
                 </div>
             </div>
-
+             
             <div class="separador"></div>
 
             <!-- Minha carteira -->        
             <div class="container-minha-carteira">
                 <h2>Minha carteira</h2>
                 <div class="content-minha-carteira">
-                    <!-- Saldo -->
+    
                     <app-card 
                         tituloCard="Saldo"
                         srcIcone="../../assets/imgs/saldo.png"
@@ -100,7 +115,6 @@
                         textoCard="Saldo disponível">
                     </app-card>
                     
-                    <!-- Despesas -->
                     <app-card 
                         tituloCard="Despesas"
                         srcIcone="../../assets/imgs/despesas.png" 
@@ -109,10 +123,9 @@
                         textoCard="Despesas dos últimos 30 dias">
                     </app-card>
 
-                    <!-- Investimentos -->
                     <app-card 
                         tituloCard="Investimentos"
-                        srcIcone="../../assets/imgs/investimentos.png" 
+                        srcIcone="../../assets/imgs/investimento.png" 
                         altIcone="investimentos" 
                         valor="170.000,00"
                         textoCard="Investimentos dos últimos 30 dias">
@@ -127,13 +140,14 @@
                 <h2>Transações recentes</h2>
                 <div class="container-subtitulo">
                     <h4>Veja seu histórico de transação</h4>
-                    <div class="mais">Ver mais ></div>
+                    <div><a href="/transacoes" class="mais">Ver mais ></a></div>
                 </div>
                        
                 <app-tabela [transacoes]="transacoes"></app-tabela>
             </div>
-            
+
         </div>
+       
 
     </div>
 

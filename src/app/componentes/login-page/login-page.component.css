@@ -1,13 +1,13 @@
 /* Hide scrollbar for Chrome, Safari and Opera */
 *::-webkit-scrollbar {
     display: none;
-} 
+}
 
 /* Hide scrollbar for IE, Edge and Firefox */
 * {
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
-} 
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
 
 .section-login{
     display: flex;
@@ -30,11 +30,7 @@
 }
 
 .right{
-    background: rgb(234,248,231);
-    background: -moz-linear-gradient(90deg, rgba(234,248,231,1) 0%, rgba(237,250,233,1) 99%);
-    background: -webkit-linear-gradient(90deg, rgba(234,248,231,1) 0%, rgba(237,250,233,1) 99%);
-    background: linear-gradient(90deg, rgba(234,248,231,1) 0%, rgba(237,250,233,1) 99%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eaf8e7",endColorstr="#edfae9",GradientType=1);
+    background-color: #fffffb;
 }
 
 @media(max-width: 740px) {
@@ -44,4 +40,3 @@
 }
 
 
-  

@@ -1,6 +1,6 @@
 /* Home */
 .container-home{
-    background-color: var(--background-fundo-principal);
+    background-color: var(--background-neutro-primario);
     display: flex;
     justify-content: center;
     min-height: 100vh;
@@ -17,14 +17,14 @@
 }
 
 h2{
-    font-size: 1.3rem;
+    font-size: 22px;
     color: var(--cor-texto-secundario);
     padding-left: 2px;
-    font-weight: 600;
 }
 
 h4{
-    font-size: 1rem;
+    font-size: 14px;
+    color: var(--cor-subtitulo-primaria);
 }
 
 .mais{
@@ -34,6 +34,7 @@ h4{
     font-weight: bold;
     color: var(--cor-texto-primario);
 }
+
 .ver-mais{
     font-size: 0.9rem;
     text-align: center;
@@ -51,17 +52,17 @@ h4{
     flex-direction: column;
     gap:15px;
 }
-
-
 /* Ação rápida */
 .container-acao-rapida{
     display: flex;
     flex-direction: column;
-    min-width: 350px;
-    background-color: var(--background-fundo-secundario);
+    width: 350px;
+    background-color: var(--background-neutro-secundario);
     padding:10px;
     padding-bottom: 0;
     border-radius: 10px;
+    height: 140px;
+    align-items: center;
 
 }
 
@@ -69,13 +70,12 @@ h4{
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* background-color: var(--background-primario) ; */
     border-radius: 10px;
 }
 
 .grid-icones{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     padding-top: 10px;
 }
 
@@ -93,7 +93,7 @@ h4{
 }
 
 .nome-icone{
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .icon-card{
@@ -102,7 +102,7 @@ h4{
     overflow: hidden;
     border-radius: 50%;
     position: relative; 
-    background-color: var(--background-fundo-principal);
+    background-color: var(--background-neutro-primario);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,7 +113,7 @@ h4{
     display: flex;
     flex-direction: column;
     gap:10px;
-    background-color: var(--background-fundo-secundario);
+    background-color: var(--background-neutro-secundario);
     padding: 10px 10px 5px;
     width: 350px;
     box-sizing: border-box;
@@ -129,7 +129,7 @@ h4{
 .container-fatura{
     display: flex;
     flex-direction: column;
-    background-color: var(--background-fundo-secundario);
+    background-color: var(--background-neutro-secundario);
     padding:10px;
     padding-bottom: 0;
     border-radius: 10px; 
@@ -147,12 +147,13 @@ h4{
 .container-detalhes-fatura{
     display: flex;
     flex-direction: column;
-    padding: 10px 0 0;
+    padding: 6px 0 0;
 }
 
 .fatura-aberta{
     display: flex;
     justify-content: space-between;
+    padding-top: 8px;
 }
 
 .vencimento{
@@ -169,7 +170,7 @@ h4{
     display: flex;
     align-items: center;
     gap:15px;
-    padding: 20px;
+    padding: 10px;
     font-size: 0.8rem;
 }
 
@@ -186,14 +187,64 @@ h4{
     display: flex;
     flex-direction: column;
     gap:15px;
-    padding:0 10px;
+    padding:0 0 10px 10px;
     box-sizing: border-box;
     min-width: 350px;
     width: auto;
     max-width: 100%;
-    margin-top: -12px;
 }
+/* Divulgação */
+.container-divulgacao{
+    background-image: url("../../../assets/imgs/fundo.jpg");
+    background-size: cover; 
+    border-radius: 10px;
+}
+span{
+    font-weight: bold;
+}
+.conteudo-divulgacao{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 10px;
+}
+.data{
+    font-size: 12px;
+    color: #fff;
+}
+.container-bem-vindo{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+.txt-bem-vindo{
+    font-size: 16px;
+    color: #fff;
+}
+.item-bem-vindo{
+    padding-bottom:15px;
+}
+.txt-simplify{
+    font-size: 18px;
+    
+}
+.txt-divulgacao{
+    font-size: 12px;
+    color: #fff;
+}
+.container-img-invest{
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: center;
 
+}
+.img-invest{
+    max-width: 250px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 5px 6px 3px 0px #2b2b2b;
+}
 /* Minha carteira */
 .content-minha-carteira{ 
     display: grid;
@@ -209,7 +260,7 @@ h4{
     width: 100%;
     flex-direction: column;
     padding-bottom: 20px;
-    background-color: var(--background-fundo-secundario);
+    background-color: var(--background-neutro-secundario);
     padding:10px;
     border-radius: 10px;
 }
@@ -218,43 +269,33 @@ h4{
 .container-historico{
     display: flex;
     flex-direction: column;
+    min-height: 542px;
     max-width: 650px;
     width: 100%;
     border-radius: 13px;
     background-color: white;
-    padding: 8px;  
+    padding: 10px;  
     box-sizing: border-box;
 }
 
+.container-banner{
+    display: none;
+}
+
 @media (max-width: 1000px){
-    .content-minha-carteira{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+    .content-minha-carteira{ 
+        grid-template-columns: repeat(2, 1fr);
     }
-    .container-cartao{
-        align-items: flex-start;
-    }
-    .container-principal{
-        padding-left: .8rem;
-        display: flex;
-        align-items: center;
-    }
-    .container-acao-rapida{
-        width: 100%;
-    }
-    .nome-icone{
-        font-size: 12px;
-    }
-    h4{
-        font-size: 1rem;
-    }
-    .grid-icones{
-        padding: 12px 5px 0; 
-    }
+    
 }
 
 @media (max-width: 768px){
+    .container-side{
+        padding-top:20px;
+    }
+    .container-banner{
+        display: flex;
+    }
     .container-cartao{
         align-items: center;
     }
@@ -265,22 +306,13 @@ h4{
         gap:20px;
         height: auto;
     }
-    .container-acao-rapida{
-        align-items: center;
-        margin-top:20px;
-    }
 
-    /* Minha carteira */
-    .container-minha-carteira{
-        align-items: center;
+    .container-divulgacao{
+        display: none;
     }
-    .content-minha-carteira{
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 10px;
-        align-items: center;
-        max-width: 350px;
-        width: 100%;
+    /* Minha carteira */
+    .content-minha-carteira{ 
+        grid-template-columns: repeat(3, 1fr);
     }
     .container-geral{
         align-items: center;
@@ -302,5 +334,14 @@ h4{
         align-items: center;
         background-color: red;
     }
+    h4{
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 550px){
+    .content-minha-carteira {
+        grid-template-columns: 1fr;
+      }
 }
 

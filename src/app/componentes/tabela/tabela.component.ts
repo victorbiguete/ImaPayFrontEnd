@@ -7,7 +7,7 @@ interface Transacao {
 	data: string;
 	nome: string;
 	valor: string;
-  	descricao: string;
+  descricao: string;
 }
   
 
