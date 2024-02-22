@@ -12,7 +12,7 @@ tr:hover{
 
 @media (max-width: 1000px){
     .table-responsive{
-        max-height: 260px;
+        max-height: auto;
     }
 }
 

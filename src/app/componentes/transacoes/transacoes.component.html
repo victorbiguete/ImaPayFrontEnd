@@ -4,25 +4,27 @@
     <h2>Histórico de transação</h2>
     <p>Veja seu histórico de transação</p>
 
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Tipo</th>
-                <th>Data</th>
-                <th>Nome</th>
-                <th>Valor</th>
-                <th>Descrição</th>
-            </tr>
-        </thead>
-        <tbody class="table-light">
-            <tr *ngFor="let transacao of transacoes">
-                <th>{{transacao.tipo}}</th>
-                <th>{{transacao.data}}</th>
-                <th>{{transacao.nome}}</th>
-                <th>R$ {{transacao.valor}}</th>
-                <th>{{transacao.descricao}}</th>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Data</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody class="table-light">
+                <tr *ngFor="let transacao of transacoes">
+                    <th>{{transacao.tipo}}</th>
+                    <th>{{transacao.data}}</th>
+                    <th>{{transacao.nome}}</th>
+                    <th>R$ {{transacao.valor}}</th>
+                    <th>{{transacao.descricao}}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </div>

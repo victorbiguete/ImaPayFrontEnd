@@ -56,11 +56,12 @@ h4{
 .container-acao-rapida{
     display: flex;
     flex-direction: column;
-    min-width: 350px;
+    width: 350px;
     background-color: var(--background-neutro-secundario);
     padding:10px;
     padding-bottom: 0;
     border-radius: 10px;
+    height: 140px;
 }
 
 .content-acao-rapida{
@@ -72,7 +73,7 @@ h4{
 
 .grid-icones{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     padding-top: 10px;
 }
 
@@ -90,7 +91,7 @@ h4{
 }
 
 .nome-icone{
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .icon-card{
@@ -184,14 +185,57 @@ h4{
     display: flex;
     flex-direction: column;
     gap:15px;
-    padding:0 10px;
+    padding:0 0 10px 10px;
     box-sizing: border-box;
     min-width: 350px;
     width: auto;
     max-width: 100%;
-    margin-top: -12px;
+}
+/* Divulgação */
+.container-divulgacao{
+    background-image: url("../../../assets/imgs/fundo.jpg");
+    background-size: cover; 
+    border-radius: 10px;
+}
+span{
+    font-weight: bold;
+}
+.conteudo-divulgacao{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 10px;
+}
+.data{
+    font-size: 12px;
+    color: #fff;
 }
 
+.txt-bem-vindo{
+    font-size: 16px;
+    color: #fff;
+}
+.txt-simplify{
+    font-size: 14px;
+    
+}
+.txt-divulgacao{
+    font-size: 10px;
+    color: #fff;
+}
+.container-img-invest{
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: center;
+
+}
+.img-invest{
+    max-width: 250px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 5px 6px 3px 0px #2b2b2b;
+}
 /* Minha carteira */
 .content-minha-carteira{ 
     display: grid;
@@ -234,18 +278,11 @@ h4{
         align-items: flex-start;
     }
     .container-principal{
-        padding-left: .8rem;
         display: flex;
         align-items: center;
     }
-    .container-acao-rapida{
-        width: 100%;
-    }
     .nome-icone{
         font-size: 12px;
-    }
-    .grid-icones{
-        padding: 12px 5px 0; 
     }
 }
 
@@ -260,11 +297,10 @@ h4{
         gap:20px;
         height: auto;
     }
-    .container-acao-rapida{
-        align-items: center;
-        margin-top:20px;
-    }
 
+    .container-divulgacao{
+        display: none;
+    }
     /* Minha carteira */
     .container-minha-carteira{
         align-items: center;
@@ -301,4 +337,3 @@ h4{
         font-size: 12px;
     }
 }
-

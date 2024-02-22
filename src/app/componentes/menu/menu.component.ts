@@ -10,10 +10,17 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
-  isMenuOpen = false;
+  isMenuOpen: boolean = false;
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  
+    if (!this.isMenuOpen) {
+      this.closeMenu();
+    }
   }
 
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
 }

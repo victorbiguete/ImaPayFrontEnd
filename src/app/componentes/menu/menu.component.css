@@ -18,8 +18,9 @@ header{
     display: flex;
     align-items: center;
     width: 100%;
-    gap:10px;
+    gap:20px;
     justify-content: space-between;
+    padding-right: 20px;
 }
   
 .logo {
@@ -96,16 +97,26 @@ nav {
     .nav-list {
         display: none;
         flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background-color: #000000e6;
-        gap:0;
-
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%; 
+        height: 100%;
+        background-color: #333;
+        gap: 10px;
+        transition: left 0.3s ease-in-out;
+        box-sizing: border-box;
+        padding: 20px;
+        z-index: 1000;
+    }
+    .nav-list.show {
+        left: 0; 
     }
     .link {
         color: #fff;
+        font-size: 1.2rem; 
+        margin-top: 15px; 
+        text-align: center;
     }
 
     .nav-list.show {
@@ -115,12 +126,14 @@ nav {
     .hamburger-menu {
         display: block;
         margin-top:-5px;
+        z-index: 999;
     }
     .icon-menu{
         width: 24px;
     }
     header{
-        margin-bottom: 15px;
+        position: relative;
+        z-index: 998;
     }
 
 }
