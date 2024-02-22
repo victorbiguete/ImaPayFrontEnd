@@ -9,7 +9,7 @@ export class LocalStorageService {
   constructor() {}
 
   public set(
-    value: Array<{ id: string; email: string; password: string }>,
+    value: Array<{ name: string; email: string; password: string }>,
     key: string = 'simplifyPay-users'
   ): void {
     try {
@@ -22,7 +22,7 @@ export class LocalStorageService {
 
   public get(
     key: string = 'simplifyPay-users'
-  ): Array<{ id: string; email: string; password: string }> {
+  ): Array<{ name: string; email: string; password: string }> {
     try {
       const item = this.local.getItem(key);
       if (item) {

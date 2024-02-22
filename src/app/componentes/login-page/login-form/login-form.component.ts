@@ -27,7 +27,7 @@ import {
 })
 export class LoginFormComponent {
   failedLogin: boolean = false;
-  userId = new FormControl('');
+  userEmail = new FormControl('');
   password = new FormControl('');
   loginForm!: FormGroup;
 
@@ -36,7 +36,7 @@ export class LoginFormComponent {
     private router: Router
   ) {
     this.loginForm = new FormGroup({
-      userId: new FormControl(this.userId.value, [Validators.required]),
+      userEmail: new FormControl(this.userEmail.value, [Validators.required]),
       password: new FormControl(this.password.value, [Validators.required]),
     });
   }
@@ -55,7 +55,7 @@ export class LoginFormComponent {
     const users = this.localStorageService.get();
     const user = users.find(
       (user) =>
-        user.id === this.loginForm.value.userId &&
+        user.email === this.loginForm.value.userEmail &&
         user.password === this.loginForm.value.password
     );
 

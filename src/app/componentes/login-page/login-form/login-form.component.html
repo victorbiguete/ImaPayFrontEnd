@@ -32,24 +32,26 @@
       <img src="../../../../assets/imgs/login-cadastro/u_user.svg" alt="" />
       <input
         type="text"
-        name="userId"
-        id="userId"
-        placeholder="Usuario"
-        formControlName="userId"
+        name="userEmail"
+        id="userEmail"
+        placeholder="Email"
+        formControlName="userEmail"
         autocomplete="off"
-        #userId
+        #userEmail
         required
         [ngClass]="
-          loginForm.get('userId')?.invalid &&
-          (loginForm.get('userId')?.touched || loginForm.get('userId')?.dirty)
+          loginForm.get('userEmail')?.invalid &&
+          (loginForm.get('userEmail')?.touched ||
+            loginForm.get('userEmail')?.dirty)
             ? 'red'
             : 'green'
         "
       />
       <i
         *ngIf="
-          loginForm.get('userId')?.invalid &&
-          (loginForm.get('userId')?.touched || loginForm.get('userId')?.dirty)
+          loginForm.get('userEmail')?.invalid &&
+          (loginForm.get('userEmail')?.touched ||
+            loginForm.get('userEmail')?.dirty)
         "
         class="fa-solid fa-circle-exclamation"
       ></i>
