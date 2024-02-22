@@ -1,3 +1,5 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css';
 @font-face {
     font-family: "Poppins", sans-serif;
     src: url('assets/fonts/Poppins-1/Poppins-Regular.ttf');
