@@ -15,10 +15,14 @@ export const routes: Routes = [
         component: LoginFormComponent, // child route component that the router renders
       },
       {
-        path: 'cadastro', // child route path
-        component: CadastroFormComponent, // child route component that the router renders
+        path: 'cadastro',
+        component: CadastroFormComponent,
       },
     ],
+  },
+  {
+    path: 'login',
+    redirectTo: '',
   },
   {
     path: 'home',
