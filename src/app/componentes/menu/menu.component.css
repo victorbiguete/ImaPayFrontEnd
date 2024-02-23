@@ -109,23 +109,30 @@ nav {
 }
 
 @media screen and (max-width: 768px) {
+    .nav-list a{
+        display: block;
+        padding-bottom: 10px;
+    }
+    .nav-list .link-transacao{
+        margin-top: 0px;
+    }
     .container-menu{
-        gap:15px;
+        gap:18px;
     }
     .nav-list {
         display: none;
         flex-direction: column;
         position: fixed;
         top: 0;
-        left: -100%;
-        width: 100%; 
+        left: -80%;
+        width: 80%; 
         height: 100%;
         background-color: #333;
-        gap: 10px;
         transition: left 0.3s ease-in-out;
         box-sizing: border-box;
-        padding: 20px;
         z-index: 1000;
+        padding-left: 30px;;
+        /* padding-right:0; */
     }
     .nav-list.show {
         left: 0; 
@@ -135,6 +142,8 @@ nav {
         font-size: 1.2rem; 
         margin-top: 15px; 
         text-align: center;
+        border-bottom: 1px solid rgba(211, 211, 211, 0.159);
+        width: 100%;
     }
 
     .nav-list.show {
