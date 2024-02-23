@@ -5,6 +5,7 @@ import { GraficoDonutComponent } from '../grafico-donut/grafico-donut.component'
 import { BarraProgressoComponent } from '../barra-progresso/barra-progresso.component';
 import { TabelaComponent } from '../tabela/tabela.component';
 import { MenuComponent } from '../menu/menu.component';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
     selector: 'app-home',
@@ -16,7 +17,9 @@ import { MenuComponent } from '../menu/menu.component';
               GraficoDonutComponent,
               BarraProgressoComponent,
               TabelaComponent,
-              MenuComponent]
+              MenuComponent,
+              RouterLink,
+              RouterLinkActive]
 })
 
 export class HomeComponent {
