@@ -1,0 +1,23 @@
+th{
+    color: #6a6969;
+    background-color: #eeeeee;
+    font-size: 14px;
+}
+.table-responsive{
+    border-radius: 10px;
+}
+tr:hover{
+    cursor: pointer;
+}
+
+@media (max-width: 1000px){
+    .table-responsive{
+        max-height: auto;
+    }
+}
+
+@media (max-width: 768px){
+    .table-responsive{
+        max-height: 100%;
+    }
+}

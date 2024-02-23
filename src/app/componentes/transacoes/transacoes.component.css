@@ -24,7 +24,7 @@ tbody th {
 }
 
 .container {
-    width: 1280px;
+    width: 100%;
     border-radius: 13px;
     background-color: white;
     padding: 25px; 
