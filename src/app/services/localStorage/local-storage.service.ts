@@ -36,4 +36,12 @@ export class LocalStorageService {
       return [{ name: 'exemple', email: 'email@mail.com', password: ' 123' }];
     }
   }
+
+  public remove(key: string = 'simplifyPay-users'): void {
+    try {
+      this.local.removeItem(key);
+    } catch (e) {
+      console.warn(e);
+    }
+  }
 }
