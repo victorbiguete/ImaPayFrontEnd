@@ -1,56 +1,113 @@
-<div class="sidebar">
-  <a class="active" href="#home">General</a>
-  <a href="#news">Conta</a>
-</div>
-
-<div class="content">
-
-  <div class="home">
-    <h4>Edite seu perfil</h4>
-    <p>Gerencie as informações da sua conta</p>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<section class="container-perfil">
+  <div class="sidebar">
+    <a class="active" href="#home">
+      <i class="fa-regular fa-user ms-2"></i> <span class="ms-2">General</span>
+    </a>
+    <a href="#news">
+      <i class="fas fa-gear ms-2"></i> <span class="ms-2">Conta</span>
+    </a>
   </div>
 
-  <div class="corpo">
-
-    <div class="img">
-      <img src="https://via.placeholder.com/200" alt="Foto do perfil" class="rounded-circle float-left mr-3">
+  <div class="content">
+    <div class="home ps-5 pt-3">
+      <h4>Edite seu perfil</h4>
+      <p style="color: gray">Gerencie as informações da sua conta</p>
     </div>
 
-    <div class="form">
-      <form>
-        <div class="row">
-          <div class="col-md-5">
-            <label for="email">Nome de usuário:</label>
-            <input type="text" class="form-control" placeholder="Enter email" name="email">
-          </div>
-          <div class="col-md-5">
-            <label for="email">Nome completo:</label>
-            <input type="password" class="form-control" placeholder="Enter password" name="pswd">
-          </div>
+    <div class="corpo ps-5 pt-3">
+      <h5>Foto de perfil</h5>
+      <div class="img d-flex align-items-center">
+        <img
+          src="../../../assets/imgs/perfil"
+          style="max-height: 160px"
+          alt="Foto do perfil"
+          class="rounded-circle float-left mt-3"
+        />
+        <div class="upload-box ms-4">
+          <span class="upload-box p-2 border rounded me-3">Carregar</span>
+          <i class="fas fa-trash"></i>
         </div>
-        <div class="row">
-          <div class="col-md-5">
-            <label for="email">Email:</label>
-            <input type="text" class="form-control" placeholder="Enter email" name="email">
+      </div>
+
+      <div class="form p-4">
+        <form>
+          <div class="row">
+            <div class="col-md-5 mb-5 me-5">
+              <label for="email">Nome de usuário:</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter email"
+                name="email"
+              />
+            </div>
+            <div class="col-md-5 mb-5">
+              <label for="email">Nome completo:</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Enter password"
+                name="pswd"
+              />
+            </div>
           </div>
-          <div class="col-md-5">
-            <label for="email">Senha:</label>
-            <input type="password" class="form-control" placeholder="Enter password" name="pswd">
+          <div class="row">
+            <div class="col-md-5 mb-5 me-5">
+              <label for="email">Email:</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter email"
+                name="email"
+              />
+            </div>
+            <div class="col-md-5">
+              <label for="email">Senha:</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Enter password"
+                name="pswd"
+              />
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-5">
-            <label for="email">Paypal:</label>
-            <input type="text" class="form-control" placeholder="Enter email" name="email">
+          <div class="mb-3">
+            <h4>Redes Sociais</h4>
           </div>
-          <div class="col-md-5">
-            <label for="email">Google pay:</label>
-            <input type="password" class="form-control" placeholder="Enter password" name="pswd">
+          <div class="mt-3">
+            <p>Observe: Este nome de usuário ou email será público.</p>
           </div>
-        </div>
-      </form>
+          <div class="row">
+            <div class="col-md-5 me-5">
+              <label for="email">Paypal:</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter email"
+                name="email"
+              />
+            </div>
+            <div class="col-md-5">
+              <label for="email">Google pay:</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Enter password"
+                name="pswd"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div></div>
     </div>
-
-  <div>
-
-</div>
+  </div>
+</section>
