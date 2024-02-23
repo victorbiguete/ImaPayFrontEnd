@@ -95,6 +95,19 @@ nav {
     border-radius: 50%;
 }
 
+.img-perfil i{
+    padding-top:7px;
+    font-size: 25px;
+    text-align: center;
+    color: rgb(49, 48, 48);
+    cursor: pointer;
+}
+
+.img-perfil i:hover{
+    color: rgba(49, 48, 48, 0.491);
+
+}
+
 @media screen and (max-width: 768px) {
     .container-menu{
         gap:15px;
