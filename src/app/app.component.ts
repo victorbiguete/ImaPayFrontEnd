@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { HomeComponent } from "./componentes/home/home.component";
-import { BodyComponent } from "./componentes/body/body.component";
-import { NavbarComponent } from "./componentes/navbar/navbar.component";
+import { BodyComponent } from "./Componentes/body/body.component";
+import { NavbarComponent } from './Componentes/navbar/navbar.component';
 import { TransacoesComponent } from './componentes/transacoes/transacoes.component';
 import { LoginPageComponent } from './componentes/login-page/login-page.component';
 
