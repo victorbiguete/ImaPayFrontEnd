@@ -10,27 +10,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './landing.component.css',
 })
 export class LandingComponent {
-  constructor(private httpCpf: HttpCpfService) {}
-
-  public res?: any;
-
-  ngOnInit(): void {
-    this.httpCpf.get('36300096').subscribe(
-      (reponse) => {
-        this.res = reponse;
-        console.log(this.res);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+  constructor() {}
 }
-// {
-//   "cep": "36300096",
-//   "state": "MG",
-//   "city": "São João Del Rei",
-//   "neighborhood": "Centro",
-//   "street": "Rua Gomes Pedroso",
-//   "service": "correios-alt"
-// }

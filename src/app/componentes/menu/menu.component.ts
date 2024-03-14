@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { LocalStorageService } from '../../services/localStorage/local-storage.service';
+import { LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,7 +12,7 @@ import { LocalStorageService } from '../../services/localStorage/local-storage.s
 })
 export class MenuComponent {
   isMenuOpen: boolean = false;
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(private loginService: LoginService) {}
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
 
@@ -26,6 +26,6 @@ export class MenuComponent {
   }
 
   logOut() {
-    this.localStorageService.remove('simplifyPay-logged-user');
+    this.loginService.logOut();
   }
 }

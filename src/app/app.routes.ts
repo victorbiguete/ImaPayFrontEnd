@@ -4,6 +4,7 @@ import { TransacoesComponent } from './componentes/transacoes/transacoes.compone
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LandingComponent } from './pages/landing/landing.component';
+import { authGuard } from './guards/auth/auth.guard';
 
 export const routes: Routes = [
   {
@@ -21,10 +22,12 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'transacoes',
     component: TransacoesComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'logar',

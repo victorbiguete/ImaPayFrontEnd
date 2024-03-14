@@ -8,8 +8,8 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 import { FormButtonComponent } from '../form-button/form-button.component';
+import { LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: 'app-form-log-in',
@@ -26,14 +26,12 @@ import { FormButtonComponent } from '../form-button/form-button.component';
 })
 export class FormLogInComponent {
   failedLogin: boolean = false;
+
   userEmail = new FormControl('');
   password = new FormControl('');
   loginForm!: FormGroup;
 
-  constructor(
-    private localStorageService: LocalStorageService,
-    private router: Router
-  ) {
+  constructor(private loginService: LoginService, private router: Router) {
     this.loginForm = new FormGroup({
       userEmail: new FormControl(this.userEmail.value, [
         Validators.required,
@@ -55,16 +53,13 @@ export class FormLogInComponent {
       return;
     }
 
-    const users = this.localStorageService.get();
-    const user = users.find(
-      (user) =>
-        user.email === this.loginForm.value.userEmail &&
-        user.password === this.loginForm.value.password
+    const user = this.loginService.login(
+      this.loginForm.value.userEmail,
+      this.loginForm.value.password
     );
 
     if (user) {
       this.loginForm.reset();
-      this.localStorageService.set([user], 'simplifyPay-logged-user');
       this.router.navigate(['/home']);
     }
 
