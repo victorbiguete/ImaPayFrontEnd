@@ -93,11 +93,11 @@
       ></i>
       <label
         *ngIf="
-          loginForm.get('password')?.invalid &&
+          loginForm.get('password')?.errors?.['minlenght'] &&
           (loginForm.get('password')?.touched ||
             loginForm.get('password')?.dirty)
         "
-        >Este campo é obrigatório</label
+        >Possui 8 caracteres ou mais</label
       >
     </div>
     <p>
@@ -120,7 +120,6 @@
   <p>
     Não possui uma conta?
     <a
-      class="cadastre"
       routerLink="/signup"
       routerLinkActive="active"
       ariaCurrentWhenActive="page"

@@ -18,161 +18,560 @@
     (submit)="onSubmit($event)"
     id="cadastro-form"
   >
-    <div class="input-icons">
-      <img
-        src="../../../assets/imgs/login-cadastro/fi_mail.svg"
-        alt="Email Icon"
-      />
-      <input
-        type="email"
-        name="userEmail"
-        id="userEmail"
-        placeholder="Email"
-        formControlName="userEmail"
-        autocomplete="off"
-        #userEmail
-        required
-        [ngClass]="
-          cadastroForm.get('userEmail')?.invalid &&
-          (cadastroForm.get('userEmail')?.touched ||
-            cadastroForm.get('userEmail')?.dirty)
-            ? 'red'
-            : 'green'
-        "
-      />
-      <i
-        *ngIf="
-          cadastroForm.get('userEmail')?.invalid &&
-          (cadastroForm.get('userEmail')?.touched ||
-            cadastroForm.get('userEmail')?.dirty)
-        "
-        class="fa-solid fa-circle-exclamation"
-      ></i>
-      <div
-        *ngIf="
+    <section id="section-first" class="fade-in">
+      <div class="input-icons">
+        <img
+          class="img-icon"
+          src="../../../assets/imgs/login-cadastro/fi_mail.svg"
+          alt="Email Icon"
+        />
+        <input
+          title="Email"
+          type="email"
+          name="userEmail"
+          id="userEmail"
+          placeholder="Email"
+          formControlName="userEmail"
+          autocomplete="off"
+          #userEmail
+          required
+          [ngClass]="
+            cadastroForm.get('userEmail')?.invalid &&
+            (cadastroForm.get('userEmail')?.touched ||
+              cadastroForm.get('userEmail')?.dirty)
+              ? 'red'
+              : 'green'
+          "
+        />
+        <i
+          *ngIf="
+            cadastroForm.get('userEmail')?.invalid &&
+            (cadastroForm.get('userEmail')?.touched ||
+              cadastroForm.get('userEmail')?.dirty)
+          "
+          class="fa-solid fa-circle-exclamation"
+        ></i>
+        <div
+          *ngIf="
             cadastroForm.get('userEmail')?.invalid && cadastroForm.get('userEmail')?.errors?.['userExists'] &&
             (cadastroForm.get('userEmail')?.touched ||
               cadastroForm.get('userEmail')?.dirty)
           "
-      >
-        <p class="alert alert-danger">Email em uso.</p>
+        >
+          <p class="alert alert-danger">Email em uso.</p>
+        </div>
       </div>
-    </div>
-    <div class="input-icons">
-      <img
-        src="../../../assets/imgs/login-cadastro/u_user.svg"
-        alt="User Icon"
-      />
-      <input
-        type="text"
-        name="userName"
-        id="userName"
-        placeholder="Nome Completo"
-        formControlName="userName"
-        autocomplete="off"
-        #userName
-        required
-        [ngClass]="
-          cadastroForm.get('userName')?.invalid &&
-          (cadastroForm.get('userName')?.touched ||
-            cadastroForm.get('userName')?.dirty)
-            ? 'red'
-            : 'green'
-        "
-      />
-      <i
-        *ngIf="
-          cadastroForm.get('userName')?.invalid &&
-          (cadastroForm.get('userName')?.touched ||
-            cadastroForm.get('userName')?.dirty)
-        "
-        class="fa-solid fa-circle-exclamation"
-      ></i>
-    </div>
-    <div class="input-icons">
-      <img
-        src="../../../assets/imgs/login-cadastro/u_lock.svg"
-        alt="Lock Icon"
-      />
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Nova Senha"
-        formControlName="password"
-        #password
-        required
-        [ngClass]="
-          cadastroForm.get('password')?.invalid &&
-          (cadastroForm.get('password')?.touched ||
-            cadastroForm.get('password')?.dirty)
-            ? 'red'
-            : 'green'
-        "
-      />
-      <i
-        *ngIf="
-          cadastroForm.get('password')?.invalid &&
-          (cadastroForm.get('password')?.touched ||
-            cadastroForm.get('password')?.dirty)
-        "
-        class="fa-solid fa-circle-exclamation"
-      ></i>
-    </div>
-    <div class="input-icons">
-      <img
-        src="../../../assets/imgs/login-cadastro/u_lock.svg"
-        alt="Lock Icon"
-      />
-      <input
-        type="password"
-        name="password-confirmation"
-        id="password-confirmation"
-        placeholder="Confirme sua Senha"
-        formControlName="passwordConfirmation"
-        #passwordConfirmation
-        required
-        [ngClass]="
-          cadastroForm.get('passwordConfirmation')?.invalid &&
-          (cadastroForm.get('passwordConfirmation')?.touched ||
-            cadastroForm.get('passwordConfirmation')?.dirty)
-            ? 'red'
-            : 'green'
-        "
-      />
-      <i
-        *ngIf="
-          cadastroForm.get('passwordConfirmation')?.invalid &&
-          (cadastroForm.get('passwordConfirmation')?.touched ||
-            cadastroForm.get('passwordConfirmation')?.dirty)
-        "
-        class="fa-solid fa-circle-exclamation"
-      ></i>
-      <label
-        *ngIf="
+      <div class="input-icons">
+        <img
+          class="img-icon"
+          src="../../../assets/imgs/login-cadastro/u_user.svg"
+          alt="User Icon"
+        />
+        <input
+          title="Nome Completo"
+          type="text"
+          name="userName"
+          id="userName"
+          placeholder="Nome Completo"
+          formControlName="userName"
+          autocomplete="off"
+          #userName
+          required
+          [ngClass]="
+            cadastroForm.get('userName')?.invalid &&
+            (cadastroForm.get('userName')?.touched ||
+              cadastroForm.get('userName')?.dirty)
+              ? 'red'
+              : 'green'
+          "
+        />
+        <i
+          *ngIf="
+            cadastroForm.get('userName')?.invalid &&
+            (cadastroForm.get('userName')?.touched ||
+              cadastroForm.get('userName')?.dirty)
+          "
+          class="fa-solid fa-circle-exclamation"
+        ></i>
+      </div>
+      <div class="input-icons">
+        <img
+          class="img-icon"
+          src="../../../assets/imgs/login-cadastro/u_lock.svg"
+          alt="Lock Icon"
+        />
+        <input
+          title="Senha"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Nova Senha"
+          formControlName="password"
+          #password
+          required
+          [ngClass]="
+            cadastroForm.get('password')?.invalid &&
+            (cadastroForm.get('password')?.touched ||
+              cadastroForm.get('password')?.dirty)
+              ? 'red'
+              : 'green'
+          "
+        />
+        <i
+          *ngIf="
+            cadastroForm.get('password')?.invalid &&
+            (cadastroForm.get('password')?.touched ||
+              cadastroForm.get('password')?.dirty)
+          "
+          class="fa-solid fa-circle-exclamation"
+        ></i>
+      </div>
+      <div class="input-icons">
+        <img
+          class="img-icon"
+          src="../../../assets/imgs/login-cadastro/u_lock.svg"
+          alt="Lock Icon"
+        />
+        <input
+          title="Confirme sua Senha"
+          type="password"
+          name="password-confirmation"
+          id="password-confirmation"
+          placeholder="Confirme sua Senha"
+          formControlName="passwordConfirmation"
+          #passwordConfirmation
+          required
+          [ngClass]="
+            cadastroForm.get('passwordConfirmation')?.invalid &&
+            (cadastroForm.get('passwordConfirmation')?.touched ||
+              cadastroForm.get('passwordConfirmation')?.dirty)
+              ? 'red'
+              : 'green'
+          "
+        />
+        <i
+          *ngIf="
+            cadastroForm.get('passwordConfirmation')?.invalid &&
+            (cadastroForm.get('passwordConfirmation')?.touched ||
+              cadastroForm.get('passwordConfirmation')?.dirty)
+          "
+          class="fa-solid fa-circle-exclamation"
+        ></i>
+        <label
+          *ngIf="
             cadastroForm.errors?.['mismatch'] &&
             (cadastroForm.get('passwordConfirmation')?.touched ||
               cadastroForm.get('passwordConfirmation')?.dirty)
           "
-      >
-        Senhas devem ser iguais.
-      </label>
-      <label
-        *ngIf="
+        >
+          Senhas devem ser iguais.
+        </label>
+        <label
+          *ngIf="
         cadastroForm.get('password')?.errors?.['minlength'] &&
         (cadastroForm.get('password')?.touched ||
           cadastroForm.get('password')?.dirty)
       "
-      >
-        Senha deve ter pelo menos 8 caracteres.
-      </label>
-    </div>
+        >
+          Senha deve ter pelo menos 8 caracteres.
+        </label>
+      </div>
 
-    <app-form-button
-      [text]="'Registrar'"
-      [isDisabled]="!cadastroForm.valid"
-    ></app-form-button>
+      <app-form-button
+        (click)="firstContinue()"
+        title="Continuar"
+        [text]="'Continuar'"
+        [isDisabled]="
+          cadastroForm.get('userEmail')?.invalid ||
+          cadastroForm.get('userName')?.invalid ||
+          cadastroForm.get('password')?.invalid ||
+          cadastroForm.get('passwordConfirmation')?.invalid ||
+          false
+        "
+        [type]="'button'"
+      ></app-form-button>
+    </section>
+
+    <section id="section-second" class="fade-in">
+      <div class="input-icons">
+        <img
+          class="img-icon"
+          src="../../../assets/imgs/login-cadastro/u_user.svg"
+          alt="User Icon"
+        />
+        <input
+          title="CPF ou CNPJ"
+          type="text"
+          inputmode="numeric"
+          name="userCpfCnpj"
+          id="userCpfCnpj"
+          placeholder="CPF/CNPJ"
+          formControlName="userCpfCnpj"
+          autocomplete="off"
+          minlength="11"
+          maxlength="14"
+          min="0"
+          #userCpfCnpj
+          required
+          [ngClass]="
+            cadastroForm.get('userCpfCnpj')?.invalid &&
+            (cadastroForm.get('userCpfCnpj')?.touched ||
+              cadastroForm.get('userCpfCnpj')?.dirty)
+              ? 'red'
+              : 'green'
+          "
+        />
+        <i
+          *ngIf="
+            cadastroForm.get('userCpfCnpj')?.invalid &&
+            (cadastroForm.get('userCpfCnpj')?.touched ||
+              cadastroForm.get('userCpfCnpj')?.dirty)
+          "
+          class="fa-solid fa-circle-exclamation"
+        ></i>
+      </div>
+      <div class="input-icons">
+        <img
+          class="img-icon"
+          src="../../../assets/imgs/login-cadastro/phone.svg"
+          alt="userPhoneNumber Icon"
+          width="50px"
+        />
+        <input
+          title="Telefone"
+          type="tel"
+          name="userPhoneNumber"
+          id="userPhoneNumber"
+          placeholder="Telefone"
+          formControlName="userPhoneNumber"
+          autocomplete="off"
+          minlength="11"
+          maxlength="14"
+          min="0"
+          #userPhoneNumber
+          required
+          [ngClass]="
+            cadastroForm.get('userPhoneNumber')?.invalid &&
+            (cadastroForm.get('userPhoneNumber')?.touched ||
+              cadastroForm.get('userPhoneNumber')?.dirty)
+              ? 'red'
+              : 'green'
+          "
+        />
+        <i
+          *ngIf="
+            cadastroForm.get('userPhoneNumber')?.invalid &&
+            (cadastroForm.get('userPhoneNumber')?.touched ||
+              cadastroForm.get('userPhoneNumber')?.dirty)
+          "
+          class="fa-solid fa-circle-exclamation"
+        ></i>
+      </div>
+
+      <div class="input-icons">
+        <img
+          class="img-icon"
+          src="../../../assets/imgs/login-cadastro/calender.svg"
+          alt="userBornDate Icon"
+          width="50px"
+        />
+        <input
+          title="Data de Nascimento"
+          type="date"
+          name="userBornDate"
+          id="userBornDate"
+          placeholder="Data de Nascimento"
+          formControlName="userBornDate"
+          autocomplete="off"
+          min="{{ yearOlder }}-01-01"
+          max="{{ yearNewer }}-01-01"
+          #userBornDate
+          required
+          [ngClass]="
+            cadastroForm.get('userBornDate')?.invalid &&
+            (cadastroForm.get('userBornDate')?.touched ||
+              cadastroForm.get('userBornDate')?.dirty)
+              ? 'red'
+              : 'green'
+          "
+        />
+        <i
+          *ngIf="
+            cadastroForm.get('userBornDate')?.invalid &&
+            (cadastroForm.get('userBornDate')?.touched ||
+              cadastroForm.get('userBornDate')?.dirty)
+          "
+          class="fa-solid fa-circle-exclamation"
+        ></i>
+      </div>
+      <div class="input-icons">
+        <img
+          class="img-icon"
+          src="../../../assets/imgs/login-cadastro/house.svg"
+          alt="userBornDate Icon"
+          width="50px"
+        />
+        <input
+          title="CEP"
+          type="text"
+          inputmode="numeric"
+          name="userZipCode"
+          id="userZipCode"
+          placeholder="CEP"
+          formControlName="userZipCode"
+          autocomplete="off"
+          min="1"
+          max="99999-999"
+          #userZipCode
+          required
+          [ngClass]="
+            cadastroForm.get('userZipCode')?.invalid &&
+            (cadastroForm.get('userZipCode')?.touched ||
+              cadastroForm.get('userZipCode')?.dirty)
+              ? 'red'
+              : 'green'
+          "
+        />
+        <i
+          *ngIf="
+            cadastroForm.get('userZipCode')?.invalid &&
+            (cadastroForm.get('userZipCode')?.touched ||
+              cadastroForm.get('userZipCode')?.dirty)
+          "
+          class="fa-solid fa-circle-exclamation"
+        ></i>
+      </div>
+      <app-form-button
+        (click)="secondContinue()"
+        title="Continuar"
+        [text]="'Continuar'"
+        [isDisabled]="
+          cadastroForm.get('userCpfCnpj')?.invalid ||
+          cadastroForm.get('userPhoneNumber')?.invalid ||
+          cadastroForm.get('userBornDate')?.invalid ||
+          cadastroForm.get('userZipCode')?.invalid ||
+          false
+        "
+        [type]="'button'"
+      ></app-form-button>
+    </section>
+
+    <section id="section-third" class="fade-in">
+      <div class="input-icons input-bigger">
+        <img
+          class="img-icon"
+          src="../../../assets/imgs/login-cadastro/house.svg"
+          alt="userStreet Icon"
+          width="50px"
+        />
+        <input
+          title="Rua"
+          [value]="cadastroForm.get('userStreet')?.value"
+          type="text"
+          name="userStreet"
+          id="userStreet"
+          placeholder="Rua"
+          formControlName="userStreet"
+          autocomplete="off"
+          #userStreet
+          required
+          [ngClass]="
+            cadastroForm.get('userStreet')?.invalid &&
+            (cadastroForm.get('userStreet')?.touched ||
+              cadastroForm.get('userStreet')?.dirty)
+              ? 'red'
+              : 'green'
+          "
+        />
+        <i
+          *ngIf="
+            cadastroForm.get('userStreet')?.invalid &&
+            (cadastroForm.get('userStreet')?.touched ||
+              cadastroForm.get('userStreet')?.dirty)
+          "
+          class="fa-solid fa-circle-exclamation"
+        ></i>
+      </div>
+
+      <div class="input-icons input-smaller">
+        <img
+          class="img-icon"
+          src="../../../assets/imgs/login-cadastro/house.svg"
+          alt="userHouseNumber Icon"
+          width="50px"
+        />
+        <input
+          title="Número da Casa"
+          [value]="cadastroForm.get('userHouseNumber')?.value"
+          type="text"
+          name="userHouseNumber"
+          id="userHouseNumber"
+          placeholder="Nº"
+          formControlName="userHouseNumber"
+          autocomplete="off"
+          #userHouseNumber
+          required
+          [ngClass]="
+            cadastroForm.get('userHouseNumber')?.invalid &&
+            (cadastroForm.get('userHouseNumber')?.touched ||
+              cadastroForm.get('userHouseNumber')?.dirty)
+              ? 'red'
+              : 'green'
+          "
+        />
+        <i
+          *ngIf="
+            cadastroForm.get('userHouseNumber')?.invalid &&
+            (cadastroForm.get('userHouseNumber')?.touched ||
+              cadastroForm.get('userHouseNumber')?.dirty)
+          "
+          class="fa-solid fa-circle-exclamation"
+        ></i>
+      </div>
+
+      <div class="input-icons">
+        <img
+          class="img-icon"
+          src="../../../assets/imgs/login-cadastro/house.svg"
+          alt="userNeighborhood Icon"
+          width="50px"
+        />
+        <input
+          title="Bairro"
+          [value]="cadastroForm.get('userNeighborhood')?.value"
+          type="text"
+          name="userNeighborhood"
+          id="userNeighborhood"
+          placeholder="Bairro"
+          formControlName="userNeighborhood"
+          autocomplete="off"
+          #userNeighborhood
+          required
+          [ngClass]="
+            cadastroForm.get('userNeighborhood')?.invalid &&
+            (cadastroForm.get('userNeighborhood')?.touched ||
+              cadastroForm.get('userNeighborhood')?.dirty)
+              ? 'red'
+              : 'green'
+          "
+        />
+        <i
+          *ngIf="
+            cadastroForm.get('userNeighborhood')?.invalid &&
+            (cadastroForm.get('userNeighborhood')?.touched ||
+              cadastroForm.get('userNeighborhood')?.dirty)
+          "
+          class="fa-solid fa-circle-exclamation"
+        ></i>
+      </div>
+
+      <div class="input-icons input-bigger">
+        <img
+          class="img-icon"
+          src="../../../assets/imgs/login-cadastro/house.svg"
+          alt="userCity Icon"
+          width="50px"
+        />
+        <input
+          title="Cidade"
+          [value]="cadastroForm.get('userCity')?.value"
+          type="text"
+          name="userCity"
+          id="userCity"
+          placeholder="Cidade"
+          formControlName="userCity"
+          autocomplete="off"
+          #userCity
+          required
+          [ngClass]="
+            cadastroForm.get('userCity')?.invalid &&
+            (cadastroForm.get('userCity')?.touched ||
+              cadastroForm.get('userCity')?.dirty)
+              ? 'red'
+              : 'green'
+          "
+        />
+        <i
+          *ngIf="
+            cadastroForm.get('userCity')?.invalid &&
+            (cadastroForm.get('userCity')?.touched ||
+              cadastroForm.get('userCity')?.dirty)
+          "
+          class="fa-solid fa-circle-exclamation"
+        ></i>
+      </div>
+      <div class="input-icons input-smaller">
+        <img
+          class="img-icon"
+          src="../../../assets/imgs/login-cadastro/house.svg"
+          alt="userCity Icon"
+          width="50px"
+        />
+        <select
+          title="UF"
+          [value]="cadastroForm.get('userUF')?.value"
+          name="userUF"
+          id="userUF"
+          placeholder="UF"
+          formControlName="userUF"
+          autocomplete="off"
+          #userCity
+          required
+          [ngClass]="
+            cadastroForm.get('userUF')?.invalid &&
+            (cadastroForm.get('userUF')?.touched ||
+              cadastroForm.get('userUF')?.dirty)
+              ? 'red'
+              : 'green'
+          "
+        >
+          <option value="AC">AC</option>
+          <option value="AL">AL</option>
+          <option value="AP">AP</option>
+          <option value="AM">AM</option>
+          <option value="BA">BA</option>
+          <option value="CE">CE</option>
+          <option value="DF">DF</option>
+          <option value="ES">ES</option>
+          <option value="GO">GO</option>
+          <option value="MA">MA</option>
+          <option value="MT">MT</option>
+          <option value="MS">MS</option>
+          <option value="MG">MG</option>
+          <option value="PA">PA</option>
+          <option value="PB">PB</option>
+          <option value="PR">PR</option>
+          <option value="PE">PE</option>
+          <option value="PI">PI</option>
+          <option value="RJ">RJ</option>
+          <option value="RN">RN</option>
+          <option value="RS">RS</option>
+          <option value="RO">RO</option>
+          <option value="RR">RR</option>
+          <option value="SC">SC</option>
+          <option value="SP">SP</option>
+          <option value="SE">SE</option>
+          <option value="TO">TO</option>
+        </select>
+        <i
+          *ngIf="
+            cadastroForm.get('userCity')?.invalid &&
+            (cadastroForm.get('userCity')?.touched ||
+              cadastroForm.get('userCity')?.dirty)
+          "
+          class="fa-solid fa-circle-exclamation"
+        ></i>
+      </div>
+
+      <app-form-button
+        title="Cadastrar"
+        [text]="'Cadastrar'"
+        [isDisabled]="!cadastroForm.valid || false"
+        [type]="'submit'"
+      ></app-form-button>
+    </section>
   </form>
+
   <p>
     Já possui conta?<a
       class="cadastre"

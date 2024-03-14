@@ -11,4 +11,5 @@ import { Component, Input } from '@angular/core';
 export class FormButtonComponent {
   @Input() text: string = '';
   @Input() isDisabled: boolean = false;
+  @Input() type: string = 'submit';
 }

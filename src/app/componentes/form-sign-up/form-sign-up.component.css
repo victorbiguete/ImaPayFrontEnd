@@ -7,7 +7,8 @@
     padding: 0 1rem;
     margin: auto;
     font-family: "Inter" ,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
+    color: var(--cor-texto-primario);
+    /* overflow: hidden; */
 }
 
 h2{
@@ -29,7 +30,7 @@ h3{
 }
 
 p:first-of-type{
-    color: #808080;
+    color: var(--cor-texto-secundario);
     font-size: 1.2rem;
     font-weight: 400;
     line-height: 22.32px;
@@ -42,12 +43,12 @@ form{
     gap: 0.5rem;
 }
 
-form input{
+form input,
+form select{
     width: 100%;
     padding:10px 40px;
     border: none;
     border-radius: 10px;
-    color: #264653;
     line-height: 19.53px;
     font-size: 1.2rem;
     font-weight: 400;
@@ -63,9 +64,11 @@ form .input-icons{
     width: 100%;
 }
 
-form img{
+.img-icon{
     position: absolute;
     padding: 17px;
+    z-index: 99;
+    width: 50px;
 }
 
 form i{
@@ -92,18 +95,14 @@ p:last-of-type{
     text-wrap: balance;
 }
 
-.cadastre{
-    color: #5DA55C;
-}
-
 a{
     text-decoration: none;
-    color: inherit;
+    color: var(--cor-texto-terciario);
 }
 
 a:hover,
 a:active{
-    color: #264653b6
+    color: var(--cor-texto-primario);
 }
 
 .red{
@@ -112,6 +111,16 @@ a:active{
 
 .green{
     border: 1px solid green !important;
+}
+
+.input-bigger{
+    width: 60% !important;
+    display: inline-block !important;
+}
+
+.input-smaller{
+    width: 40% !important;
+    display: inline-block !important;
 }
 
 @media(max-width: 1920px) {
@@ -139,6 +148,10 @@ a:active{
 @media (max-width: 768px) {
     .cadastro-form{
         width: 90%;
+    }
+    .input-bigger, .input-smaller{
+        width: 100% !important;
+        display: block !important;
     }
 }
 
