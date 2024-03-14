@@ -1,28 +1,22 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './componentes/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { TransacoesComponent } from './componentes/transacoes/transacoes.component';
-import { LoginPageComponent } from './componentes/login-page/login-page.component';
-import { LoginFormComponent } from './componentes/login-page/login-form/login-form.component';
-import { CadastroFormComponent } from './componentes/login-page/cadastro-form/cadastro-form.component';
+import { SignupComponent } from './pages/signup/signup.component';
+import { LoginComponent } from './pages/login/login.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: LoginPageComponent,
-    children: [
-      {
-        path: '', // child route path
-        component: LoginFormComponent, // child route component that the router renders
-      },
-      {
-        path: 'cadastro',
-        component: CadastroFormComponent,
-      },
-    ],
+    component: LandingComponent,
   },
   {
     path: 'login',
-    redirectTo: '',
+    component: LoginComponent,
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
   },
   {
     path: 'home',
@@ -31,6 +25,18 @@ export const routes: Routes = [
   {
     path: 'transacoes',
     component: TransacoesComponent,
+  },
+  {
+    path: 'logar',
+    redirectTo: 'login',
+  },
+  {
+    path: 'signin',
+    redirectTo: 'login',
+  },
+  {
+    path: 'cadastrar',
+    redirectTo: 'signup',
   },
   {
     path: '**',

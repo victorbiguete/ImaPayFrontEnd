@@ -1,0 +1,130 @@
+<section class="login-form">
+  <figure>
+    <img
+      src="../../../assets/imgs/logo.png"
+      alt=""
+      title="SimplifyPay"
+      width="200px"
+    />
+  </figure>
+
+  <h2>
+    Feliz em ver você de novo!
+    <span
+      ><img src="../../../assets/imgs/login-cadastro/emoji-hand.svg" alt=""
+    /></span>
+  </h2>
+
+  <p>Faça login em sua conta para continuar</p>
+
+  <p class="alert alert-danger" *ngIf="failedLogin">
+    Usuário ou senha inválidos.
+  </p>
+
+  <form
+    action=""
+    [formGroup]="loginForm"
+    id="login-form"
+    (submit)="onSubmit($event)"
+  >
+    <div class="input-icons">
+      <img src="../../../assets/imgs/login-cadastro/u_user.svg" alt="" />
+      <input
+        type="text"
+        name="userEmail"
+        id="userEmail"
+        placeholder="Email"
+        formControlName="userEmail"
+        autocomplete="off"
+        #userEmail
+        required
+        [ngClass]="
+          loginForm.get('userEmail')?.invalid &&
+          (loginForm.get('userEmail')?.touched ||
+            loginForm.get('userEmail')?.dirty)
+            ? 'red'
+            : 'green'
+        "
+      />
+
+      <i
+        *ngIf="
+          loginForm.get('userEmail')?.invalid &&
+          (loginForm.get('userEmail')?.touched ||
+            loginForm.get('userEmail')?.dirty)
+        "
+        class="fa-solid fa-circle-exclamation"
+      ></i>
+      <label
+        *ngIf="
+          loginForm.get('userEmail')?.invalid &&
+          (loginForm.get('userEmail')?.touched ||
+            loginForm.get('userEmail')?.dirty)
+        "
+        >Este campo é obrigatório</label
+      >
+    </div>
+    <div class="input-icons">
+      <img src="../../../assets/imgs/login-cadastro/u_lock.svg" alt="" />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Senha"
+        formControlName="password"
+        #password
+        autocomplete="off"
+        required
+        [ngClass]="
+          loginForm.get('password')?.invalid &&
+          (loginForm.get('password')?.touched ||
+            loginForm.get('password')?.dirty)
+            ? 'red'
+            : 'green'
+        "
+      />
+      <i
+        *ngIf="
+          loginForm.get('password')?.invalid &&
+          (loginForm.get('password')?.touched ||
+            loginForm.get('password')?.dirty)
+        "
+        class="fa-solid fa-circle-exclamation"
+      ></i>
+      <label
+        *ngIf="
+          loginForm.get('password')?.invalid &&
+          (loginForm.get('password')?.touched ||
+            loginForm.get('password')?.dirty)
+        "
+        >Este campo é obrigatório</label
+      >
+    </div>
+    <p>
+      <!-- 
+              //TODO criar rota para recuperar senha
+           -->
+      <a
+        routerLink="/recuperar-senha"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        Esqueceu sua senha?</a
+      >
+    </p>
+    <app-form-button
+      [text]="'Logar'"
+      [isDisabled]="!loginForm.valid"
+    ></app-form-button>
+  </form>
+  <p>
+    Não possui uma conta?
+    <a
+      class="cadastre"
+      routerLink="/signup"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      >Cadastre-se</a
+    >
+  </p>
+</section>

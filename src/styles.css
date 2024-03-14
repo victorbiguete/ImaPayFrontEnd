@@ -32,42 +32,27 @@ body {
 
 /* Entrada de animação */
 
-.roll-in-blurred-left {
-	-webkit-animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-	        animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+.fade-in {
+	-webkit-animation: fade-in 0.25s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in 0.25s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
- @-webkit-keyframes roll-in-blurred-left {
-    0% {
-      -webkit-transform: translateX(-1000px) rotate(-720deg);
-              transform: translateX(-1000px) rotate(-720deg);
-      -webkit-filter: blur(50px);
-              filter: blur(50px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateX(0) rotate(0deg);
-              transform: translateX(0) rotate(0deg);
-      -webkit-filter: blur(0);
-              filter: blur(0);
-      opacity: 1;
-    }
-  }
-  @keyframes roll-in-blurred-left {
-    0% {
-      -webkit-transform: translateX(-1000px) rotate(-720deg);
-              transform: translateX(-1000px) rotate(-720deg);
-      -webkit-filter: blur(50px);
-              filter: blur(50px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateX(0) rotate(0deg);
-              transform: translateX(0) rotate(0deg);
-      -webkit-filter: blur(0);
-              filter: blur(0);
-      opacity: 1;
-    }
-  }
 
+ @-webkit-keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      
   /* Saida de animação */
