@@ -1,0 +1,84 @@
+.main-presentation{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    font-family: 'Inter' ,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('../../../assets/imgs/banner-bg.png') no-repeat right bottom local; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-size: 60%; 
+
+
+    background-color: var(--background-neutro-terciario);
+}
+
+.banner{
+    width: 100%;
+
+}
+
+.content{
+    width: 100%;
+    align-self: center;
+    padding-left: 10%;
+    text-wrap: balance;
+}
+
+h1{
+    font-size: 5.5rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+h1 span{
+    color: var(--cor-texto-terciario);
+}
+
+h2{
+    color: var(--cor-texto-secundario)
+}
+
+h3, h4{
+    color: var(--cor-texto-primario);
+}
+
+h3{
+    font-weight: 300;
+}
+
+h4{
+    font-weight: 200;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px var(--cor-texto-secundario);
+}
+
+@media(min-width: 1440px){
+    .content{
+        padding-left: 5%;
+    }
+    .main-presentation{
+        background-size: 50%;
+    }
+}
+
+@media(max-width: 768px){
+    .main-presentation{
+        background-size: 0%;
+    }
+
+    .banner{
+        width: 0%;
+    }
+
+    h1{
+        font-size: 3.5rem;
+    }
+}
+
+@media(max-width: 425px){
+    h1{
+        font-size: 2.5rem;
+    }
+}
