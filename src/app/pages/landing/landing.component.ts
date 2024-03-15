@@ -6,6 +6,7 @@ import { SmartBankingPresentationComponent } from '../../componentes/smart-banki
 import { ProductsPresentationComponent } from '../../componentes/products-presentation/products-presentation.component';
 import { AnywhereAccPresentationComponent } from '../../componentes/anywhere-acc-presentation/anywhere-acc-presentation.component';
 import { PlusPresentationComponent } from '../../componentes/plus-presentation/plus-presentation.component';
+import { PersonalizedSolutionComponent } from '../../componentes/personalized-solution/personalized-solution.component';
 
 @Component({
   selector: 'app-landing',
@@ -18,6 +19,7 @@ import { PlusPresentationComponent } from '../../componentes/plus-presentation/p
     ProductsPresentationComponent,
     AnywhereAccPresentationComponent,
     PlusPresentationComponent,
+    PersonalizedSolutionComponent,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css',
