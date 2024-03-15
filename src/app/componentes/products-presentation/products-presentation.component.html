@@ -1,0 +1,34 @@
+<section class="products-presentation">
+  <section class="main-text">
+    <div class="safe-wrapper">
+      <img
+        src="../../../assets/imgs/safeInvestiments.jpg"
+        alt="Safe investiments"
+      />
+    </div>
+    <h2>Conta com um dos melhores rendimentos</h2>
+    <h4>
+      Com SimplifyPay, você simplifica sua rotina ao realizar investimentos,
+      receber e efetuar pagamentos de maneira segura e gratuita, tudo em um
+      único lugar.
+    </h4>
+    <button class="btn btn-primary btn-lg">
+      <a
+        class="nav-link active"
+        aria-current="page"
+        routerLink="signup"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Abra sua conta</a
+      >
+    </button>
+  </section>
+  <section class="products">
+    <app-products-card
+      *ngFor="let product of products"
+      [icon]="product.icon"
+      [title]="product.title"
+      [description]="product.description"
+    ></app-products-card>
+  </section>
+</section>

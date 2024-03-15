@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarLandingComponent } from '../../componentes/navbar-landing/navbar-landing.component';
 import { MainPresentationComponent } from '../../componentes/main-presentation/main-presentation.component';
 import { SmartBankingPresentationComponent } from '../../componentes/smart-banking-presentation/smart-banking-presentation.component';
+import { ProductsPresentationComponent } from '../../componentes/products-presentation/products-presentation.component';
 
 @Component({
   selector: 'app-landing',
@@ -12,6 +13,7 @@ import { SmartBankingPresentationComponent } from '../../componentes/smart-banki
     NavbarLandingComponent,
     MainPresentationComponent,
     SmartBankingPresentationComponent,
+    ProductsPresentationComponent,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css',
