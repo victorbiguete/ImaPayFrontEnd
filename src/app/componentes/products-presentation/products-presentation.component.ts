@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ProductsCardComponent } from '../products-card/products-card.component';
 import { RouterLink } from '@angular/router';
+import { ButtonOpenAccountComponent } from '../button-open-account/button-open-account.component';
 
 @Component({
   selector: 'app-products-presentation',
   standalone: true,
-  imports: [CommonModule, ProductsCardComponent, RouterLink],
+  imports: [ButtonOpenAccountComponent, CommonModule, ProductsCardComponent],
   templateUrl: './products-presentation.component.html',
   styleUrl: './products-presentation.component.css',
 })

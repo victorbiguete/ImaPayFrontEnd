@@ -7,7 +7,6 @@
     justify-content: center;
     border-radius: 50%;
     background-color: var(--background-secundario);
-    margin-bottom: 2rem;
 }
 
 
@@ -17,6 +16,7 @@
 
 .products-presentation{
     padding-top: 5rem;
+    padding-bottom: 5rem;
     width: 95vw;
     margin: auto;
     display: grid;

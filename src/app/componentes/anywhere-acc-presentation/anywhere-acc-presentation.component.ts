@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { ButtonOpenAccountComponent } from '../button-open-account/button-open-account.component';
 
 @Component({
-  selector: 'app-main-presentation',
+  selector: 'app-anywhere-acc-presentation',
   standalone: true,
   imports: [ButtonOpenAccountComponent],
-  templateUrl: './main-presentation.component.html',
-  styleUrl: './main-presentation.component.css',
+  templateUrl: './anywhere-acc-presentation.component.html',
+  styleUrl: './anywhere-acc-presentation.component.css',
 })
-export class MainPresentationComponent {}
+export class AnywhereAccPresentationComponent {}

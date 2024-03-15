@@ -4,6 +4,7 @@ import { NavbarLandingComponent } from '../../componentes/navbar-landing/navbar-
 import { MainPresentationComponent } from '../../componentes/main-presentation/main-presentation.component';
 import { SmartBankingPresentationComponent } from '../../componentes/smart-banking-presentation/smart-banking-presentation.component';
 import { ProductsPresentationComponent } from '../../componentes/products-presentation/products-presentation.component';
+import { AnywhereAccPresentationComponent } from '../../componentes/anywhere-acc-presentation/anywhere-acc-presentation.component';
 
 @Component({
   selector: 'app-landing',
@@ -14,6 +15,7 @@ import { ProductsPresentationComponent } from '../../componentes/products-presen
     MainPresentationComponent,
     SmartBankingPresentationComponent,
     ProductsPresentationComponent,
+    AnywhereAccPresentationComponent,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css',
