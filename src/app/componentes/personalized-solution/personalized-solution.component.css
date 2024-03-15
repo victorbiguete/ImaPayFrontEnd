@@ -20,6 +20,7 @@
 .content{
     width: 100%;
     padding-left: 10vw;
+    padding-right: 10vw;
     padding-top: 3rem;
     display: flex;
     flex-direction: column;
@@ -41,5 +42,12 @@
     button{
         align-self: flex-end;
         font-weight: 800;
+    }
+}
+
+
+@media(max-width: 768px) {
+    .banner{
+        display: none;
     }
 }

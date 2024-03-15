@@ -1,13 +1,14 @@
 
 .plus-wrapper{
     width: 100vw;
-    padding: 5rem 10vw;
+    padding: 5rem 0;
     font-family: 'Inter' ,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-wrap: balance;
     background-color: var(--background-neutro-primario);
 }
 .plus-presentation{
     width: 80vw;
+    margin: auto;
     display: flex;
     gap: 3rem;
     align-items: center;

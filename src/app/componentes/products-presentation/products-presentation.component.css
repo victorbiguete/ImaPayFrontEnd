@@ -57,3 +57,16 @@
         justify-content: center;
     }
 }
+
+@media(min-width: 1900px){
+    .products{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr ;
+    }
+}
+
+@media(max-width: 768px) {
+    #button{
+        display: none !important;
+    }
+}
