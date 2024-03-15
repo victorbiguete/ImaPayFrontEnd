@@ -20,4 +20,5 @@ button{
 button:disabled{
     background-color: #264653b6;
     opacity: 0.5;
+    cursor: not-allowed;
 }
