@@ -42,6 +42,9 @@
 }
 
 @media(max-width: 768px){
+    .ready-start-presentation{
+        height: fit-content;
+    }
     .banner{
         display: none;
     }
@@ -49,4 +52,21 @@
         margin: auto;
         padding: 0;
     }
+}
+
+@media(max-width: 480px){
+    .content h2{
+        font-size: 2rem;
+    }
+}
+
+@media(min-width: 1920px){
+    
+.banner{
+    width: 50%;
+
+    img{
+        width: 55%;
+    }
+}
 }

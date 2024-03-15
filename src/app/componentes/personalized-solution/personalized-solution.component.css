@@ -1,6 +1,6 @@
 
 .personalized-solution{
-    padding: 2rem 0;
+    padding: 2rem ;
     width: 100vw;
     height: 500px;
     display: flex;
@@ -47,6 +47,9 @@
 
 
 @media(max-width: 768px) {
+    .personalized-solution{
+        height: fit-content;
+    }
     .banner{
         display: none;
     }
