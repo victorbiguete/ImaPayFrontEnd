@@ -1,0 +1,52 @@
+.doubts-presentation{
+    padding: 5rem 0;
+    font-family: 'Inter' ,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-wrap: balance;
+    background-color: var(--background-neutro-primario);
+    width: 100vw;
+}
+
+
+.doubt{
+    width: 80%;
+    margin: auto;
+
+    .doubt-h2{
+        font-size: 3em;
+        text-align: center;
+        padding-bottom: 2rem;
+    }
+    .doubt-item{
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        font-size: 1.4em;
+        padding: 2rem 2rem 0;
+        border-bottom: 1px solid var(--background-primario);
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 100ms ease;
+    }
+    .doubt-item:hover,
+    .doubt-item:focus{
+        transform: scale(1.02);
+        text-decoration: underline;
+    }
+    .hidden{
+        display: none;
+    }
+    .doubt-info{
+        padding: 2rem;
+        font-weight: 600;
+        line-height: 1.5rem;
+        font-size: 1.3rem;
+        color: var(--cor-texto-terciario)
+    }
+    .doubt-info p{
+        margin: 1rem 0;
+    }
+    .doubt-info ol{
+        padding: 1rem;
+
+    }
+}

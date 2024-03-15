@@ -7,6 +7,7 @@ import { ProductsPresentationComponent } from '../../componentes/products-presen
 import { AnywhereAccPresentationComponent } from '../../componentes/anywhere-acc-presentation/anywhere-acc-presentation.component';
 import { PlusPresentationComponent } from '../../componentes/plus-presentation/plus-presentation.component';
 import { PersonalizedSolutionComponent } from '../../componentes/personalized-solution/personalized-solution.component';
+import { DoubtsPresentationComponent } from '../../componentes/doubts-presentation/doubts-presentation.component';
 
 @Component({
   selector: 'app-landing',
@@ -20,6 +21,7 @@ import { PersonalizedSolutionComponent } from '../../componentes/personalized-so
     AnywhereAccPresentationComponent,
     PlusPresentationComponent,
     PersonalizedSolutionComponent,
+    DoubtsPresentationComponent,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css',
