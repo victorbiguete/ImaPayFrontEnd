@@ -3,6 +3,5 @@
     width: 100vw;
     background-color: var(--background-neutro-terciario);
     overflow-x: hidden;
-    padding-bottom: 3rem;
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

@@ -9,6 +9,7 @@ import { PlusPresentationComponent } from '../../componentes/plus-presentation/p
 import { PersonalizedSolutionComponent } from '../../componentes/personalized-solution/personalized-solution.component';
 import { DoubtsPresentationComponent } from '../../componentes/doubts-presentation/doubts-presentation.component';
 import { ReadyStartPresentationComponent } from '../../componentes/ready-start-presentation/ready-start-presentation.component';
+import { FooterComponent } from '../../componentes/footer/footer.component';
 
 @Component({
   selector: 'app-landing',
@@ -24,6 +25,7 @@ import { ReadyStartPresentationComponent } from '../../componentes/ready-start-p
     PersonalizedSolutionComponent,
     DoubtsPresentationComponent,
     ReadyStartPresentationComponent,
+    FooterComponent,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css',
