@@ -10,6 +10,8 @@ import {
 
 import { FormButtonComponent } from '../form-button/form-button.component';
 import { LoginService } from '../../services/login/login.service';
+import { AlertHandlerService } from '../../services/alertHandler/alert-handler.service';
+import { AlertType } from '../../types/alert';
 
 @Component({
   selector: 'app-form-log-in',
@@ -31,7 +33,11 @@ export class FormLogInComponent {
   password = new FormControl('');
   loginForm!: FormGroup;
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private alertHandler: AlertHandlerService
+  ) {
     this.loginForm = new FormGroup({
       userEmail: new FormControl(this.userEmail.value, [
         Validators.required,
@@ -60,7 +66,10 @@ export class FormLogInComponent {
 
     if (user) {
       this.loginForm.reset();
-
+      this.alertHandler.setAlert(
+        AlertType.SUCCESS,
+        'Login efetuado com sucesso! Bem vindo de Volta!'
+      );
       this.router.navigate(['/home']);
     } else {
       this.loginForm.get('userEmail')?.setErrors({ required: true });
