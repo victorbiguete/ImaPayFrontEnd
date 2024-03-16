@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ProductsCardComponent } from '../products-card/products-card.component';
-import { RouterLink } from '@angular/router';
 import { ButtonOpenAccountComponent } from '../button-open-account/button-open-account.component';
 
 @Component({
@@ -50,4 +49,6 @@ export class ProductsPresentationComponent {
         'Traga seu salário para o SimplifyPay e gerencie toda sua vida financeira de forma conveniente, diretamente pelo aplicativo.',
     },
   ];
+
+  constructor() {}
 }

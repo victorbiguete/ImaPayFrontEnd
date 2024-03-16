@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlertType } from '../../types/alert';
 import { AlertHandlerService } from '../../services/alertHandler/alert-handler.service';
 
@@ -12,4 +12,9 @@ import { AlertHandlerService } from '../../services/alertHandler/alert-handler.s
 })
 export class AlertsComponent {
   constructor(protected alertHandler: AlertHandlerService) {}
+
+  success = AlertType.SUCCESS;
+  warning = AlertType.WARNING;
+  danger = AlertType.DANGER;
+  info = AlertType.INFO;
 }

@@ -25,6 +25,10 @@
         font-size: 1.2rem;
         font-weight: 500;
     }
+
+    span{
+        color: var(--cor-texto-terciario);
+    }
 }
 
 .banner{

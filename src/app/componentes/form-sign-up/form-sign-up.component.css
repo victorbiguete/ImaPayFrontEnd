@@ -40,13 +40,14 @@ form{
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
 form input,
 form select{
     width: 100%;
     padding:10px 40px;
+    margin-bottom: 1rem;
     border: none;
     border-radius: 10px;
     line-height: 19.53px;
