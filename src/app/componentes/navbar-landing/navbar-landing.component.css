@@ -20,6 +20,8 @@ a:active{
     letter-spacing: 1px;
     display: flex;
     align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .navbar-brand img{
