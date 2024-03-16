@@ -1,0 +1,43 @@
+.alerts{
+    width: 70vw;
+    position: fixed;
+    top: 10vh;
+    left: 15vw;
+    font-size: 1.3rem;
+}
+
+svg{
+    width: 2rem;
+}
+
+div{
+    height: fit-content;
+}
+
+.alert{
+    height: 55px;
+}
+
+@media(max-width: 1440px) {
+    .alerts{
+        width: 60vw;
+        left: 20vw;
+    }
+}
+
+
+@media(max-width: 768px){
+    .alerts{
+        font-size: 1rem;
+    }
+    .alert{
+        height: 80px;
+    }
+}
+
+@media(max-width: 480px) {
+    .alerts{
+        width: 90vw;
+        left: 5vw;
+    }
+}

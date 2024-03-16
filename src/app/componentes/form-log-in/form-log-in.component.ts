@@ -60,11 +60,12 @@ export class FormLogInComponent {
 
     if (user) {
       this.loginForm.reset();
-      this.router.navigate(['/home']);
-    }
 
-    this.loginForm.get('userEmail')?.setErrors({ required: true });
-    this.loginForm.get('password')?.setErrors({ required: true });
-    this.failedLogin = true;
+      this.router.navigate(['/home']);
+    } else {
+      this.loginForm.get('userEmail')?.setErrors({ required: true });
+      this.loginForm.get('password')?.setErrors({ required: true });
+      this.failedLogin = true;
+    }
   }
 }

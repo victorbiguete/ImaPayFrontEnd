@@ -30,6 +30,4 @@ import { FooterComponent } from '../../componentes/footer/footer.component';
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css',
 })
-export class LandingComponent {
-  constructor() {}
-}
+export class LandingComponent {}

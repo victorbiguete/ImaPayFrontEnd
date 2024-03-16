@@ -43,6 +43,11 @@ a{
 	        animation: fade-in 0.25s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
+.fade-out {
+	-webkit-animation: fade-out 6s ease-out both;
+	        animation: fade-out 6s ease-out both;
+}
+
 
  @-webkit-keyframes fade-in {
         0% {
@@ -60,5 +65,24 @@ a{
           opacity: 1;
         }
       }
+
+
+ @-webkit-keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
       
   /* Saida de animação */
