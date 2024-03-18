@@ -6,6 +6,7 @@ import { CartaoCreditoComponent } from '../../componentes/cartao-credito/cartao-
 import { GraficoDonutComponent } from '../../componentes/grafico-donut/grafico-donut.component';
 import { MenuComponent } from '../../componentes/menu/menu.component';
 import { TabelaComponent } from '../../componentes/tabela/tabela.component';
+import { FooterComponent } from '../../componentes/footer/footer.component';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ import { TabelaComponent } from '../../componentes/tabela/tabela.component';
     BarraProgressoComponent,
     TabelaComponent,
     MenuComponent,
+    FooterComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

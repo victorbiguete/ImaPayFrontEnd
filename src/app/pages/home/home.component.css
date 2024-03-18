@@ -1,6 +1,7 @@
 /* Home */
 .container-home{
-    background-color: var(--background-neutro-primario);
+    /* background-color: var(--background-neutro-primario); */
+    background-color: var(--backgorund-light-primario);
     display: flex;
     justify-content: center;
     min-height: 100vh;
