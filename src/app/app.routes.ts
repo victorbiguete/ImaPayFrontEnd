@@ -5,6 +5,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { authGuard } from './guards/auth/auth.guard';
+import { DeposityComponent } from './componentes/deposity/deposity.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,11 @@ export const routes: Routes = [
   {
     path: 'transacoes',
     component: TransacoesComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'deposity',
+    component: DeposityComponent,
     canActivate: [authGuard],
   },
   {

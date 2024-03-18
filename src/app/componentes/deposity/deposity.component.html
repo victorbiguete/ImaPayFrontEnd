@@ -1,0 +1,78 @@
+<app-menu></app-menu>
+
+<section class="deposity-wrapper">
+  <section class="content">
+    <form [formGroup]="deposityForm" (ngSubmit)="submit()">
+      <h3>Depositar</h3>
+      <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <input
+          type="number"
+          min="0"
+          class="form-control"
+          aria-label="Dollar amount (with dot and two decimal places)"
+          placeholder="Valor"
+          #value
+          required
+          formControlName="amount"
+          [value]="deposityForm.get('amount')?.value"
+        />
+        <span class="input-group-text">{{
+          deposityForm.get("amount")?.value
+            ? (deposityForm.get("amount")?.value | currency : "BRL")
+            : "R$0.00"
+        }}</span>
+      </div>
+      <div class="input-group flex-nowrap mb-3">
+        <span class="input-group-text" id="addon-wrapping">{{ "@" }} </span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Name"
+          aria-label="userName"
+          aria-describedby="addon-wrapping"
+          #userName
+          formControlName="userName"
+          required
+          [value]="deposityForm.get('userName')?.value"
+        />
+      </div>
+
+      <div class="input-group flex-nowrap mb-3">
+        <span class="input-group-text" id="addon-wrapping">{{ "@" }} </span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Email"
+          aria-label="userEmail"
+          aria-describedby="addon-wrapping"
+          #userName
+          required
+          formControlName="userEmail"
+          [value]="deposityForm.get('userEmail')?.value"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">Options</label>
+        <select
+          class="form-select"
+          id="inputGroupSelect01"
+          required
+          formControlName="type"
+          [value]="deposityForm.get('type')?.value"
+          #type
+        >
+          <option selected value="BOLETO">Boleto</option>
+          <option value="DEPOSITO_BANCARIO">Deposito bancário</option>
+          <option value="TRANSFERENCIA">Transferencia</option>
+          <option value="PIX">Pix</option>
+        </select>
+      </div>
+
+      <button class="btn btn-success">Depositar</button>
+      <p class="alert-info alert">Um e-mail de confirmação será enviado.</p>
+    </form>
+  </section>
+</section>
+
+<app-footer></app-footer>

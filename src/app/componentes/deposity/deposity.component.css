@@ -1,0 +1,57 @@
+.deposity-wrapper{
+    width: 100vw;
+
+    padding: 10vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-neutro-primario);
+    font-family: 'Inter', 'Segoi UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+.content{
+    width: 50%;
+    height: 70%;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px 0 var(--background-secundario);
+    background-color: var(--background-neutro-terciario);
+}
+
+.btn{
+    display: block  ;
+    width: 100%;
+}
+
+.input-group input,
+.input-group select,
+.btn
+{
+    font-size: 1.3rem;
+}
+
+form{
+    width: 80%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin: auto;
+}
+
+
+h3{
+    text-align: center;
+    color: var(--cor-texto-terciario);
+    font-size: 2rem;
+    padding-bottom: 1rem;
+}
+
+p{
+    margin-top: 1rem;
+    font-size: 1.05rem;
+}
+
+@media(max-width: 768px){
+    .content{
+        width: 90%;
+    }
+}
