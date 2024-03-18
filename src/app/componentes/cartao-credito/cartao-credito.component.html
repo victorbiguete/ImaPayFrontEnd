@@ -1,7 +1,7 @@
 <div class="container">
     <div class="conteudo">
         <div class="grid-bandeira">
-            <div>{{nomeCartao}}</div>
+            <div>{{ nomeCartao }}</div>
             <div class="justificar-direita">
                 <img [src]="srcImgBandeira" [alt]="altImgBandeira" class="bandeira">
             </div>
@@ -12,17 +12,16 @@
         </div>
 
         <div>
-            <div class="numero-cartao sombra">{{numCartao}}</div>
+            <div class="numero-cartao sombra">{{ imagemVisivel ? numCartao : '**** **** **** ****' }}</div>
         </div>
 
         <div class="grid-dados sombra">
-            <div class="titular">{{nomeTitular}}</div>
+            <div class="titular">{{ imagemVisivel ? nomeTitular : '****** *****' }}</div>
             <div class="grid-validade">
                 <div class="validade">VALID.</div>
-                <div class="justificar-direita">{{validade}}</div>
+                <div class="justificar-direita">{{ imagemVisivel ? validade : '**/**' }}</div>
             </div>
         </div>
-
 
     </div>
 </div>

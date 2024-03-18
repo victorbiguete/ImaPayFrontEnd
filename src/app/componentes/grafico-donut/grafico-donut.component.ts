@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import 'chartjs-plugin-datalabels';
 
@@ -10,22 +10,29 @@ import 'chartjs-plugin-datalabels';
   styleUrl: './grafico-donut.component.css'
 })
 export class GraficoDonutComponent implements OnInit {
+  @Input() vl_usado: string = '0';
+  @Input() vl_total: string = '0';
+  @Input() vl_disponivel: string = '100';
+
   ngOnInit() {
     Chart.register(...registerables);
-
+  
     const canvas = document.getElementById('grafico-donut') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
-
-    const usado = 30;
-    const disponivel = 100 - usado; 
-
+  
+    const usado = parseFloat(this.vl_usado.replace(',', '.'));
+    const total = parseFloat(this.vl_total.replace(',', '.'));
+  
+    const percentualUsado = (usado / total) * 100;
+    const percentualDisponivel = 100 - percentualUsado;
+  
     const donutChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
-        labels: ['70% disponível', '30% usado'],
+        labels: [`${percentualDisponivel.toFixed(0)}% disponível`, `${percentualUsado.toFixed(0)}% usado`],
         datasets: [{
-          data: [disponivel, usado],
-          backgroundColor: [ '#5DA55C', '#104255'],
+          data: [percentualDisponivel, percentualUsado],
+          backgroundColor: ['#5DA55C', '#104255'],
         }],
       },
       options: {
@@ -44,16 +51,16 @@ export class GraficoDonutComponent implements OnInit {
               }
               return '';
             },
-            color: '#000000', 
+            color: '#000000',
             anchor: 'center',
             align: 'center',
             font: {
               size: 12,
               weight: 'bold',
             },
-          } as any, 
+          } as any,
         },
-        cutout: '60%', 
+        cutout: '60%',
       },
     });
   }

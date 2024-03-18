@@ -120,7 +120,7 @@ export class TransacoesComponent {
   ]
   imagemVisivel: boolean = true;
   saldo: string = "*****";
-  valorVisivel: boolean = true;
+  valorVisivel: boolean = false;
 
   transacoesOriginal: Transacao[] = [...this.transacoes];
 
