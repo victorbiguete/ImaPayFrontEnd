@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { MenuComponent } from '../menu/menu.component';
 import { FooterComponent } from '../footer/footer.component';
 import { LoginService } from '../../services/login/login.service';
+import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
 @Component({
   selector: 'app-deposity',
@@ -36,7 +37,8 @@ export class DeposityComponent {
   constructor(
     private _alertHandler: AlertHandlerService,
     private _router: Router,
-    private _loginService: LoginService
+    private _loginService: LoginService,
+    private _localStorageService: LocalStorageService
   ) {}
 
   ngOnInit() {
@@ -64,6 +66,18 @@ export class DeposityComponent {
         this._loginService.loggedUser!.amount =
           this.deposityForm.get('amount')?.value!;
       }
+
+      let users = this._localStorageService.get();
+      if (users?.length > 0) {
+        users = users.map((user) => {
+          if (user.email === this._loginService.loggedUser!.email) {
+            user.amount = this._loginService.loggedUser!.amount;
+          }
+          return user;
+        });
+        this._localStorageService.set(users);
+      }
+
       this._router.navigate(['/home']);
       // TODO Atualizar no banco de dados
     } else {

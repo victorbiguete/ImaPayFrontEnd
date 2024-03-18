@@ -13,6 +13,7 @@ import { LoginService } from '../../services/login/login.service';
 import { Router } from '@angular/router';
 import { AlertHandlerService } from '../../services/alertHandler/alert-handler.service';
 import { AlertType } from '../../types/alert';
+import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
 @Component({
   selector: 'app-withdraw',
@@ -37,7 +38,8 @@ export class WithdrawComponent {
   constructor(
     private _loginService: LoginService,
     private _router: Router,
-    private _alertHandler: AlertHandlerService
+    private _alertHandler: AlertHandlerService,
+    private _localStorageService: LocalStorageService
   ) {}
 
   ngOnInit() {
@@ -66,6 +68,18 @@ export class WithdrawComponent {
           this._loginService.loggedUser!.amount -=
             this.withdrawForm.get('amount')?.value!;
         }
+
+        let users = this._localStorageService.get();
+        if (users?.length > 0) {
+          users = users.map((user) => {
+            if (user.email === this._loginService.loggedUser!.email) {
+              user.amount = this._loginService.loggedUser!.amount;
+            }
+            return user;
+          });
+          this._localStorageService.set(users);
+        }
+
         this._router.navigate(['/home']);
       } else {
         this._alertHandler.setAlert(AlertType.DANGER, 'Saldo insuficiente!');
