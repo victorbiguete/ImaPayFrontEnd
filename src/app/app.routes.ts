@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { authGuard } from './guards/auth/auth.guard';
 import { DeposityComponent } from './componentes/deposity/deposity.component';
+import { WithdrawComponent } from './componentes/withdraw/withdraw.component';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    path: 'withdraw',
+    component: WithdrawComponent,
+    canActivate: [authGuard],
+  },
+  {
     path: 'logar',
     redirectTo: 'login',
   },
@@ -46,6 +52,14 @@ export const routes: Routes = [
   {
     path: 'cadastrar',
     redirectTo: 'signup',
+  },
+  {
+    path: 'depositar',
+    redirectTo: 'deposity',
+  },
+  {
+    path: 'sacar',
+    redirectTo: 'withdraw',
   },
   {
     path: '**',

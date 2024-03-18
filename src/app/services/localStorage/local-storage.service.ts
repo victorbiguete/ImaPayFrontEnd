@@ -9,7 +9,12 @@ export class LocalStorageService {
   constructor() {}
 
   public set(
-    value: Array<{ name: string; email: string; password: string }>,
+    value: Array<{
+      name: string;
+      email: string;
+      password: string;
+      amount?: number;
+    }>,
     key: string = 'simplifyPay-users'
   ): void {
     try {
@@ -22,7 +27,7 @@ export class LocalStorageService {
 
   public get(
     key: string = 'simplifyPay-users'
-  ): Array<{ name: string; email: string; password: string }> {
+  ): Array<{ name: string; email: string; password: string; amount?: number }> {
     try {
       const item = this.local.getItem(key);
       if (item) {
@@ -33,7 +38,14 @@ export class LocalStorageService {
     } catch (e) {
       alert('Something went wrong');
       console.warn(e);
-      return [{ name: 'exemple', email: 'email@mail.com', password: ' 123' }];
+      return [
+        {
+          name: 'exemple',
+          email: 'email@mail.com',
+          password: ' 123',
+          amount: 0,
+        },
+      ];
     }
   }
 

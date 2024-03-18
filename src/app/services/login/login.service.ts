@@ -6,12 +6,16 @@ import { LocalStorageService } from '../localStorage/local-storage.service';
 })
 export class LoginService {
   isLogged: boolean = false;
-  loggedUser: any;
+  loggedUser?: {
+    name: string;
+    email: string;
+    password: string;
+    amount?: number;
+  };
   constructor(private localStorageService: LocalStorageService) {}
 
   login(email: string, password: string) {
     const users = this.localStorageService.get();
-    console.log(email, password);
     const user = users.find(
       (user) => user.email === email && user.password === password
     );
@@ -25,6 +29,6 @@ export class LoginService {
   }
   logOut() {
     this.isLogged = false;
-    this.loggedUser = null;
+    this.loggedUser = undefined;
   }
 }

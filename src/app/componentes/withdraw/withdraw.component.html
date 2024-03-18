@@ -1,9 +1,12 @@
 <app-menu></app-menu>
 
-<section class="deposity-wrapper">
+<section class="withdraw-wrapper">
   <section class="content">
-    <form [formGroup]="deposityForm" (ngSubmit)="submit()">
-      <h3>Depositar</h3>
+    <form [formGroup]="withdrawForm" (ngSubmit)="submit()">
+      <div class="user-amount">
+        <p>{{ userAmount | currency : "BRL" }}</p>
+        <p>Saldo total</p>
+      </div>
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
         <input
@@ -15,11 +18,11 @@
           #value
           required
           formControlName="amount"
-          [value]="deposityForm.get('amount')?.value"
+          [value]="withdrawForm.get('amount')?.value"
         />
         <span class="input-group-text">{{
-          deposityForm.get("amount")?.value
-            ? (deposityForm.get("amount")?.value | currency : "BRL")
+          withdrawForm.get("amount")?.value
+            ? (withdrawForm.get("amount")?.value | currency : "BRL")
             : "R$0.00"
         }}</span>
       </div>
@@ -34,7 +37,7 @@
           #userName
           formControlName="userName"
           required
-          [value]="deposityForm.get('userName')?.value"
+          [value]="withdrawForm.get('userName')?.value"
         />
       </div>
 
@@ -49,7 +52,7 @@
           #userName
           required
           formControlName="userEmail"
-          [value]="deposityForm.get('userEmail')?.value"
+          [value]="withdrawForm.get('userEmail')?.value"
         />
       </div>
       <div class="input-group mb-3">
@@ -59,24 +62,23 @@
           id="inputGroupSelect01"
           required
           formControlName="type"
-          [value]="deposityForm.get('type')?.value"
+          [value]="withdrawForm.get('type')?.value"
           #type
         >
-          <option selected value="BOLETO">Boleto</option>
-          <option value="DEPOSITO_BANCARIO">Deposito bancário</option>
-          <option value="TRANSFERENCIA">Transferencia</option>
+          <option selected value="AGENCIA">Agência Bancaria</option>
+          <option value="CAIXA_ELETRONICO">Caixa Eletronico</option>
           <option value="PIX">Pix</option>
         </select>
       </div>
 
       <button
         type="button"
-        class="btn btn-success"
+        class="btn btn-info"
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop"
-        [disabled]="!deposityForm.valid"
+        [disabled]="!withdrawForm.valid"
       >
-        Depositar
+        Sacar
       </button>
       <p class="alert-info alert">Um e-mail de confirmação será enviado.</p>
 
@@ -96,11 +98,11 @@
               <h1
                 class="modal-title fs-5"
                 id="staticBackdropLabel"
-                style="text-align: center"
+                style="text-align: center; color: red"
               >
                 {{
-                  "Confirmar deposito de " +
-                    (deposityForm.get("amount")?.value | currency : "BRL")
+                  "Confirmar saque de " +
+                    (withdrawForm.get("amount")?.value | currency : "BRL")
                 }}
               </h1>
               <button

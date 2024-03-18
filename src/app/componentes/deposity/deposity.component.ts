@@ -42,11 +42,11 @@ export class DeposityComponent {
   ngOnInit() {
     this.deposityForm
       .get('userName')
-      ?.setValue(this._loginService.loggedUser.name);
+      ?.setValue(this._loginService.loggedUser!.name);
     this.deposityForm.get('userName')?.disable();
     this.deposityForm
       .get('userEmail')
-      ?.setValue(this._loginService.loggedUser.email);
+      ?.setValue(this._loginService.loggedUser!.email);
     this.deposityForm.get('userEmail')?.disable();
     this.deposityForm.get('amount')?.setValue(this.amount);
   }
@@ -57,6 +57,13 @@ export class DeposityComponent {
         AlertType.SUCCESS,
         'Deposito realizado com sucesso!'
       );
+      if (this._loginService.loggedUser!.amount) {
+        this._loginService.loggedUser!.amount +=
+          this.deposityForm.get('amount')?.value!;
+      } else {
+        this._loginService.loggedUser!.amount =
+          this.deposityForm.get('amount')?.value!;
+      }
       this._router.navigate(['/home']);
       // TODO Atualizar no banco de dados
     } else {

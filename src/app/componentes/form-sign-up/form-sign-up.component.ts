@@ -214,6 +214,7 @@ export class FormSignUpComponent {
         name: this.cadastroForm.value.userName,
         email: this.cadastroForm.value.userEmail,
         password: this.cadastroForm.value.password,
+        amount: 0,
       });
       this.localStorageService.set(users);
     } else {
@@ -222,6 +223,7 @@ export class FormSignUpComponent {
           name: this.cadastroForm.value.userName,
           email: this.cadastroForm.value.userEmail,
           password: this.cadastroForm.value.password,
+          amount: 0,
         },
       ]);
     }
