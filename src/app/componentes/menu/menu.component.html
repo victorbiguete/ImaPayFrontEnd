@@ -6,35 +6,42 @@
       </div>
       <div class="logo">
         <a routerLink="/home">Simplify<span class="pay">Pay</span></a>
+
+        <nav (click)="toggleMenu()">
+          <div class="nav-list" [ngClass]="{ show: isMenuOpen }">
+            <a routerLink="/home" class="link">Home</a>
+            <a routerLink="/transacoes" class="link">Transações</a>
+            <a routerLink="/home" class="link">Sobre nós</a>
+            <a routerLink="/deposity" class="link">Depositar</a>
+            <a routerLink="/withdraw" class="link">Sacar</a>
+          </div>
+        </nav>
       </div>
-      <nav (click)="toggleMenu()">
-        <div class="nav-list" [ngClass]="{ show: isMenuOpen }">
-          <a routerLink="/home" class="link">Home</a>
-          <a routerLink="/transacoes" class="link link-transacao">Transações</a>
-          <a routerLink="/deposity" class="link link-transacao">Depositar</a>
-          <a routerLink="/withdraw" class="link link-transacao">Sacar</a>
+
+      <div class="perfil">
+        <div>
+          <img
+            class="icon"
+            src="../../../assets/imgs/alerta.png"
+            alt="notificacao"
+          />
         </div>
 
-        <div class="perfil">
-          <div class="item-perfil">
-            <img
-              class="icon icon-perfil"
-              src="../../../assets/imgs/notificacao.png"
-              alt="notificacao"
-            />
-          </div>
-          <div class="img-perfil">
-            <img class="icon" src="../../../assets/imgs/pessoa.png" alt="" />
-          </div>
-          <div class="img-perfil">
-            <i
-              (click)="logOut()"
-              routerLink="/"
-              class="fa-solid fa-right-from-bracket"
-            ></i>
-          </div>
+        <div>
+          <img
+            class="icon img-user"
+            src="../../../assets/imgs/pessoa.png"
+            alt="Usuário"
+          />
         </div>
-      </nav>
+
+        <div>
+          <i
+            (click)="logOut()"
+            class="fa-solid fa-right-from-bracket logout"
+          ></i>
+        </div>
+      </div>
     </div>
   </div>
 </header>

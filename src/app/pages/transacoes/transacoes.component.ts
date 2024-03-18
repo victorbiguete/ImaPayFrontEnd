@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { MenuComponent } from '../menu/menu.component';
+import { MenuComponent } from '../../componentes/menu/menu.component';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from '../../componentes/footer/footer.component';
 
 
 interface Transacao {
@@ -14,7 +15,7 @@ interface Transacao {
 @Component({
   selector: 'app-transacoes',
   standalone: true,
-  imports: [CommonModule, MenuComponent, FormsModule],
+  imports: [CommonModule, MenuComponent, FormsModule, FooterComponent],
   templateUrl: './transacoes.component.html',
   styleUrl: './transacoes.component.css'
 })
@@ -117,11 +118,24 @@ export class TransacoesComponent {
       "descricao": ""
     }
   ]
+  imagemVisivel: boolean = true;
+  saldo: string = "*****";
+  valorVisivel: boolean = false;
 
   transacoesOriginal: Transacao[] = [...this.transacoes];
 
   filtroTipo: keyof Transacao = 'tipo';
   filtroValor: any = '';
+
+
+  trocarImagem() {
+    this.imagemVisivel = !this.imagemVisivel;
+    if (this.imagemVisivel) {
+      this.saldo = "*****";
+    } else {
+      this.saldo = "102,64";
+    }
+  }
 
   aplicarFiltros(): void {
     console.log("filtroTipo=" +this.filtroTipo)

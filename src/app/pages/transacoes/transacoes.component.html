@@ -1,0 +1,76 @@
+<app-menu></app-menu>
+<div class="container-geral">
+
+  <div class="container fade-in">
+    <div class="container-saldo">
+      <div class="content-saldo">
+        <div class="item-saldo"> Saldo disponível 
+          <img class="visible" (click)="trocarImagem()"  [src]="imagemVisivel ? '../../../assets/imgs/invisivel-white.png' : '../../../assets/imgs/visivel-white.png'" alt="Saldo">
+        </div>
+        <div class="item-saldo valor">R$ {{saldo}}</div>
+
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>Histórico de transação</h2>
+    <p>Veja seu histórico de transação</p>
+
+    <div class="mb-3">
+      <label for="filtroTipo" class="form-label"
+        >Selecionar tipo de filtro:</label
+      >
+      <select
+        class="form-select"
+        id="filtroTipo"
+        [(ngModel)]="filtroTipo"
+        (change)="aplicarFiltros()"
+      >
+        <option value="tipo">Tipo</option>
+        <option value="data">Data</option>
+        <option value="nome">Nome</option>
+        <option value="valor">Valor</option>
+        <option value="descricao">Descrição</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="filtroValor" class="form-label">Filtrar por:</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="filtroValor"
+          [(ngModel)]="filtroValor"
+          (input)="aplicarFiltros()"
+        />
+      </div>
+    </div>
+
+    <!-- Tabela de transações -->
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Data</th>
+            <th>Nome</th>
+            <th>Valor</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody class="table-light">
+          <tr *ngFor="let transacao of transacoes">
+            <td>{{ transacao.tipo }}</td>
+            <td>{{ transacao.data }}</td>
+            <td>{{ transacao.nome }}</td>
+            <td>R$ {{ transacao.valor }}</td>
+            <td>{{ transacao.descricao }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

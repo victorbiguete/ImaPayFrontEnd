@@ -13,4 +13,5 @@ export class CardComponent {
   @Input() altIcone: string = '';
   @Input() valor: string = '';
   @Input() textoCard: string ='';
+  @Input() imagemVisivel: boolean = false;
 }
