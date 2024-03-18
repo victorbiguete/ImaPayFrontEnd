@@ -30,6 +30,7 @@ export class WithdrawComponent {
     type: new FormControl('', [Validators.required]),
     userPassword: new FormControl('', [
       Validators.required,
+      // TODO: Adicionar validação de senha
       // Validators.minLength(8),
     ]),
     date: new FormControl(new Date()),
