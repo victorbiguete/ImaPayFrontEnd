@@ -1,18 +1,29 @@
 <app-menu></app-menu>
 <div class="container-geral">
-
   <div class="container fade-in">
     <div class="container-saldo">
       <div class="content-saldo">
-        <div class="item-saldo"> Saldo disponível 
-          <img class="visible" (click)="trocarImagem()"  [src]="imagemVisivel ? '../../../assets/imgs/invisivel-white.png' : '../../../assets/imgs/visivel-white.png'" alt="Saldo">
+        <div class="item-saldo">
+          Saldo disponível
+          <img
+            class="visible"
+            (click)="trocarImagem()"
+            [src]="
+              imagemVisivel
+                ? '../../../assets/imgs/invisivel-white.png'
+                : '../../../assets/imgs/visivel-white.png'
+            "
+            alt="Saldo"
+          />
         </div>
-        <div class="item-saldo valor">R$ {{saldo}}</div>
-
+        <!-- <div class="item-saldo valor">R$ {{saldo}}</div> -->
+        <div class="item-saldo valor">
+          {{ imagemVisivel ? "*****" : (saldo | currency : "BRL") }}
+        </div>
       </div>
     </div>
 
-    <hr>
+    <hr />
 
     <h2>Histórico de transação</h2>
     <p>Veja seu histórico de transação</p>
