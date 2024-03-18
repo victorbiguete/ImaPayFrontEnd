@@ -1,8 +1,9 @@
 .deposity-wrapper{
     width: 100vw;
 
-    padding: 10vh 0;
+    padding: 5vh 0 10vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: var(--background-neutro-primario);
@@ -37,8 +38,7 @@ form{
     margin: auto;
 }
 
-
-h3{
+h1{
     text-align: center;
     color: var(--cor-texto-terciario);
     font-size: 2rem;

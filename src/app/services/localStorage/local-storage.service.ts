@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LoginService } from '../login/login.service';
 
 @Injectable({
   providedIn: 'root',
@@ -55,5 +56,33 @@ export class LocalStorageService {
     } catch (e) {
       console.warn(e);
     }
+  }
+
+  public getOne(
+    email: string
+  ):
+    | { name: string; email: string; password: string; amount?: number }
+    | undefined {
+    const users = this.get();
+    return users.find((user) => user.email === email);
+  }
+
+  public updateOne(
+    user: {
+      name: string;
+      email: string;
+      password: string;
+      amount?: number;
+    },
+    email: string
+  ) {
+    let users = this.get();
+    users = users.map((u) => {
+      if (u.email === email) {
+        u = user;
+      }
+      return u;
+    });
+    this.set(users);
   }
 }

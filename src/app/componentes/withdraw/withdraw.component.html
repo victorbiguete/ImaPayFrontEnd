@@ -1,6 +1,7 @@
 <app-menu></app-menu>
 
 <section class="withdraw-wrapper">
+  <h1>Sacar</h1>
   <section class="content">
     <form [formGroup]="withdrawForm" (ngSubmit)="submit()">
       <div class="user-amount">
@@ -27,7 +28,9 @@
         }}</span>
       </div>
       <div class="input-group flex-nowrap mb-3">
-        <span class="input-group-text" id="addon-wrapping">{{ "@" }} </span>
+        <span class="input-group-text" id="addon-wrapping"
+          ><img src="../../../assets/imgs/login-cadastro/u_user.svg" alt=""
+        /></span>
         <input
           type="text"
           class="form-control"
@@ -71,9 +74,36 @@
         </select>
       </div>
 
+      <div class="input-group flex-nowrap mb-3">
+        <span class="input-group-text" id="addon-wrapping"
+          ><img src="../../../assets/imgs/login-cadastro/u_lock.svg" alt=""
+        /></span>
+        <input
+          type="password"
+          class="form-control"
+          aria-label="userPassword"
+          aria-describedby="addon-wrapping"
+          formControlName="userPassword"
+          [value]="withdrawForm.get('userPassword')?.value"
+          placeholder="Senha"
+          #userPassword
+          required
+        />
+      </div>
+      <div
+        *ngIf="
+          withdrawForm.get('userPassword')?.errors &&
+          (withdrawForm.get('userPassword')?.touched ||
+            withdrawForm.get('userPassword')?.dirty)
+        "
+        class="alert alert-danger"
+      >
+        <span>A senha contem 8 digitos.</span>
+      </div>
+
       <button
         type="button"
-        class="btn btn-info"
+        class="btn btn-success"
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop"
         [disabled]="!withdrawForm.valid"
@@ -98,12 +128,14 @@
               <h1
                 class="modal-title fs-5"
                 id="staticBackdropLabel"
-                style="text-align: center; color: red"
+                style="text-align: center; color: black"
               >
-                {{
-                  "Confirmar saque de " +
-                    (withdrawForm.get("amount")?.value | currency : "BRL")
-                }}
+                Confirmar saque de:
+                <span style="color: red">
+                  {{
+                    withdrawForm.get("amount")?.value | currency : "BRL"
+                  }}</span
+                >
               </h1>
               <button
                 type="button"

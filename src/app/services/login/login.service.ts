@@ -15,15 +15,16 @@ export class LoginService {
   constructor(private localStorageService: LocalStorageService) {}
 
   login(email: string, password: string) {
-    const users = this.localStorageService.get();
-    const user = users.find(
-      (user) => user.email === email && user.password === password
-    );
+    const user = this.localStorageService.getOne(email);
+
     if (user) {
-      this.isLogged = true;
-      this.loggedUser = user;
-      return true;
+      if (user.password === password) {
+        this.isLogged = true;
+        this.loggedUser = user;
+        return true;
+      }
     }
+
     this.isLogged = false;
     return false;
   }

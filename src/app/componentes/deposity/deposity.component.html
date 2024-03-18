@@ -1,9 +1,9 @@
 <app-menu></app-menu>
 
 <section class="deposity-wrapper">
+  <h1>Depositar</h1>
   <section class="content">
     <form [formGroup]="deposityForm" (ngSubmit)="submit()">
-      <h3>Depositar</h3>
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
         <input
@@ -24,7 +24,9 @@
         }}</span>
       </div>
       <div class="input-group flex-nowrap mb-3">
-        <span class="input-group-text" id="addon-wrapping">{{ "@" }} </span>
+        <span class="input-group-text" id="addon-wrapping"
+          ><img src="../../../assets/imgs/login-cadastro/u_user.svg" alt=""
+        /></span>
         <input
           type="text"
           class="form-control"
@@ -96,12 +98,12 @@
               <h1
                 class="modal-title fs-5"
                 id="staticBackdropLabel"
-                style="text-align: center"
+                style="text-align: center; color: black"
               >
-                {{
-                  "Confirmar deposito de " +
-                    (deposityForm.get("amount")?.value | currency : "BRL")
-                }}
+                Confirmar deposito de:
+                <span style="color: red">{{
+                  deposityForm.get("amount")?.value | currency : "BRL"
+                }}</span>
               </h1>
               <button
                 type="button"

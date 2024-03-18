@@ -42,49 +42,43 @@ export class DeposityComponent {
   ) {}
 
   ngOnInit() {
+    this.deposityForm.reset();
+
     this.deposityForm
       .get('userName')
-      ?.setValue(this._loginService.loggedUser!.name);
+      ?.setValue(this._loginService.loggedUser?.name ?? 'not set');
     this.deposityForm.get('userName')?.disable();
     this.deposityForm
       .get('userEmail')
-      ?.setValue(this._loginService.loggedUser!.email);
+      ?.setValue(this._loginService.loggedUser?.email ?? 'not set');
     this.deposityForm.get('userEmail')?.disable();
     this.deposityForm.get('amount')?.setValue(this.amount);
   }
 
   submit() {
-    if (this.deposityForm.valid) {
-      this._alertHandler.setAlert(
-        AlertType.SUCCESS,
-        'Deposito realizado com sucesso!'
-      );
-      if (this._loginService.loggedUser!.amount) {
-        this._loginService.loggedUser!.amount +=
-          this.deposityForm.get('amount')?.value!;
-      } else {
-        this._loginService.loggedUser!.amount =
-          this.deposityForm.get('amount')?.value!;
-      }
-
-      let users = this._localStorageService.get();
-      if (users?.length > 0) {
-        users = users.map((user) => {
-          if (user.email === this._loginService.loggedUser!.email) {
-            user.amount = this._loginService.loggedUser!.amount;
-          }
-          return user;
-        });
-        this._localStorageService.set(users);
-      }
-
-      this._router.navigate(['/home']);
-      // TODO Atualizar no banco de dados
-    } else {
+    if (this.deposityForm.invalid) {
       this._alertHandler.setAlert(
         AlertType.DANGER,
         'Preencha todos os campos corretamente!'
       );
+      this.ngOnInit();
+      return;
     }
+
+    this._loginService.loggedUser!.amount =
+      (this._loginService.loggedUser?.amount ?? 0) +
+      this.deposityForm.get('amount')?.value!;
+
+    this._localStorageService.updateOne(
+      this._loginService.loggedUser!,
+      this._loginService.loggedUser?.email as string
+    );
+
+    this._alertHandler.setAlert(
+      AlertType.SUCCESS,
+      'Deposito realizado com sucesso!'
+    );
+
+    this._router.navigate(['/home']);
   }
 }

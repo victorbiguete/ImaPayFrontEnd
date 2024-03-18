@@ -28,6 +28,10 @@ export class WithdrawComponent {
     userName: new FormControl(''),
     userEmail: new FormControl(''),
     type: new FormControl('', [Validators.required]),
+    userPassword: new FormControl('', [
+      Validators.required,
+      // Validators.minLength(8),
+    ]),
     date: new FormControl(new Date()),
   });
 
@@ -38,59 +42,66 @@ export class WithdrawComponent {
   constructor(
     private _loginService: LoginService,
     private _router: Router,
-    private _alertHandler: AlertHandlerService,
+    private _alertService: AlertHandlerService,
     private _localStorageService: LocalStorageService
   ) {}
 
   ngOnInit() {
+    this.withdrawForm.reset();
+
     this.withdrawForm
       .get('userName')
-      ?.setValue(this._loginService.loggedUser!.name);
+      ?.setValue(this._loginService.loggedUser?.name ?? 'not set');
     this.withdrawForm.get('userName')?.disable();
     this.withdrawForm
       .get('userEmail')
-      ?.setValue(this._loginService.loggedUser!.email);
+      ?.setValue(this._loginService.loggedUser?.email ?? 'not set');
     this.withdrawForm.get('userEmail')?.disable();
     this.userAmount = this._loginService.loggedUser?.amount ?? 0;
   }
 
   submit() {
-    if (this.withdrawForm.valid) {
-      if (
-        this.withdrawForm.value.amount! <=
-        (this._loginService.loggedUser?.amount ?? 0)
-      ) {
-        this._alertHandler.setAlert(
-          AlertType.SUCCESS,
-          'Saque efetuado com sucesso!'
-        );
-        if (this._loginService.loggedUser!.amount) {
-          this._loginService.loggedUser!.amount -=
-            this.withdrawForm.get('amount')?.value!;
-        }
-
-        let users = this._localStorageService.get();
-        if (users?.length > 0) {
-          users = users.map((user) => {
-            if (user.email === this._loginService.loggedUser!.email) {
-              user.amount = this._loginService.loggedUser!.amount;
-            }
-            return user;
-          });
-          this._localStorageService.set(users);
-        }
-
-        this._router.navigate(['/home']);
-      } else {
-        this._alertHandler.setAlert(AlertType.DANGER, 'Saldo insuficiente!');
-      }
-    } else {
-      this._alertHandler.setAlert(
+    if (this.withdrawForm.invalid) {
+      this._alertService.setAlert(
         AlertType.DANGER,
         'Preencha todos os campos corretamente!'
       );
+      this.ngOnInit();
+      return;
     }
-  }
 
-  withdraw() {}
+    if (
+      this._loginService.loggedUser?.password !==
+      this.withdrawForm.get('userPassword')?.value
+    ) {
+      this._alertService.setAlert(AlertType.DANGER, 'Senha incorreta!');
+      this.ngOnInit();
+      return;
+    }
+
+    if (
+      this.withdrawForm.value.amount! >
+      (this._loginService.loggedUser?.amount ?? 0)
+    ) {
+      this._alertService.setAlert(AlertType.DANGER, 'Saldo insuficiente!');
+      this.ngOnInit();
+      return;
+    }
+
+    this._loginService.loggedUser!.amount =
+      (this._loginService.loggedUser?.amount ?? 0) -
+      this.withdrawForm.get('amount')?.value!;
+
+    this._localStorageService.updateOne(
+      this._loginService.loggedUser!,
+      this._loginService.loggedUser?.email as string
+    );
+
+    this._alertService.setAlert(
+      AlertType.SUCCESS,
+      'Saque efetuado com sucesso!'
+    );
+
+    this._router.navigate(['/home']);
+  }
 }

@@ -44,7 +44,11 @@ export class FormLogInComponent {
         Validators.email,
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ]),
-      password: new FormControl(this.password.value, [Validators.required]),
+      password: new FormControl(this.password.value, [
+        Validators.required,
+        // TODO: Adicionar validação de senha
+        // Validators.minLength(8)
+      ]),
     });
   }
 
