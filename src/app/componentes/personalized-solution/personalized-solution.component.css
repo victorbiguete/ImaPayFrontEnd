@@ -1,0 +1,61 @@
+
+.personalized-solution{
+    padding: 2rem ;
+    width: 100vw;
+    height: 500px;
+    display: flex;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-wrap: balance;
+}
+
+.banner{
+    width: 100%;
+    background: url('../../../assets/imgs/personalizedSolution.jpg') no-repeat center center local; 
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+}
+
+.content{
+    width: 100%;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--cor-texto-primario);
+    
+    h2{
+        font-weight: 800;
+        font-size: 2.5rem;
+    }
+
+    p{
+        font-weight: 600;
+        font-size: 1.4rem;
+    }
+
+    button{
+        align-self: flex-end;
+        font-weight: 800;
+    }
+}
+
+
+@media(max-width: 768px) {
+    .personalized-solution{
+        height: fit-content;
+    }
+    .banner{
+        display: none;
+    }
+    .content{
+        h2{
+            font-size: 2rem;
+        }
+    }
+}

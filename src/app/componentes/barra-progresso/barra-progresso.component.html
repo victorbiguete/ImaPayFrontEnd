@@ -4,14 +4,14 @@
     <p>Limite total</p>
   </div>
   <div class="barra">
-    <div class="barra-progresso" role="progressobar" [style.width.%]="(usado / total) * 100">
-      {{usado}}
+    <div class="barra-progresso" role="progressobar" [style.width.%]="(vl_disponivel) * 100">
+     {{usado}}
     </div>
   </div>
   <div class="container-valores">
     <div class="container-legenda">
-      <p class="valor">R${{vl_minimo}}</p>
-      <p class="valor">R${{vl_maximo}}</p>
+      <p class="valor">R${{ imagemVisivel ? vl_usado : '****' }}</p>
+      <p class="valor">R${{ imagemVisivel ? vl_total : '****' }}</p>
     </div>
   </div>
 </div>

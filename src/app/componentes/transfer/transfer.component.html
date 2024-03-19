@@ -1,0 +1,243 @@
+<app-menu></app-menu>
+
+<section class="transfer-wrapper">
+  <h1>Transferir</h1>
+  <section class="content">
+    <form [formGroup]="transferForm" (ngSubmit)="submit()">
+      <div id="first-part">
+        <div class="user-amount">
+          <p>{{ userAmount | currency : "BRL" }}</p>
+          <p>Saldo total</p>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">$</span>
+          <input
+            type="number"
+            min="0"
+            class="form-control"
+            aria-label="Dollar amount (with dot and two decimal places)"
+            placeholder="Valor"
+            #value
+            required
+            formControlName="amount"
+            [value]="transferForm.get('amount')?.value"
+          />
+          <span class="input-group-text">{{
+            transferForm.get("amount")?.value
+              ? (transferForm.get("amount")?.value | currency : "BRL")
+              : "R$0.00"
+          }}</span>
+        </div>
+        <div class="input-group flex-nowrap mb-3">
+          <span class="input-group-text" id="addon-wrapping"
+            ><img src="../../../assets/imgs/login-cadastro/u_user.svg" alt=""
+          /></span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Name"
+            aria-label="userName"
+            aria-describedby="addon-wrapping"
+            #userName
+            formControlName="userName"
+            required
+            [value]="transferForm.get('userName')?.value"
+          />
+        </div>
+
+        <div class="input-group flex-nowrap mb-3">
+          <span class="input-group-text" id="addon-wrapping">{{ "@" }} </span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Email"
+            aria-label="userEmail"
+            aria-describedby="addon-wrapping"
+            #userName
+            required
+            formControlName="userEmail"
+            [value]="transferForm.get('userEmail')?.value"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="inputGroupSelect01">Modo</label>
+          <select
+            class="form-select"
+            id="inputGroupSelect01"
+            required
+            formControlName="type"
+            [value]="transferForm.get('type')?.value"
+            #type
+          >
+            <option selected value="PIX">PIX</option>
+            <option value="TED">TED</option>
+            <option value="DOC">DOC</option>
+          </select>
+        </div>
+
+        <div class="input-group flex-nowrap mb-3">
+          <span class="input-group-text" id="addon-wrapping"
+            >{{ "Informe email do alvo @" }}
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="emailTarget"
+            aria-describedby="addon-wrapping"
+            formControlName="emailTarget"
+            [value]="transferForm.get('emailTarget')?.value"
+            #emailTarget
+            required
+          />
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="continuar()"
+          [disabled]="
+            transferForm.get('amount')?.errors ||
+            transferForm.get('type')?.errors ||
+            false
+          "
+        >
+          Continuar
+        </button>
+      </div>
+      <div id="second-part">
+        <div class="input-group mb-3">
+          <span class="input-group-text">$</span>
+          <input
+            type="number"
+            min="0"
+            class="form-control"
+            aria-label="Dollar amount (with dot and two decimal places)"
+            placeholder="Está transferindo:"
+            disabled
+          />
+          <span class="input-group-text">{{
+            transferForm.get("amount")?.value
+              ? (transferForm.get("amount")?.value | currency : "BRL")
+              : "R$0.00"
+          }}</span>
+        </div>
+        <div class="input-group flex-nowrap mb-3">
+          <span class="input-group-text" id="addon-wrapping"
+            ><img src="../../../assets/imgs/login-cadastro/u_user.svg" alt="" />
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="nameTarget"
+            aria-describedby="addon-wrapping"
+            formControlName="nameTarget"
+            [value]="transferForm.get('nameTarget')?.value"
+            #nameTarget
+            required
+          />
+        </div>
+        <div class="input-group flex-nowrap mb-3">
+          <span class="input-group-text" id="addon-wrapping">{{ "@" }} </span>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="emailTargetConfirm"
+            aria-describedby="addon-wrapping"
+            formControlName="emailTargetConfirm"
+            [value]="transferForm.get('emailTargetConfirm')?.value"
+            #emailTargetConfirm
+            required
+          />
+        </div>
+        <div class="input-group flex-nowrap mb-3">
+          <span class="input-group-text" id="addon-wrapping"
+            ><img src="../../../assets/imgs/login-cadastro/u_lock.svg" alt=""
+          /></span>
+          <input
+            type="password"
+            class="form-control"
+            aria-label="userPassword"
+            aria-describedby="addon-wrapping"
+            formControlName="userPassword"
+            [value]="transferForm.get('userPassword')?.value"
+            placeholder="Senha"
+            #userPassword
+            required
+          />
+        </div>
+        <div
+          *ngIf="
+            transferForm.get('userPassword')?.errors &&
+            (transferForm.get('userPassword')?.touched ||
+              transferForm.get('userPassword')?.dirty)
+          "
+          class="alert alert-danger"
+        >
+          <span>A senha contem 8 digitos.</span>
+        </div>
+        <button
+          type="button"
+          class="btn btn-warning"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          [disabled]="!transferForm.valid"
+        >
+          Transferir
+        </button>
+        <p class="alert-info alert">Um e-mail de confirmação será enviado.</p>
+      </div>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1
+                class="modal-title fs-5"
+                id="staticBackdropLabel"
+                style="text-align: center; color: black"
+              >
+                Confirmar transferência de:
+                <span style="color: red">{{
+                  transferForm.get("amount")?.value | currency : "BRL"
+                }}</span>
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Voltar
+              </button>
+              <button
+                type="submit"
+                class="btn btn-danger btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Confirmar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+</section>
+
+<app-footer></app-footer>

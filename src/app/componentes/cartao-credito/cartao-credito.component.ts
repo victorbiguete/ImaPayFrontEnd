@@ -14,4 +14,5 @@ export class CartaoCreditoComponent {
   @Input() numCartao: string = '';
   @Input() nomeTitular: string ='';
   @Input() validade: string ='';
+  @Input() imagemVisivel: boolean = false;
 }

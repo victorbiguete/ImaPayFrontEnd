@@ -1,0 +1,163 @@
+.cadastro-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 70%;
+    padding: 0 1rem;
+    margin: auto;
+    font-family: "Inter" ,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--cor-texto-primario);
+    /* overflow: hidden; */
+}
+
+h2{
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.1em;
+    text-wrap: balance;
+    /* margin-bottom: 1.2rem; */
+}
+
+h2 span{
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+h3{
+    text-wrap: balance ;
+    margin-bottom: 1rem;
+}
+
+p:first-of-type{
+    color: var(--cor-texto-secundario);
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 22.32px;
+}
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form input,
+form select{
+    width: 100%;
+    padding:10px 40px;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 10px;
+    line-height: 19.53px;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+form input:focus,
+form input:active{
+    outline: none;
+    border-color: #264653b6;
+}
+
+form .input-icons{
+    width: 100%;
+}
+
+.img-icon{
+    position: absolute;
+    padding: 17px;
+    z-index: 99;
+    width: 50px;
+}
+
+form i{
+    color: red;
+    position: absolute;
+    padding-top: 15px;
+    margin-left: -35px;
+    font-size: 1.3rem;
+}
+
+form p{
+    align-self: flex-end;
+}
+
+form label{
+    color: red;
+    display: block;
+}
+
+p:last-of-type{
+    font-weight: 600;
+    line-height: 19.53px;
+    font-size: 1.5rem;
+    text-wrap: balance;
+}
+
+a{
+    text-decoration: none;
+    color: var(--cor-texto-terciario);
+}
+
+a:hover,
+a:active{
+    color: var(--cor-texto-primario);
+}
+
+.red{
+    border: 1px solid red !important;
+}
+
+.green{
+    border: 1px solid green !important;
+}
+
+.input-bigger{
+    width: 60% !important;
+    display: inline-block !important;
+}
+
+.input-smaller{
+    width: 40% !important;
+    display: inline-block !important;
+}
+
+@media(max-width: 1920px) {
+    .cadastro-form{
+        width: 50%;
+    }
+}
+
+@media(max-width: 1440px) {
+    .cadastro-form{
+        width: 60%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .cadastro-form{
+        width: 80%;
+    }
+    h2{
+        font-size: 2rem;
+        margin-top: -1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .cadastro-form{
+        width: 90%;
+    }
+    .input-bigger, .input-smaller{
+        width: 100% !important;
+        display: block !important;
+    }
+}
+
+@media (max-width: 425px) {
+    .cadastro-form{
+        width: 100%;
+    }
+}

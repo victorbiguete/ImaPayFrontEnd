@@ -1,24 +1,48 @@
-<header>
-    <div class="container-menu">
-        <div class="conteudo-menu">
-            <div class="hamburger-menu" (click)="toggleMenu()"><img src="../../../assets/imgs/menu.png"
-                    class="icon-menu" alt="menu"></div>
-            <div class="logo"><a routerLink="/home">Simplify<span class="pay">Pay</span></a></div>
-            <nav (click)="toggleMenu()">
-                <div class="nav-list" [ngClass]="{'show': isMenuOpen}">
-                    <a routerLink="/home" class="link">Home</a>
-                    <a routerLink="/transacoes" class="link link-transacao">Transações</a>
-                </div>
+<header class="fade-in">
+  <div class="container-menu">
+    <div class="conteudo-menu">
+      <div class="hamburger-menu" (click)="toggleMenu()">
+        <img src="../../../assets/imgs/menu.png" class="icon-menu" alt="menu" />
+      </div>
+      <div class="logo">
+        <a routerLink="/home">Simplify<span class="pay">Pay</span></a>
 
-                <div class="perfil">
-                    <div class="item-perfil"><img class="icon icon-perfil" src="../../../assets/imgs/notificacao.png"
-                            alt="notificacao"></div>
-                    <div class="img-perfil"><img class="icon" src="../../../assets/imgs/pessoa.png" alt=""></div>
-                    <div class="img-perfil">
-                        <i (click)="logOut()" routerLink="/" class="fa-solid fa-right-from-bracket"></i>
-                    </div>
-                </div>
-            </nav>
+        <nav (click)="toggleMenu()">
+          <div class="nav-list" [ngClass]="{ show: isMenuOpen }">
+            <a routerLink="/home" class="link">Home</a>
+            <a routerLink="/transacoes" class="link">Transações</a>
+            <a routerLink="/home" class="link">Sobre nós</a>
+            <a routerLink="/deposity" class="link">Depositar</a>
+            <a routerLink="/withdraw" class="link">Sacar</a>
+            <a routerLink="/transfer" class="link">Transferir</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="perfil">
+        <div>
+          <img
+            class="icon"
+            src="../../../assets/imgs/alerta.png"
+            alt="notificacao"
+          />
         </div>
+
+        <div>
+          <img
+            class="icon img-user"
+            src="../../../assets/imgs/pessoa.png"
+            alt="Usuário"
+          />
+        </div>
+
+        <div>
+          <i
+            (click)="logOut()"
+            class="fa-solid fa-right-from-bracket logout"
+          ></i>
+        </div>
+      </div>
     </div>
+  </div>
 </header>

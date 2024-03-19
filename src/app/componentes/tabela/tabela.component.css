@@ -1,6 +1,6 @@
 th{
-    color: #6a6969;
-    background-color: #eeeeee;
+    color: #ededed;
+    background-color: var(--background-secundario);
     font-size: 14px;
 }
 .table-responsive{

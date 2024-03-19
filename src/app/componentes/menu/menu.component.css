@@ -1,10 +1,9 @@
 header{
     display: flex;
-    padding: 10px 20px;
+    padding: 15px 20px;
     height: auto;
-    border-bottom: 1px solid;
     margin:0;
-    background-color: var(--background-neutro-primario);
+    background-color: #1f1f1f;
 }
 
 .container-menu {
@@ -16,11 +15,12 @@ header{
     background-color: var(--background-neutro-primario);
     color: #00000025;
     display: flex;
-    align-items: center;
     width: 100%;
     gap:20px;
     justify-content: space-between;
     padding-right: 20px;
+    background-color: #1f1f1f;
+
 }
   
 .logo {
@@ -28,11 +28,13 @@ header{
     color: var(--cor-texto-primario);
     font-weight: bold;
     cursor:pointer;
+    display: flex;
+    gap:30px;
 
 }
 .logo a{
     text-decoration: none;
-    color:inherit;
+    color:#F5F5F5;
 }
 .pay{
     color: var(--cor-texto-terciario);
@@ -52,11 +54,16 @@ nav {
     padding-right: 30px;
 }
 
+.nav-list a:hover{
+    color: var(--cor-texto-terciario);
+}
+
 .link {
     text-decoration: none;
-    color: black;
     font-size: 1.1rem;
+    font-weight: lighter;
     cursor: pointer;
+    color:#F5F5F5;
 }
   
 .bold-text {
@@ -67,54 +74,49 @@ nav {
     display: none;
     cursor: pointer;
     font-size: 1.5em;
+    padding-top: 5px;
 }
 
 .perfil{
     display: flex;
+    align-items: center;
     gap:10px;
 }
-.item-perfil{
-    border: 1px solid #ccc;
-    padding:4px;
-    border-radius: 50%;
-    height: 35px;
-    width: 35px;
-}
+
 
 .icon{
     cursor: pointer;
 }
 .icon-perfil{
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
 }
  
-.img-perfil img{
+.img-user{
     width: 35px;
     height: 35px;
     border-radius: 50%;
 }
 
-.img-perfil i{
-    padding-top:7px;
-    font-size: 25px;
-    text-align: center;
+.logout{
+    font-size: 28px;
     color: rgb(49, 48, 48);
     cursor: pointer;
 }
 
-.img-perfil i:hover{
-    color: rgba(49, 48, 48, 0.491);
 
+.fa-right-from-bracket::before{
+    color: rgb(218, 218, 218);
+}
+
+.fa-right-from-bracket:hover{
+    color: rgba(218, 218, 218, 0.304);
 }
 
 @media screen and (max-width: 768px) {
     .nav-list a{
         display: block;
-        padding-bottom: 10px;
-    }
-    .nav-list .link-transacao{
-        margin-top: 0px;
+        padding-bottom: 20px;
     }
     .container-menu{
         gap:18px;
@@ -124,14 +126,15 @@ nav {
         flex-direction: column;
         position: fixed;
         top: 0;
-        left: -80%;
-        width: 80%; 
+        left: -100%;
+        width: 100%; 
         height: 100%;
         background-color: #333;
         transition: left 0.3s ease-in-out;
         box-sizing: border-box;
         z-index: 1000;
         padding-left: 30px;;
+        padding-top:20px;
         /* padding-right:0; */
     }
     .nav-list.show {

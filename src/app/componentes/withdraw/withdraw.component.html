@@ -1,0 +1,170 @@
+<app-menu></app-menu>
+
+<section class="withdraw-wrapper">
+  <h1>Sacar</h1>
+  <section class="content">
+    <form [formGroup]="withdrawForm" (ngSubmit)="submit()">
+      <div class="user-amount">
+        <p>{{ userAmount | currency : "BRL" }}</p>
+        <p>Saldo total</p>
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <input
+          type="number"
+          min="0"
+          class="form-control"
+          aria-label="Dollar amount (with dot and two decimal places)"
+          placeholder="Valor"
+          #value
+          required
+          formControlName="amount"
+          [value]="withdrawForm.get('amount')?.value"
+        />
+        <span class="input-group-text">{{
+          withdrawForm.get("amount")?.value
+            ? (withdrawForm.get("amount")?.value | currency : "BRL")
+            : "R$0.00"
+        }}</span>
+      </div>
+      <div class="input-group flex-nowrap mb-3">
+        <span class="input-group-text" id="addon-wrapping"
+          ><img src="../../../assets/imgs/login-cadastro/u_user.svg" alt=""
+        /></span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Name"
+          aria-label="userName"
+          aria-describedby="addon-wrapping"
+          #userName
+          formControlName="userName"
+          required
+          [value]="withdrawForm.get('userName')?.value"
+        />
+      </div>
+
+      <div class="input-group flex-nowrap mb-3">
+        <span class="input-group-text" id="addon-wrapping">{{ "@" }} </span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Email"
+          aria-label="userEmail"
+          aria-describedby="addon-wrapping"
+          #userName
+          required
+          formControlName="userEmail"
+          [value]="withdrawForm.get('userEmail')?.value"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">Modo</label>
+        <select
+          class="form-select"
+          id="inputGroupSelect01"
+          required
+          formControlName="type"
+          [value]="withdrawForm.get('type')?.value"
+          #type
+        >
+          <option selected value="AGENCIA">Agência Bancaria</option>
+          <option value="CAIXA_ELETRONICO">Caixa Eletronico</option>
+          <option value="PIX">Pix</option>
+        </select>
+      </div>
+
+      <div class="input-group flex-nowrap mb-3">
+        <span class="input-group-text" id="addon-wrapping"
+          ><img src="../../../assets/imgs/login-cadastro/u_lock.svg" alt=""
+        /></span>
+        <input
+          type="password"
+          class="form-control"
+          aria-label="userPassword"
+          aria-describedby="addon-wrapping"
+          formControlName="userPassword"
+          [value]="withdrawForm.get('userPassword')?.value"
+          placeholder="Senha"
+          #userPassword
+          required
+        />
+      </div>
+      <div
+        *ngIf="
+          withdrawForm.get('userPassword')?.errors &&
+          (withdrawForm.get('userPassword')?.touched ||
+            withdrawForm.get('userPassword')?.dirty)
+        "
+        class="alert alert-danger"
+      >
+        <span>A senha contem 8 digitos.</span>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-success"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        [disabled]="!withdrawForm.valid"
+      >
+        Sacar
+      </button>
+      <p class="alert-info alert">Um e-mail de confirmação será enviado.</p>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1
+                class="modal-title fs-5"
+                id="staticBackdropLabel"
+                style="text-align: center; color: black"
+              >
+                Confirmar saque de:
+                <span style="color: red">
+                  {{
+                    withdrawForm.get("amount")?.value | currency : "BRL"
+                  }}</span
+                >
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Voltar
+              </button>
+              <button
+                type="submit"
+                class="btn btn-warning btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Confirmar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+</section>
+
+<app-footer></app-footer>
