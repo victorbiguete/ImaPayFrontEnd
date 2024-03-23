@@ -11,10 +11,10 @@ import {
 
 import { FormButtonComponent } from '../form-button/form-button.component';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
-import { HttpCpfService } from '../../services/httpCpf/http-cpf.service';
 import { Adress } from '../../types/adress';
 import { AlertHandlerService } from '../../services/alertHandler/alert-handler.service';
 import { AlertType } from '../../types/alert';
+import { HttpCepService } from '../../services/httpCep/http-cep.service';
 
 @Component({
   selector: 'app-form-sign-up',
@@ -52,7 +52,7 @@ export class FormSignUpComponent {
   constructor(
     private localStorageService: LocalStorageService,
     private router: Router,
-    private httpCep: HttpCpfService,
+    private httpCep: HttpCepService,
     private alertHandler: AlertHandlerService
   ) {
     this.cadastroForm = new FormGroup(
