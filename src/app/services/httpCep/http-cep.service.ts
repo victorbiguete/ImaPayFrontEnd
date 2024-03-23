@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class HttpCpfService {
+export class HttpCepService {
   constructor(private http: HttpClient) {}
 
   private url = 'https://brasilapi.com.br/api/cep/v1/';
