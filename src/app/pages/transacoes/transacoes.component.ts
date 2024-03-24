@@ -45,13 +45,13 @@ export class TransacoesComponent {
         this.transacoes = data.content as Transaction[];
         this.transacoes.map((transacao) => {
           if (transacao.type === TransactionType.Deposit) {
-            transacao.type = 'Deposito';
+            transacao.type = 'Depósito';
           } else if (transacao.type === TransactionType.Withdraw) {
             transacao.type = 'Saque';
           } else if (transacao.type === TransactionType.TransferOutcome) {
-            transacao.type = 'Transferecia de saida';
+            transacao.type = 'Transferência de saida';
           } else if (transacao.type === TransactionType.TransferIncome) {
-            transacao.type = 'Transferecia de entrada';
+            transacao.type = 'Transferência de entrada';
           }
         });
         this.transacoesOriginal = [...this.transacoes];

@@ -33,7 +33,7 @@ export class TabelaComponent {
       if (this.transacoes?.length > 0) {
         this.transacoes.map((transacao) => {
           if (transacao.type === TransactionType.Deposit) {
-            transacao.type = 'Deposito';
+            transacao.type = 'Depósito';
           } else if (transacao.type === TransactionType.Withdraw) {
             transacao.type = 'Saque';
           } else if (transacao.type === TransactionType.TransferOutcome) {
