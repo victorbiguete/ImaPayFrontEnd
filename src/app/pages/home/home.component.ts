@@ -32,8 +32,8 @@ export class HomeComponent {
   vl_usado: string = '1.000,00';
   vl_total: string = '10.000,00';
   vl_saldo: string = '67.000,00';
-  vl_despesas: string = '22.000,00';
-  vl_investimentos: string = '170.000,00';
+  vl_despesas: string = '1.000,00';
+  vl_investimentos: string = '2.700,00';
 
   constructor(_loginService: LoginService) {
     const intervalId = setInterval(() => {
