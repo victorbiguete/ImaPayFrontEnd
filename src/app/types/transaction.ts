@@ -6,4 +6,5 @@ export class Transaction {
   public type: TransactionType = TransactionType.Deposit;
   public date: Date = new Date();
   public description?: string = '';
+  public name?: string = '';
 }

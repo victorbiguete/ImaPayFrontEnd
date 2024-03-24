@@ -48,7 +48,7 @@ export class DeposityComponent {
 
     this.deposityForm
       .get('userName')
-      ?.setValue(this._loginService.loggedUser.name ?? 'not set');
+      ?.setValue(this._loginService?.loggedUser?.name ?? 'not set');
     this.deposityForm.get('userName')?.disable();
     this.deposityForm
       .get('userEmail')
@@ -73,7 +73,7 @@ export class DeposityComponent {
 
     this._transactionsService
       .deposit(
-        this._loginService.loggedUser?.cpf,
+        this._loginService?.loggedUser?.cpf!,
         this.deposityForm.get('amount')?.value!,
         this.deposityForm.get('type')?.value!
       )

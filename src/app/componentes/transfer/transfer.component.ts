@@ -126,7 +126,7 @@ export class TransferComponent {
         (response) => {
           this._transactionsService
             .transfer(
-              this._loginService.loggedUser?.cpf,
+              this._loginService?.loggedUser?.cpf!,
               this.target?.cpf!,
               this.transferForm.get('amount')?.value!,
               this.transferForm.get('type')?.value!

@@ -10,7 +10,7 @@ import { LocalStorageService } from '../localStorage/local-storage.service';
 })
 export class LoginService {
   isLogged: boolean = this.localStorage.getToken() ? true : false;
-  loggedUser?: any | LoggedUser = this.localStorage.getUser();
+  loggedUser?: LoggedUser = this.localStorage.getUser();
   token?: string;
   constructor(
     private httpClientsService: HttpClientsService,
@@ -18,11 +18,7 @@ export class LoginService {
   ) {
     setInterval(() => {
       this.httpClientsService.isTokenValid().subscribe(
-        (response) => {
-          this.isLogged = true;
-          this.token = this.localStorage.getToken();
-          this.loggedUser = this.localStorage.getUser();
-        },
+        () => {},
         (err) => {
           this.isLogged = false;
           this.token = undefined;

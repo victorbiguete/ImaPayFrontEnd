@@ -55,7 +55,7 @@ export class WithdrawComponent {
 
     this.withdrawForm
       .get('userName')
-      ?.setValue(this._loginService.loggedUser.name ?? 'not set');
+      ?.setValue(this._loginService?.loggedUser?.name ?? 'not set');
     this.withdrawForm.get('userName')?.disable();
     this.withdrawForm
       .get('userEmail')
@@ -85,14 +85,14 @@ export class WithdrawComponent {
 
     this._clientsService
       .login(
-        this._loginService.loggedUser?.cpf,
+        this._loginService?.loggedUser?.cpf!,
         this.withdrawForm.get('userPassword')?.value!
       )
       .subscribe(
         () => {
           this._transactionsService
             .withdraw(
-              this._loginService.loggedUser?.cpf,
+              this._loginService?.loggedUser?.cpf!,
               this.withdrawForm.get('amount')?.value!,
               this.withdrawForm.get('type')?.value!
             )

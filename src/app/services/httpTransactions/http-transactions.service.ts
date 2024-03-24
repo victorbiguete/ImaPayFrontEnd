@@ -13,6 +13,16 @@ export class HttpTransactionsService {
 
   private url = 'http://localhost:5260/api/Transactions/';
 
+  get(cpf: string) {
+    const token = this.localStorage.getToken();
+    console.log(cpf);
+    return this.http.get<any>(this.url + '?cpf=' + cpf, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    });
+  }
+
   deposit(cpf: string, value: number, description?: string) {
     const token = this.localStorage.getToken();
     return this.http.post(
