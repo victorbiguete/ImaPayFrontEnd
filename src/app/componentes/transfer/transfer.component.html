@@ -57,6 +57,22 @@
             [value]="transferForm.get('userName')?.value"
           />
         </div>
+        
+        <div class="input-group flex-nowrap mb-3">
+          <span class="input-group-text" id="addon-wrapping"
+            >{{ "Descrição" }}
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="nameTarget"
+            aria-describedby="addon-wrapping"
+            formControlName="nameTarget"
+            [value]="transferForm.get('nameTarget')?.value"
+            #nameTarget
+            required
+          />
+        </div>
 
         <div class="input-group flex-nowrap mb-3">
           <span class="input-group-text" id="addon-wrapping">CPF </span>
@@ -151,7 +167,7 @@
           />
         </div>
         <div class="input-group flex-nowrap mb-3">
-          <span class="input-group-text" id="addon-wrapping">CPF destinatário </span>
+          <span class="input-group-text" id="addon-wrapping">CPF destina </span>
           <input
             type="text"
             class="form-control"

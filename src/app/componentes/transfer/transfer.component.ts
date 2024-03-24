@@ -72,7 +72,7 @@ export class TransferComponent {
     this.userAmount = this.loggedUser!.bankAccount.balance ?? 0;
 
     this.transferForm.get('emailTargetConfirm')?.disable();
-    this.transferForm.get('nameTarget')?.disable();
+    this.transferForm.get('nameTarget');
 
     document.getElementById('first-part')!.style.display = 'block';
     document.getElementById('second-part')!.style.display = 'none';
