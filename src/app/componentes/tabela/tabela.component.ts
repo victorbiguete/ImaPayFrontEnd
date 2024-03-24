@@ -24,12 +24,13 @@ interface Transacao {
 export class TabelaComponent {
   // @Input() transacoes: Transacao[] | undefined;
   transacoes: Transaction[] | undefined;
+  cont = 0;
 
   constructor(_loginService: LoginService) {
     const intervalId = setInterval(() => {
       this.transacoes =
         _loginService.getLoggedUser()?.bankAccount.transactions!;
-      if (this.transacoes) {
+      if (this.transacoes?.length > 0) {
         this.transacoes.map((transacao) => {
           if (transacao.type === TransactionType.Deposit) {
             transacao.type = 'Deposito';
@@ -43,9 +44,11 @@ export class TabelaComponent {
           // transacao.date.setHours(transacao.date.getHours() - 3);
         });
       }
-      if (this.transacoes !== undefined) {
+      if (this.transacoes !== undefined || this.cont >= 10) {
         clearInterval(intervalId);
       }
-    });
+      this.cont++;
+      console.log(this.cont);
+    }, 2000);
   }
 }

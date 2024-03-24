@@ -228,6 +228,7 @@ export class FormSignUpComponent {
         );
         this.loginService.setLoggedUser(response.body!.content);
         this.loginService.token = response.body!.token;
+        this.localStorageService.setToken(response.body!.token);
         this.loginService.isLogged = true;
         this.router.navigate(['/home']);
       },
