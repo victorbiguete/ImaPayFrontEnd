@@ -16,15 +16,17 @@ import { AlertType } from '../../types/alert';
 import { LoggedUser } from '../../types/loggedUser';
 import { HttpClientsService } from '../../services/httpClients/http-clients.service';
 import { HttpTransactionsService } from '../../services/httpTransactions/http-transactions.service';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-transfer',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MenuComponent, FooterComponent],
+  imports: [CommonModule, ReactiveFormsModule, MenuComponent, FooterComponent, CardComponent],
   templateUrl: './transfer.component.html',
   styleUrl: './transfer.component.css',
 })
 export class TransferComponent {
+  imagemVisivel: boolean = true;
   transferForm = new FormGroup({
     amount: new FormControl(0, [Validators.required]),
     userName: new FormControl('', [Validators.required]),
@@ -53,6 +55,9 @@ export class TransferComponent {
     this.loggedUser = this._loginService.getLoggedUser();
   }
 
+  trocarImagem() {
+    this.imagemVisivel = !this.imagemVisivel;
+  }
   ngOnInit() {
     this.transferForm.reset();
 
