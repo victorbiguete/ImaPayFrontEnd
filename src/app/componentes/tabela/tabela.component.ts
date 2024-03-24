@@ -26,16 +26,25 @@ export class TabelaComponent {
   transacoes: Transaction[] | undefined;
 
   constructor(_loginService: LoginService) {
-    this.transacoes = _loginService.loggedUser?.bankAccount.transactions!;
-    this.transacoes.map((transacao) => {
-      if (transacao.type === TransactionType.Deposit) {
-        transacao.type = 'Deposito';
-      } else if (transacao.type === TransactionType.Withdraw) {
-        transacao.type = 'Saque';
-      } else if (transacao.type === TransactionType.TransferOutcome) {
-        transacao.type = 'Transferência de saida';
-      } else if (transacao.type === TransactionType.TransferIncome) {
-        transacao.type = 'Transferência de entrada';
+    const intervalId = setInterval(() => {
+      this.transacoes =
+        _loginService.getLoggedUser()?.bankAccount.transactions!;
+      if (this.transacoes) {
+        this.transacoes.map((transacao) => {
+          if (transacao.type === TransactionType.Deposit) {
+            transacao.type = 'Deposito';
+          } else if (transacao.type === TransactionType.Withdraw) {
+            transacao.type = 'Saque';
+          } else if (transacao.type === TransactionType.TransferOutcome) {
+            transacao.type = 'Transferência de saida';
+          } else if (transacao.type === TransactionType.TransferIncome) {
+            transacao.type = 'Transferência de entrada';
+          }
+          // transacao.date.setHours(transacao.date.getHours() - 3);
+        });
+      }
+      if (this.transacoes !== undefined) {
+        clearInterval(intervalId);
       }
     });
   }

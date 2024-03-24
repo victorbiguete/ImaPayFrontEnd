@@ -16,6 +16,7 @@ import { AlertType } from '../../types/alert';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 import { HttpClientsService } from '../../services/httpClients/http-clients.service';
 import { HttpTransactionsService } from '../../services/httpTransactions/http-transactions.service';
+import { LoggedUser } from '../../types/loggedUser';
 
 @Component({
   selector: 'app-withdraw',
@@ -41,6 +42,8 @@ export class WithdrawComponent {
 
   public showModal: boolean = true;
 
+  public loggedUser?: LoggedUser;
+
   constructor(
     private _loginService: LoginService,
     private _router: Router,
@@ -48,20 +51,22 @@ export class WithdrawComponent {
     private _localStorageService: LocalStorageService,
     private _clientsService: HttpClientsService,
     private _transactionsService: HttpTransactionsService
-  ) {}
+  ) {
+    this.loggedUser = this._loginService.getLoggedUser();
+  }
 
   ngOnInit() {
     this.withdrawForm.reset();
-
+    this.loggedUser = this._loginService.getLoggedUser();
     this.withdrawForm
       .get('userName')
-      ?.setValue(this._loginService?.loggedUser?.name ?? 'not set');
+      ?.setValue(this.loggedUser?.name ?? 'not set');
     this.withdrawForm.get('userName')?.disable();
     this.withdrawForm
       .get('userEmail')
-      ?.setValue(this._loginService.loggedUser?.cpf ?? 'not set');
+      ?.setValue(this.loggedUser?.cpf ?? 'not set');
     this.withdrawForm.get('userEmail')?.disable();
-    this.userAmount = this._loginService.loggedUser!.bankAccount.balance ?? 0;
+    this.userAmount = this.loggedUser!.bankAccount.balance ?? 0;
   }
 
   submit() {
@@ -76,7 +81,7 @@ export class WithdrawComponent {
 
     if (
       this.withdrawForm.value.amount! >
-      (this._loginService.loggedUser!.bankAccount.balance ?? 0)
+      (this.loggedUser!.bankAccount.balance ?? 0)
     ) {
       this._alertService.setAlert(AlertType.DANGER, 'Saldo insuficiente!');
       this.ngOnInit();
@@ -85,14 +90,14 @@ export class WithdrawComponent {
 
     this._clientsService
       .login(
-        this._loginService?.loggedUser?.cpf!,
+        this.loggedUser?.cpf!,
         this.withdrawForm.get('userPassword')?.value!
       )
       .subscribe(
         () => {
           this._transactionsService
             .withdraw(
-              this._loginService?.loggedUser?.cpf!,
+              this.loggedUser?.cpf!,
               this.withdrawForm.get('amount')?.value!,
               this.withdrawForm.get('type')?.value!
             )
@@ -102,9 +107,11 @@ export class WithdrawComponent {
                   AlertType.SUCCESS,
                   'Saque efetuado com sucesso!'
                 );
-                this._loginService.loggedUser!.bankAccount.balance =
-                  (this._loginService.loggedUser!.bankAccount.balance ?? 0) -
+                this.loggedUser!.bankAccount.balance =
+                  (this.loggedUser!.bankAccount.balance ?? 0) -
                   this.withdrawForm.get('amount')?.value!;
+
+                this._loginService.setLoggedUser(this.loggedUser!);
                 this._router.navigate(['/home']);
               },
               (error) => {

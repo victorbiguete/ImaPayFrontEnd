@@ -10,12 +10,20 @@ import { LocalStorageService } from '../localStorage/local-storage.service';
 })
 export class LoginService {
   isLogged: boolean = this.localStorage.getToken() ? true : false;
-  loggedUser?: LoggedUser = this.localStorage.getUser();
+  private loggedUser?: LoggedUser = this.localStorage.getUser();
   token?: string;
   constructor(
     private httpClientsService: HttpClientsService,
     private localStorage: LocalStorageService
   ) {}
+
+  getLoggedUser() {
+    return this.loggedUser;
+  }
+  setLoggedUser(user: LoggedUser) {
+    this.loggedUser = user;
+    this.localStorage.setUser(this.loggedUser!);
+  }
 
   async login(cpf: string, password: string): Promise<boolean> {
     try {
@@ -23,16 +31,19 @@ export class LoginService {
         .login(cpf, password)
         .toPromise();
 
-      this.isLogged = true;
-
       this.token = response.token;
       this.localStorage.setToken(this.token!);
+      this.isLogged = true;
 
-      this.httpClientsService.getUser(cpf).subscribe((response) => {
-        this.loggedUser = response.content[0];
-        this.localStorage.setUser(this.loggedUser!);
-      });
-
+      this.httpClientsService.getUser(cpf).subscribe(
+        (response) => {
+          this.loggedUser = response.content[0];
+          this.localStorage.setUser(this.loggedUser!);
+        },
+        (error) => {
+          this.logOut();
+        }
+      );
       return true;
     } catch (err: any) {
       return false;
@@ -41,5 +52,7 @@ export class LoginService {
   logOut() {
     this.isLogged = false;
     this.loggedUser = undefined;
+    this.localStorage.deleteToken();
+    this.localStorage.deleteUser();
   }
 }

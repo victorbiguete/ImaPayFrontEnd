@@ -38,7 +38,7 @@ export class TransferComponent {
       Validators.minLength(8),
     ]),
   });
-
+  loggedUser?: LoggedUser;
   target?: LoggedUser;
 
   userAmount: number = 0;
@@ -49,20 +49,22 @@ export class TransferComponent {
     private _localStorageService: LocalStorageService,
     private _clientsService: HttpClientsService,
     private _transactionsService: HttpTransactionsService
-  ) {}
+  ) {
+    this.loggedUser = this._loginService.getLoggedUser();
+  }
 
   ngOnInit() {
     this.transferForm.reset();
 
     this.transferForm
       .get('userName')
-      ?.setValue(this._loginService.loggedUser?.name ?? 'not set');
+      ?.setValue(this.loggedUser?.name ?? 'not set');
     this.transferForm.get('userName')?.disable();
     this.transferForm
       .get('userEmail')
-      ?.setValue(this._loginService.loggedUser?.cpf ?? 'not set');
+      ?.setValue(this.loggedUser?.cpf ?? 'not set');
     this.transferForm.get('userEmail')?.disable();
-    this.userAmount = this._loginService.loggedUser!.bankAccount.balance ?? 0;
+    this.userAmount = this.loggedUser!.bankAccount.balance ?? 0;
 
     this.transferForm.get('emailTargetConfirm')?.disable();
     this.transferForm.get('nameTarget')?.disable();
@@ -110,7 +112,7 @@ export class TransferComponent {
 
     if (
       this.transferForm.get('amount')?.value! >
-      (this._loginService.loggedUser!.bankAccount.balance ?? 0)
+      (this.loggedUser!.bankAccount.balance ?? 0)
     ) {
       this._alertService.setAlert(AlertType.DANGER, 'Saldo insuficiente!');
       this.ngOnInit();
@@ -119,14 +121,14 @@ export class TransferComponent {
 
     this._clientsService
       .login(
-        this._loginService.loggedUser!.cpf,
+        this.loggedUser!.cpf,
         this.transferForm.get('userPassword')?.value!
       )
       .subscribe(
         (response) => {
           this._transactionsService
             .transfer(
-              this._loginService?.loggedUser?.cpf!,
+              this.loggedUser?.cpf!,
               this.target?.cpf!,
               this.transferForm.get('amount')?.value!,
               this.transferForm.get('type')?.value!
@@ -137,9 +139,11 @@ export class TransferComponent {
                   AlertType.SUCCESS,
                   'Transferencia efetuada com sucesso!'
                 );
-                this._loginService.loggedUser!.bankAccount.balance =
-                  (this._loginService.loggedUser!.bankAccount.balance ?? 0) -
+                this.loggedUser!.bankAccount.balance =
+                  (this.loggedUser!.bankAccount.balance ?? 0) -
                   this.transferForm.get('amount')?.value!;
+
+                this._loginService.setLoggedUser(this.loggedUser!);
                 this._router.navigate(['/home']);
               },
               (error) => {

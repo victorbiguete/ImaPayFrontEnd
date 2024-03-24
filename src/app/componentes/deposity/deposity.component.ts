@@ -14,6 +14,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { LoginService } from '../../services/login/login.service';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 import { HttpTransactionsService } from '../../services/httpTransactions/http-transactions.service';
+import { LoggedUser } from '../../types/loggedUser';
 
 @Component({
   selector: 'app-deposity',
@@ -26,6 +27,7 @@ export class DeposityComponent {
   public userName: string = 'Meu Nome';
   public userEmail: string = 'meu@email.com';
   public amount: number = 0;
+  public loggedUser?: LoggedUser;
 
   public deposityForm = new FormGroup({
     amount: new FormControl(0, [Validators.required, Validators.min(1)]),
@@ -39,20 +41,21 @@ export class DeposityComponent {
     private _alertHandler: AlertHandlerService,
     private _router: Router,
     private _loginService: LoginService,
-    private _localStorageService: LocalStorageService,
     private _transactionsService: HttpTransactionsService
-  ) {}
+  ) {
+    this.loggedUser = this._loginService.getLoggedUser();
+  }
 
   ngOnInit() {
     this.deposityForm.reset();
 
     this.deposityForm
       .get('userName')
-      ?.setValue(this._loginService?.loggedUser?.name ?? 'not set');
+      ?.setValue(this.loggedUser?.name ?? 'not set');
     this.deposityForm.get('userName')?.disable();
     this.deposityForm
       .get('userEmail')
-      ?.setValue(this._loginService.loggedUser?.cpf ?? 'not set');
+      ?.setValue(this.loggedUser?.cpf ?? 'not set');
     this.deposityForm.get('userEmail')?.disable();
     this.deposityForm.get('amount')?.setValue(this.amount);
   }
@@ -67,13 +70,9 @@ export class DeposityComponent {
       return;
     }
 
-    this._loginService.loggedUser!.bankAccount.balance =
-      (this._loginService.loggedUser?.bankAccount.balance ?? 0) +
-      this.deposityForm.get('amount')?.value!;
-
     this._transactionsService
       .deposit(
-        this._loginService?.loggedUser?.cpf!,
+        this.loggedUser?.cpf!,
         this.deposityForm.get('amount')?.value!,
         this.deposityForm.get('type')?.value!
       )
@@ -84,6 +83,11 @@ export class DeposityComponent {
             'Deposito realizado com sucesso!'
           );
 
+          this.loggedUser!.bankAccount.balance =
+            (this.loggedUser?.bankAccount.balance ?? 0) +
+            this.deposityForm.get('amount')?.value!;
+
+          this._loginService.setLoggedUser(this.loggedUser!);
           this._router.navigate(['/home']);
         },
         (error) => {

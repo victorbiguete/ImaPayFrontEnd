@@ -38,8 +38,9 @@ export class TransacoesComponent {
     private _transactionService: HttpTransactionsService
   ) {
     this.imagemVisivel = true;
-    this.saldo = this._loginService.loggedUser!.bankAccount.balance ?? 102.64;
-    this._transactionService.get(_loginService.loggedUser?.cpf!).subscribe(
+    this.saldo =
+      this._loginService.getLoggedUser()!.bankAccount.balance ?? 102.64;
+    this._transactionService.get(_loginService.getLoggedUser()?.cpf!).subscribe(
       (data) => {
         this.transacoes = data.content as Transaction[];
         this.transacoes.map((transacao) => {
@@ -54,6 +55,9 @@ export class TransacoesComponent {
           }
         });
         this.transacoesOriginal = [...this.transacoes];
+        let user = this._loginService.getLoggedUser()!;
+        user.bankAccount.transactions = this.transacoes;
+        this._loginService.setLoggedUser(user);
       },
       (error) => {
         console.log(error);

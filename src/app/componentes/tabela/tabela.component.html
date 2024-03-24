@@ -12,7 +12,9 @@
     <tbody>
       <tr *ngFor="let transacao of transacoes">
         <td>{{ transacao.type }}</td>
-        <td>{{ transacao.date }}</td>
+        <td>
+          {{ transacao.date | date : "dd/MM/yyyy" }}
+        </td>
         <td>{{ transacao.name }}</td>
         <td>R${{ transacao.value }}</td>
         <td>{{ transacao.description }}</td>

@@ -226,7 +226,7 @@ export class FormSignUpComponent {
           AlertType.SUCCESS,
           'Bem vindo ao SimplifyPay!'
         );
-        this.loginService.loggedUser = response.body!.content;
+        this.loginService.setLoggedUser(response.body!.content);
         this.loginService.token = response.body!.token;
         this.loginService.isLogged = true;
         this.router.navigate(['/home']);

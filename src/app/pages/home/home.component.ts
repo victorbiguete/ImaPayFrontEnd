@@ -36,9 +36,14 @@ export class HomeComponent {
   vl_investimentos: string = '170.000,00';
 
   constructor(_loginService: LoginService) {
-    this.vl_saldo =
-      _loginService.loggedUser?.bankAccount.balance.toLocaleString() ??
-      '67.000,00';
+    const intervalId = setInterval(() => {
+      this.vl_saldo =
+        _loginService.getLoggedUser()?.bankAccount.balance.toLocaleString() ??
+        '0,001';
+      if (this.vl_saldo !== '0,001') {
+        clearInterval(intervalId);
+      }
+    });
   }
 
   trocarImagem() {

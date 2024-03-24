@@ -38,4 +38,12 @@ export class LocalStorageService {
     if (token) return JSON.parse(token);
     return undefined;
   }
+
+  deleteToken() {
+    this.cookieService.delete('simplifyPay-token');
+  }
+
+  deleteUser() {
+    this.cookieService.delete('simplifyPay-user');
+  }
 }

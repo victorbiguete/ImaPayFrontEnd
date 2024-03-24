@@ -15,7 +15,7 @@ export class HttpTransactionsService {
 
   get(cpf: string) {
     const token = this.localStorage.getToken();
-    console.log(cpf);
+    // console.log(cpf);
     return this.http.get<any>(this.url + '?cpf=' + cpf, {
       headers: {
         Authorization: 'Bearer ' + token,
