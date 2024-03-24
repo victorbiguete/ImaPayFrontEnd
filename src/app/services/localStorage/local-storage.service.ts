@@ -20,10 +20,10 @@ export class LocalStorageService {
     );
   }
 
-  getUser() {
-    return JSON.parse(
-      this.cookieService.get('simplifyPay-user') ?? '{}'
-    ) as LoggedUser;
+  getUser(): LoggedUser | undefined {
+    let user = this.cookieService.get('simplifyPay-user') ?? false;
+    if (user) return JSON.parse(user);
+    return undefined;
   }
 
   setToken(token: string) {
@@ -33,9 +33,9 @@ export class LocalStorageService {
       this.inDays
     );
   }
-  getToken() {
-    return JSON.parse(
-      this.cookieService.get('simplifyPay-token') ?? '{}'
-    ) as string;
+  getToken(): string | undefined {
+    let token = this.cookieService.get('simplifyPay-token') ?? false;
+    if (token) return JSON.parse(token);
+    return undefined;
   }
 }

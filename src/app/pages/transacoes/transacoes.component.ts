@@ -23,112 +23,14 @@ interface Transacao {
   styleUrl: './transacoes.component.css',
 })
 export class TransacoesComponent {
-  // transacoes = [
-  //   //Dados apenas para teste:
-  //   {
-  //     tipo: 'Transferência enviada',
-  //     data: '23/02/2024',
-  //     nome: 'Stronger Sports',
-  //     valor: '150,00',
-  //     descricao: 'Pix',
-  //   },
-  //   {
-  //     tipo: 'Transferência recebida',
-  //     data: '23/02/2024',
-  //     nome: 'Ana Mariana Silva',
-  //     valor: '600,00',
-  //     descricao: 'Pix',
-  //   },
-  //   {
-  //     tipo: 'Pag. débito',
-  //     data: '23/02/2024',
-  //     nome: 'Grupo Casas Bahia',
-  //     valor: '450,00',
-  //     descricao: '',
-  //   },
-  //   {
-  //     tipo: 'Transferência enviada',
-  //     data: '23/02/2024',
-  //     nome: 'João da Silva',
-  //     valor: '200,00',
-  //     descricao: 'Pix',
-  //   },
-  //   {
-  //     tipo: 'Pag. débito',
-  //     data: '23/02/2024',
-  //     nome: 'Ifood',
-  //     valor: '250,00',
-  //     descricao: '',
-  //   },
-  //   {
-  //     tipo: 'Pag. crédito',
-  //     data: '23/02/2024',
-  //     nome: 'Auto Posto Cesar',
-  //     valor: '50,00',
-  //     descricao: '',
-  //   },
-  //   {
-  //     tipo: 'Transferência enviada',
-  //     data: '23/02/2024',
-  //     nome: 'Cleide da Silva',
-  //     valor: '500,00',
-  //     descricao: 'Pix',
-  //   },
-  //   {
-  //     tipo: 'Pag. débito',
-  //     data: '22/02/2024',
-  //     nome: 'Ifood',
-  //     valor: '150,00',
-  //     descricao: '',
-  //   },
-  //   {
-  //     tipo: 'Pag. crédito',
-  //     data: '22/02/2024',
-  //     nome: 'Strong Sports',
-  //     valor: '350,00',
-  //     descricao: '',
-  //   },
-  //   {
-  //     tipo: 'Pag. débito',
-  //     data: '21/02/2024',
-  //     nome: 'Ifood',
-  //     valor: '150,00',
-  //     descricao: '',
-  //   },
-  //   {
-  //     tipo: 'Remuneração/salário',
-  //     data: '21/02/2024',
-  //     nome: 'Amazon Services',
-  //     valor: '15.000,00',
-  //     descricao: '',
-  //   },
-
-  //   {
-  //     tipo: 'Pag. crédito',
-  //     data: '20/02/2024',
-  //     nome: 'Coco Bambu',
-  //     valor: '450,00',
-  //     descricao: '',
-  //   },
-
-  //   {
-  //     tipo: 'Pag. débito',
-  //     data: '19/02/2024',
-  //     nome: 'Ifood',
-  //     valor: '97,45',
-  //     descricao: '',
-  //   },
-  // ];
-
   transacoes: Transaction[] = [];
   imagemVisivel: boolean = true;
-  // saldo: string = '*****';
   saldo?: number;
   valorVisivel: boolean = false;
 
   transacoesOriginal: Transaction[] = [...this.transacoes];
 
-  filtroTipo: keyof Transacao = 'tipo';
+  filtroTipo: keyof Transaction = 'type';
   filtroValor: any = '';
 
   constructor(
@@ -140,8 +42,18 @@ export class TransacoesComponent {
     this._transactionService.get(_loginService.loggedUser?.cpf!).subscribe(
       (data) => {
         this.transacoes = data.content as Transaction[];
+        this.transacoes.map((transacao) => {
+          if (transacao.type === TransactionType.Deposit) {
+            transacao.type = 'Deposito';
+          } else if (transacao.type === TransactionType.Withdraw) {
+            transacao.type = 'Saque';
+          } else if (transacao.type === TransactionType.TransferOutcome) {
+            transacao.type = 'Transferecia de saida';
+          } else if (transacao.type === TransactionType.TransferIncome) {
+            transacao.type = 'Transferecia de entrada';
+          }
+        });
         this.transacoesOriginal = [...this.transacoes];
-        console.log(this.transacoes);
       },
       (error) => {
         console.log(error);
@@ -151,24 +63,17 @@ export class TransacoesComponent {
 
   trocarImagem() {
     this.imagemVisivel = !this.imagemVisivel;
-    // if (this.imagemVisivel) {
-    //    this.saldo = "*****";
-    // } else {
-    //    this.saldo =  '102,64';
-    // }
   }
 
   aplicarFiltros(): void {
-    // console.log('filtroTipo=' + this.filtroTipo);
-    // if (this.filtroValor !== '') {
-    //   this.transacoes = this.transacoesOriginal.filter((transacao) => {
-    //     return transacao[this.filtroTipo]
-    //       .toString()
-    //       .toLowerCase()
-    //       .includes(this.filtroValor.toString().toLowerCase());
-    //   });
-    // } else {
-    //   this.transacoes = this.transacoesOriginal;
-    // }
+    if (this.filtroValor !== '') {
+      this.transacoes = this.transacoesOriginal.filter((transacao) => {
+        return transacao[this.filtroTipo]!.toString()
+          .toLowerCase()
+          .includes(this.filtroValor.toString().toLowerCase());
+      });
+    } else {
+      this.transacoes = this.transacoesOriginal;
+    }
   }
 }

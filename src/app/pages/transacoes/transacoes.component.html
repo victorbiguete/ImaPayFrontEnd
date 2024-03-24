@@ -38,11 +38,11 @@
         [(ngModel)]="filtroTipo"
         (change)="aplicarFiltros()"
       >
-        <option value="tipo">Tipo</option>
-        <option value="data">Data</option>
-        <option value="nome">Nome</option>
-        <option value="valor">Valor</option>
-        <option value="descricao">Descrição</option>
+        <option value="type">Tipo</option>
+        <option value="date">Data</option>
+        <option value="name">Nome</option>
+        <option value="value">Valor</option>
+        <option value="description">Descrição</option>
       </select>
     </div>
 
@@ -73,11 +73,7 @@
         </thead>
         <tbody class="table-light">
           <tr *ngFor="let transacao of transacoes">
-            <!-- <td>{{ transacao.tipo }}</td> -->
-            <td *ngIf="transacao.type === 0">Deposito</td>
-            <td *ngIf="transacao.type === 1">Saque</td>
-            <td *ngIf="transacao.type === 2">Transferencia saida</td>
-            <td *ngIf="transacao.type === 3">Transferencia entrada</td>
+            <td>{{ transacao.type }}</td>
             <td>{{ transacao.date | date : "dd/MM/yyyy HH:mm" }}</td>
             <td>{{ transacao.name }}</td>
             <td>{{ transacao.value | currency : "BRL" }}</td>

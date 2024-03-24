@@ -67,7 +67,16 @@
       <div class="container-cartao">
         <div class="titulo-card">
           Cartão de crédito
-          <img class="visible" (click)="trocarImagem()"  [src]="imagemVisivel ? '../../../assets/imgs/visivel-black.png' : '../../../assets/imgs/invisivel-black.png'" alt="visivel">
+          <img
+            class="visible"
+            (click)="trocarImagem()"
+            [src]="
+              imagemVisivel
+                ? '../../../assets/imgs/visivel-black.png'
+                : '../../../assets/imgs/invisivel-black.png'
+            "
+            alt="visivel"
+          />
         </div>
         <app-cartao-credito
           nomeCartao="HappyBank"
@@ -109,7 +118,7 @@
               <p class="vencimento">venc: 15 março</p>
             </div>
             <p>Valor parcial</p>
-            <p class="valor"> R$ {{imagemVisivel ? vl_usado : '****'}}</p>
+            <p class="valor">R$ {{ imagemVisivel ? vl_usado : "****" }}</p>
           </div>
 
           <div class="separador"></div>
@@ -150,7 +159,16 @@
       <div class="container-minha-carteira">
         <div class="titulo-card">
           Minha carteira
-          <img class="visible" (click)="trocarImagemCarteira()"  [src]="imagemVisivelCarteira ? '../../../assets/imgs/visivel-black.png' : '../../../assets/imgs/invisivel-black.png'" alt="visivel">
+          <img
+            class="visible"
+            (click)="trocarImagemCarteira()"
+            [src]="
+              imagemVisivelCarteira
+                ? '../../../assets/imgs/visivel-black.png'
+                : '../../../assets/imgs/invisivel-black.png'
+            "
+            alt="visivel"
+          />
         </div>
 
         <div class="content-minha-carteira">
@@ -196,7 +214,7 @@
           <div><a routerLink="/transacoes" class="mais">Ver mais ></a></div>
         </div>
 
-        <app-tabela [transacoes]="transacoes"></app-tabela>
+        <app-tabela></app-tabela>
       </div>
     </div>
   </div>

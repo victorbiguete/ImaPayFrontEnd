@@ -15,18 +15,7 @@ export class LoginService {
   constructor(
     private httpClientsService: HttpClientsService,
     private localStorage: LocalStorageService
-  ) {
-    setInterval(() => {
-      this.httpClientsService.isTokenValid().subscribe(
-        () => {},
-        (err) => {
-          this.isLogged = false;
-          this.token = undefined;
-          this.loggedUser = undefined;
-        }
-      );
-    }, 60000);
-  }
+  ) {}
 
   async login(cpf: string, password: string): Promise<boolean> {
     try {
