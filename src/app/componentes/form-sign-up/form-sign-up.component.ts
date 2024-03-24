@@ -15,6 +15,9 @@ import { Adress } from '../../types/adress';
 import { AlertHandlerService } from '../../services/alertHandler/alert-handler.service';
 import { AlertType } from '../../types/alert';
 import { HttpCepService } from '../../services/httpCep/http-cep.service';
+import { HttpClientsService } from '../../services/httpClients/http-clients.service';
+import { User } from '../../types/user';
+import { LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: 'app-form-sign-up',
@@ -53,7 +56,9 @@ export class FormSignUpComponent {
     private localStorageService: LocalStorageService,
     private router: Router,
     private httpCep: HttpCepService,
-    private alertHandler: AlertHandlerService
+    private alertHandler: AlertHandlerService,
+    private httpClientsService: HttpClientsService,
+    private loginService: LoginService
   ) {
     this.cadastroForm = new FormGroup(
       {
@@ -81,7 +86,7 @@ export class FormSignUpComponent {
         userCpfCnpj: new FormControl(this.userCpfCnpj.value, [
           Validators.required,
           Validators.minLength(11),
-          Validators.maxLength(14),
+          Validators.maxLength(11),
           Validators.pattern('[0-9]*'),
         ]),
         userPhoneNumber: new FormControl(this.userPhoneNumber.value, [
@@ -111,7 +116,7 @@ export class FormSignUpComponent {
           Validators.required,
           Validators.minLength(4),
           Validators.maxLength(80),
-          Validators.pattern('[a-zA-Z ]*'),
+          Validators.pattern('[a-zA-Z0-9 ]*'),
         ]),
         userHouseNumber: new FormControl(this.userHouseNumber.value, [
           Validators.required,
@@ -160,7 +165,7 @@ export class FormSignUpComponent {
     document.getElementById('section-second')!.style.display = 'block';
   }
 
-  secondContinue() {
+  async secondContinue() {
     document.getElementById('section-second')!.style.display = 'none';
     document.getElementById('section-third')!.style.display = 'block';
 
@@ -189,7 +194,6 @@ export class FormSignUpComponent {
   }
 
   onSubmit(e: any) {
-    // TODO adaptar para o banco e validar
     e.preventDefault();
     if (this.cadastroForm.invalid) {
       this.cadastroForm.get('password')?.setErrors({ require: true });
@@ -198,37 +202,41 @@ export class FormSignUpComponent {
         ?.setErrors({ require: true });
       return;
     }
+    let client: User = new User();
 
-    const users = this.localStorageService.get();
-    if (users?.length > 0) {
-      if (
-        users.some((user) => user.email === this.cadastroForm.value.userEmail)
-      ) {
+    client.cpf = this.cadastroForm.get('userCpfCnpj')?.value;
+    client.email = this.cadastroForm.get('userEmail')?.value;
+    client.password = this.cadastroForm.get('password')?.value;
+    client.name = this.cadastroForm.get('userName')?.value;
+    client.phoneNumber = this.cadastroForm.get('userPhoneNumber')?.value;
+    client.bornDate = this.cadastroForm.get('userBornDate')?.value;
+    client.adress = new Adress();
+    client.adress.cep = this.cadastroForm.get('userZipCode')?.value;
+    client.adress.street = this.cadastroForm.get('userStreet')?.value;
+    client.adress.number = this.cadastroForm.get('userHouseNumber')?.value;
+    client.adress.city = this.cadastroForm.get('userCity')?.value;
+    client.adress.state = this.cadastroForm.get('userUF')?.value;
+    client.adress.neighborhood =
+      this.cadastroForm.get('userNeighborhood')?.value;
+
+    this.httpClientsService.register(client).subscribe(
+      (response) => {
+        this.cadastroForm.reset();
+        this.alertHandler.setAlert(
+          AlertType.SUCCESS,
+          'Bem vindo ao SimplifyPay!'
+        );
+        this.loginService.loggedUser = response.body!.content;
+        this.loginService.token = response.body!.token;
+        this.loginService.isLogged = true;
+        this.router.navigate(['/home']);
+      },
+      (err: any) => {
+        // this.alertHandler.setAlert(AlertType.DANGER, err.error.erros[0]);
+        this.alertHandler.setAlert(AlertType.DANGER, 'Usuário já existente');
+        this.cadastroForm.get('userCpfCnpj')?.setErrors({ require: true });
         this.ngOnInit();
-        this.cadastroForm.get('userEmail')?.setErrors({ userExists: true });
-        this.cadastroForm.get('password')?.reset();
-        this.cadastroForm.get('passwordConfirmation')?.reset();
-        return; // UserEmail already exists
       }
-      users.push({
-        name: this.cadastroForm.value.userName,
-        email: this.cadastroForm.value.userEmail,
-        password: this.cadastroForm.value.password,
-        amount: 0,
-      });
-      this.localStorageService.set(users);
-    } else {
-      this.localStorageService.set([
-        {
-          name: this.cadastroForm.value.userName,
-          email: this.cadastroForm.value.userEmail,
-          password: this.cadastroForm.value.password,
-          amount: 0,
-        },
-      ]);
-    }
-    this.cadastroForm.reset();
-    this.alertHandler.setAlert(AlertType.SUCCESS, 'Bem vindo ao SimplifyPay!');
-    this.router.navigate(['/home']);
+    );
   }
 }

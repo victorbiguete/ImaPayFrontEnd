@@ -1,88 +1,41 @@
 import { Injectable } from '@angular/core';
-import { LoginService } from '../login/login.service';
+import { CookieService } from 'ngx-cookie-service';
+import { LoggedUser } from '../../types/loggedUser';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalStorageService {
-  public local = window.localStorage;
+  // public local = window.localStorage;
 
-  constructor() {}
+  constructor(private cookieService: CookieService) {}
+  inHours = 2;
+  inDays = this.inHours / 24;
 
-  public set(
-    value: Array<{
-      name: string;
-      email: string;
-      password: string;
-      amount?: number;
-    }>,
-    key: string = 'simplifyPay-users'
-  ): void {
-    try {
-      this.local.setItem(key, JSON.stringify(value));
-    } catch (e) {
-      alert('Something went wrong');
-      console.warn(e);
-    }
+  setUser(user: LoggedUser) {
+    this.cookieService.set(
+      'simplifyPay-user',
+      JSON.stringify(user),
+      this.inDays
+    );
   }
 
-  public get(
-    key: string = 'simplifyPay-users'
-  ): Array<{ name: string; email: string; password: string; amount?: number }> {
-    try {
-      const item = this.local.getItem(key);
-      if (item) {
-        return JSON.parse(item);
-      } else {
-        return [];
-      }
-    } catch (e) {
-      alert('Something went wrong');
-      console.warn(e);
-      return [
-        {
-          name: 'exemple',
-          email: 'email@mail.com',
-          password: ' 123',
-          amount: 0,
-        },
-      ];
-    }
+  getUser() {
+    return JSON.parse(
+      this.cookieService.get('simplifyPay-user') ?? '{}'
+    ) as LoggedUser;
   }
 
-  public remove(key: string = 'simplifyPay-users'): void {
-    try {
-      this.local.removeItem(key);
-    } catch (e) {
-      console.warn(e);
-    }
+  setToken(token: string) {
+    this.cookieService.set(
+      'simplifyPay-token',
+      JSON.stringify(token),
+      this.inDays
+    );
   }
-
-  public getOne(
-    email: string
-  ):
-    | { name: string; email: string; password: string; amount?: number }
-    | undefined {
-    const users = this.get();
-    return users.find((user) => user.email === email);
-  }
-
-  public updateOne(
-    user: {
-      name: string;
-      email: string;
-      password: string;
-      amount?: number;
-    },
-    email: string
-  ) {
-    let users = this.get();
-    users = users.map((u) => {
-      if (u.email === email) {
-        u = user;
-      }
-      return u;
-    });
-    this.set(users);
+  getToken() {
+    return JSON.parse(
+      this.cookieService.get('simplifyPay-token') ?? '{}'
+    ) as string;
   }
 }

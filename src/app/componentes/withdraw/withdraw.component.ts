@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 import { AlertHandlerService } from '../../services/alertHandler/alert-handler.service';
 import { AlertType } from '../../types/alert';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
+import { HttpClientsService } from '../../services/httpClients/http-clients.service';
+import { HttpTransactionsService } from '../../services/httpTransactions/http-transactions.service';
 
 @Component({
   selector: 'app-withdraw',
@@ -30,8 +32,7 @@ export class WithdrawComponent {
     type: new FormControl('', [Validators.required]),
     userPassword: new FormControl('', [
       Validators.required,
-      // TODO: Adicionar validação de senha
-      // Validators.minLength(8),
+      Validators.minLength(8),
     ]),
     date: new FormControl(new Date()),
   });
@@ -44,7 +45,9 @@ export class WithdrawComponent {
     private _loginService: LoginService,
     private _router: Router,
     private _alertService: AlertHandlerService,
-    private _localStorageService: LocalStorageService
+    private _localStorageService: LocalStorageService,
+    private _clientsService: HttpClientsService,
+    private _transactionsService: HttpTransactionsService
   ) {}
 
   ngOnInit() {
@@ -52,13 +55,13 @@ export class WithdrawComponent {
 
     this.withdrawForm
       .get('userName')
-      ?.setValue(this._loginService.loggedUser?.name ?? 'not set');
+      ?.setValue(this._loginService.loggedUser.name ?? 'not set');
     this.withdrawForm.get('userName')?.disable();
     this.withdrawForm
       .get('userEmail')
-      ?.setValue(this._loginService.loggedUser?.email ?? 'not set');
+      ?.setValue(this._loginService.loggedUser?.cpf ?? 'not set');
     this.withdrawForm.get('userEmail')?.disable();
-    this.userAmount = this._loginService.loggedUser?.amount ?? 0;
+    this.userAmount = this._loginService.loggedUser!.bankAccount.balance ?? 0;
   }
 
   submit() {
@@ -72,37 +75,52 @@ export class WithdrawComponent {
     }
 
     if (
-      this._loginService.loggedUser?.password !==
-      this.withdrawForm.get('userPassword')?.value
-    ) {
-      this._alertService.setAlert(AlertType.DANGER, 'Senha incorreta!');
-      this.ngOnInit();
-      return;
-    }
-
-    if (
       this.withdrawForm.value.amount! >
-      (this._loginService.loggedUser?.amount ?? 0)
+      (this._loginService.loggedUser!.bankAccount.balance ?? 0)
     ) {
       this._alertService.setAlert(AlertType.DANGER, 'Saldo insuficiente!');
       this.ngOnInit();
       return;
     }
 
-    this._loginService.loggedUser!.amount =
-      (this._loginService.loggedUser?.amount ?? 0) -
-      this.withdrawForm.get('amount')?.value!;
-
-    this._localStorageService.updateOne(
-      this._loginService.loggedUser!,
-      this._loginService.loggedUser?.email as string
-    );
-
-    this._alertService.setAlert(
-      AlertType.SUCCESS,
-      'Saque efetuado com sucesso!'
-    );
-
-    this._router.navigate(['/home']);
+    this._clientsService
+      .login(
+        this._loginService.loggedUser?.cpf,
+        this.withdrawForm.get('userPassword')?.value!
+      )
+      .subscribe(
+        () => {
+          this._transactionsService
+            .withdraw(
+              this._loginService.loggedUser?.cpf,
+              this.withdrawForm.get('amount')?.value!,
+              this.withdrawForm.get('type')?.value!
+            )
+            .subscribe(
+              () => {
+                this._alertService.setAlert(
+                  AlertType.SUCCESS,
+                  'Saque efetuado com sucesso!'
+                );
+                this._loginService.loggedUser!.bankAccount.balance =
+                  (this._loginService.loggedUser!.bankAccount.balance ?? 0) -
+                  this.withdrawForm.get('amount')?.value!;
+                this._router.navigate(['/home']);
+              },
+              (error) => {
+                this._alertService.setAlert(
+                  AlertType.DANGER,
+                  'Erro ao efetuar saque!'
+                );
+                this.ngOnInit();
+              }
+            );
+        },
+        (error) => {
+          this._alertService.setAlert(AlertType.DANGER, 'Senha incorreta!');
+          this.ngOnInit();
+          return;
+        }
+      );
   }
 }

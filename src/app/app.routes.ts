@@ -33,7 +33,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'deposity',
+    path: 'deposit',
     component: DeposityComponent,
     canActivate: [authGuard],
   },

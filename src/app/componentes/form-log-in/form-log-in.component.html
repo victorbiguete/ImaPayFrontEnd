@@ -32,17 +32,16 @@
       <img src="../../../assets/imgs/login-cadastro/u_user.svg" alt="" />
       <input
         type="text"
-        name="userEmail"
-        id="userEmail"
-        placeholder="Email"
-        formControlName="userEmail"
+        name="userCpf"
+        id="userCpf"
+        placeholder="Cpf"
+        formControlName="userCpf"
         autocomplete="off"
-        #userEmail
+        #userCpf
         required
         [ngClass]="
-          loginForm.get('userEmail')?.invalid &&
-          (loginForm.get('userEmail')?.touched ||
-            loginForm.get('userEmail')?.dirty)
+          loginForm.get('userCpf')?.invalid &&
+          (loginForm.get('userCpf')?.touched || loginForm.get('userCpf')?.dirty)
             ? 'red'
             : 'green'
         "
@@ -50,17 +49,15 @@
 
       <i
         *ngIf="
-          loginForm.get('userEmail')?.invalid &&
-          (loginForm.get('userEmail')?.touched ||
-            loginForm.get('userEmail')?.dirty)
+          loginForm.get('userCpf')?.invalid &&
+          (loginForm.get('userCpf')?.touched || loginForm.get('userCpf')?.dirty)
         "
         class="fa-solid fa-circle-exclamation"
       ></i>
       <label
         *ngIf="
-          loginForm.get('userEmail')?.invalid &&
-          (loginForm.get('userEmail')?.touched ||
-            loginForm.get('userEmail')?.dirty)
+          loginForm.get('userCpf')?.invalid &&
+          (loginForm.get('userCpf')?.touched || loginForm.get('userCpf')?.dirty)
         "
         >Este campo é obrigatório</label
       >

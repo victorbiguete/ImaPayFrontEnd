@@ -13,6 +13,9 @@ import { AlertHandlerService } from '../../services/alertHandler/alert-handler.s
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 import { LoginService } from '../../services/login/login.service';
 import { AlertType } from '../../types/alert';
+import { LoggedUser } from '../../types/loggedUser';
+import { HttpClientsService } from '../../services/httpClients/http-clients.service';
+import { HttpTransactionsService } from '../../services/httpTransactions/http-transactions.service';
 
 @Component({
   selector: 'app-transfer',
@@ -27,24 +30,25 @@ export class TransferComponent {
     userName: new FormControl('', [Validators.required]),
     userEmail: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
-    emailTarget: new FormControl('', [Validators.required, Validators.email]),
+    emailTarget: new FormControl('', [Validators.required]),
     emailTargetConfirm: new FormControl('not set', [Validators.required]),
     nameTarget: new FormControl('not set', [Validators.required]),
     userPassword: new FormControl('', [
       Validators.required,
-      // TODO: Adicionar validação de senha
-      // Validators.minLength(8),
+      Validators.minLength(8),
     ]),
   });
 
-  target?: { name: string; email: string; password: string; amount?: number };
+  target?: LoggedUser;
 
   userAmount: number = 0;
   constructor(
     private _loginService: LoginService,
     private _router: Router,
     private _alertService: AlertHandlerService,
-    private _localStorageService: LocalStorageService
+    private _localStorageService: LocalStorageService,
+    private _clientsService: HttpClientsService,
+    private _transactionsService: HttpTransactionsService
   ) {}
 
   ngOnInit() {
@@ -56,9 +60,9 @@ export class TransferComponent {
     this.transferForm.get('userName')?.disable();
     this.transferForm
       .get('userEmail')
-      ?.setValue(this._loginService.loggedUser?.email ?? 'not set');
+      ?.setValue(this._loginService.loggedUser?.cpf ?? 'not set');
     this.transferForm.get('userEmail')?.disable();
-    this.userAmount = this._loginService.loggedUser?.amount ?? 0;
+    this.userAmount = this._loginService.loggedUser!.bankAccount.balance ?? 0;
 
     this.transferForm.get('emailTargetConfirm')?.disable();
     this.transferForm.get('nameTarget')?.disable();
@@ -68,17 +72,30 @@ export class TransferComponent {
   }
 
   continuar() {
-    this.target = this._localStorageService.getOne(
-      this.transferForm.value.emailTarget as string
-    );
-    if (this.target) {
-      this.transferForm.get('emailTargetConfirm')?.setValue(this.target.email);
-      this.transferForm.get('emailTargetConfirm')?.disable();
-      this.transferForm.get('nameTarget')?.setValue(this.target.name);
-      this.transferForm.get('nameTarget')?.disable();
-      document.getElementById('first-part')!.style.display = 'none';
-      document.getElementById('second-part')!.style.display = 'block';
-    }
+    this._clientsService
+      .getUser(this.transferForm.value.emailTarget as string)
+      .subscribe(
+        (response) => {
+          this.target = response.content[0];
+          if (this.target) {
+            this.transferForm
+              .get('emailTargetConfirm')
+              ?.setValue(this.target.cpf);
+            this.transferForm.get('emailTargetConfirm')?.disable();
+            this.transferForm.get('nameTarget')?.setValue(this.target.name);
+            this.transferForm.get('nameTarget')?.disable();
+            document.getElementById('first-part')!.style.display = 'none';
+            document.getElementById('second-part')!.style.display = 'block';
+          }
+        },
+        (error) => {
+          this._alertService.setAlert(
+            AlertType.DANGER,
+            'Usuário não encontrado!'
+          );
+          this.ngOnInit();
+        }
+      );
   }
 
   submit() {
@@ -92,45 +109,54 @@ export class TransferComponent {
     }
 
     if (
-      this._loginService.loggedUser?.password !==
-      this.transferForm.get('userPassword')?.value
-    ) {
-      this._alertService.setAlert(AlertType.DANGER, 'Senha incorreta!');
-      this.ngOnInit();
-      return;
-    }
-
-    if (
       this.transferForm.get('amount')?.value! >
-      (this._loginService.loggedUser?.amount ?? 0)
+      (this._loginService.loggedUser!.bankAccount.balance ?? 0)
     ) {
       this._alertService.setAlert(AlertType.DANGER, 'Saldo insuficiente!');
       this.ngOnInit();
       return;
     }
 
-    this._loginService.loggedUser!.amount =
-      (this._loginService.loggedUser?.amount ?? 0) -
-      this.transferForm.get('amount')?.value!;
-
-    this._localStorageService.updateOne(
-      this._loginService.loggedUser!,
-      this._loginService.loggedUser?.email as string
-    );
-
-    this.target!.amount =
-      (this.target?.amount ?? 0) + this.transferForm.get('amount')?.value!;
-
-    this._localStorageService.updateOne(
-      this.target!,
-      this.target?.email as string
-    );
-
-    this._alertService.setAlert(
-      AlertType.SUCCESS,
-      'Transferencia efetuada com sucesso!'
-    );
-
-    this._router.navigate(['/home']);
+    this._clientsService
+      .login(
+        this._loginService.loggedUser!.cpf,
+        this.transferForm.get('userPassword')?.value!
+      )
+      .subscribe(
+        (response) => {
+          this._transactionsService
+            .transfer(
+              this._loginService.loggedUser?.cpf,
+              this.target?.cpf!,
+              this.transferForm.get('amount')?.value!,
+              this.transferForm.get('type')?.value!
+            )
+            .subscribe(
+              (response) => {
+                this._alertService.setAlert(
+                  AlertType.SUCCESS,
+                  'Transferencia efetuada com sucesso!'
+                );
+                this._loginService.loggedUser!.bankAccount.balance =
+                  (this._loginService.loggedUser!.bankAccount.balance ?? 0) -
+                  this.transferForm.get('amount')?.value!;
+                this._router.navigate(['/home']);
+              },
+              (error) => {
+                this._alertService.setAlert(
+                  AlertType.DANGER,
+                  'Erro ao efetuar transferencia!'
+                );
+                this.ngOnInit();
+                return;
+              }
+            );
+        },
+        (error) => {
+          this._alertService.setAlert(AlertType.DANGER, 'Senha incorreta!');
+          this.ngOnInit();
+          return;
+        }
+      );
   }
 }

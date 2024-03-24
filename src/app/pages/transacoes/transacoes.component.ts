@@ -128,7 +128,7 @@ export class TransacoesComponent {
 
   constructor(private _loginService: LoginService) {
     this.imagemVisivel = true;
-    this.saldo = this._loginService.loggedUser?.amount ?? 102.64;
+    this.saldo = this._loginService.loggedUser!.bankAccount.balance ?? 102.64;
   }
 
   trocarImagem() {

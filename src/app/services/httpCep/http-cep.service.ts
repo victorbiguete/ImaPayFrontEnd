@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Adress } from '../../types/adress';
 
 @Injectable({
   providedIn: 'root',

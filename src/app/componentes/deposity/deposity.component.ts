@@ -13,6 +13,7 @@ import { MenuComponent } from '../menu/menu.component';
 import { FooterComponent } from '../footer/footer.component';
 import { LoginService } from '../../services/login/login.service';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
+import { HttpTransactionsService } from '../../services/httpTransactions/http-transactions.service';
 
 @Component({
   selector: 'app-deposity',
@@ -38,7 +39,8 @@ export class DeposityComponent {
     private _alertHandler: AlertHandlerService,
     private _router: Router,
     private _loginService: LoginService,
-    private _localStorageService: LocalStorageService
+    private _localStorageService: LocalStorageService,
+    private _transactionsService: HttpTransactionsService
   ) {}
 
   ngOnInit() {
@@ -46,11 +48,11 @@ export class DeposityComponent {
 
     this.deposityForm
       .get('userName')
-      ?.setValue(this._loginService.loggedUser?.name ?? 'not set');
+      ?.setValue(this._loginService.loggedUser.name ?? 'not set');
     this.deposityForm.get('userName')?.disable();
     this.deposityForm
       .get('userEmail')
-      ?.setValue(this._loginService.loggedUser?.email ?? 'not set');
+      ?.setValue(this._loginService.loggedUser?.cpf ?? 'not set');
     this.deposityForm.get('userEmail')?.disable();
     this.deposityForm.get('amount')?.setValue(this.amount);
   }
@@ -65,20 +67,31 @@ export class DeposityComponent {
       return;
     }
 
-    this._loginService.loggedUser!.amount =
-      (this._loginService.loggedUser?.amount ?? 0) +
+    this._loginService.loggedUser!.bankAccount.balance =
+      (this._loginService.loggedUser?.bankAccount.balance ?? 0) +
       this.deposityForm.get('amount')?.value!;
 
-    this._localStorageService.updateOne(
-      this._loginService.loggedUser!,
-      this._loginService.loggedUser?.email as string
-    );
+    this._transactionsService
+      .deposit(
+        this._loginService.loggedUser?.cpf,
+        this.deposityForm.get('amount')?.value!,
+        this.deposityForm.get('type')?.value!
+      )
+      .subscribe(
+        (response) => {
+          this._alertHandler.setAlert(
+            AlertType.SUCCESS,
+            'Deposito realizado com sucesso!'
+          );
 
-    this._alertHandler.setAlert(
-      AlertType.SUCCESS,
-      'Deposito realizado com sucesso!'
-    );
-
-    this._router.navigate(['/home']);
+          this._router.navigate(['/home']);
+        },
+        (error) => {
+          this._alertHandler.setAlert(
+            AlertType.DANGER,
+            'Erro ao realizar deposito!'
+          );
+        }
+      );
   }
 }
