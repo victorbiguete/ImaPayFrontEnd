@@ -9,7 +9,7 @@ export class LocalStorageService {
   // public local = window.localStorage;
 
   constructor(private cookieService: CookieService) {}
-  inHours = 2;
+  inHours = 1;
   inDays = this.inHours / 24;
 
   setUser(user: LoggedUser) {

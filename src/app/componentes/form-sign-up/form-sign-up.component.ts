@@ -54,13 +54,11 @@ export class FormSignUpComponent {
   yearNewer = new Date().getFullYear() - 10;
 
   constructor(
-    private localStorageService: LocalStorageService,
     private router: Router,
     private httpCep: HttpCepService,
     private alertHandler: AlertHandlerService,
     private httpClientsService: HttpClientsService,
-    private loginService: LoginService,
-    private tokenHandler: TokenHandlerService
+    private loginService: LoginService
   ) {
     this.cadastroForm = new FormGroup(
       {
@@ -80,6 +78,7 @@ export class FormSignUpComponent {
         password: new FormControl(this.userPassword.value, [
           Validators.required,
           Validators.minLength(8),
+          Validators.pattern('[a-zA-Z0-9]*'),
         ]),
         passwordConfirmation: new FormControl(this.userConfirmPassword.value, [
           Validators.required,
@@ -229,9 +228,7 @@ export class FormSignUpComponent {
           'Bem vindo ao SimplifyPay!'
         );
         this.loginService.setLoggedUser(response.body!.content);
-        this.loginService.token = response.body!.token;
-        this.localStorageService.setToken(response.body!.token);
-        this.tokenHandler.setToken(response.body!.token);
+        this.loginService.setToken(response.body!.token);
         this.loginService.isLogged = true;
         this.router.navigate(['/home']);
       },

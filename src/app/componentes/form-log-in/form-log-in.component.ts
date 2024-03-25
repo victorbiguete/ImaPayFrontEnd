@@ -61,14 +61,14 @@ export class FormLogInComponent {
     await this.loginService
       .login(this.loginForm.value.userCpf, this.loginForm.value.password)
       .then((res) => {
-        if (res == true) {
+        if (res === true) {
           this.loginForm.reset();
           this.alertHandler.setAlert(
             AlertType.SUCCESS,
             'Login efetuado com sucesso! Bem vindo de Volta!'
           );
           this.router.navigate(['/home']);
-        } else {
+        } else if (res === false) {
           this.loginForm.get('userEmail')?.setErrors({ required: true });
           this.loginForm.get('password')?.setErrors({ required: true });
           this.failedLogin = true;

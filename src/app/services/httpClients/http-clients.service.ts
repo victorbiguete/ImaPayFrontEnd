@@ -13,8 +13,6 @@ import { TokenHandlerService } from '../tokenHandler/token-handler.service';
 export class HttpClientsService {
   constructor(
     private http: HttpClient,
-    private alertHandler: AlertHandlerService,
-    private localStorage: LocalStorageService,
     private tokenHandler: TokenHandlerService
   ) {}
 
