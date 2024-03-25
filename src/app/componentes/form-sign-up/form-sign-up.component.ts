@@ -18,6 +18,7 @@ import { HttpCepService } from '../../services/httpCep/http-cep.service';
 import { HttpClientsService } from '../../services/httpClients/http-clients.service';
 import { User } from '../../types/user';
 import { LoginService } from '../../services/login/login.service';
+import { TokenHandlerService } from '../../services/tokenHandler/token-handler.service';
 
 @Component({
   selector: 'app-form-sign-up',
@@ -58,7 +59,8 @@ export class FormSignUpComponent {
     private httpCep: HttpCepService,
     private alertHandler: AlertHandlerService,
     private httpClientsService: HttpClientsService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private tokenHandler: TokenHandlerService
   ) {
     this.cadastroForm = new FormGroup(
       {
@@ -229,6 +231,7 @@ export class FormSignUpComponent {
         this.loginService.setLoggedUser(response.body!.content);
         this.loginService.token = response.body!.token;
         this.localStorageService.setToken(response.body!.token);
+        this.tokenHandler.setToken(response.body!.token);
         this.loginService.isLogged = true;
         this.router.navigate(['/home']);
       },

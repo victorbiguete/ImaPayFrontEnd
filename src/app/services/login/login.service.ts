@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClientsService } from '../httpClients/http-clients.service';
-import { AlertHandlerService } from '../alertHandler/alert-handler.service';
-import { AlertType } from '../../types/alert';
 import { LoggedUser } from '../../types/loggedUser';
 import { LocalStorageService } from '../localStorage/local-storage.service';
+import { TokenHandlerService } from '../tokenHandler/token-handler.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +13,11 @@ export class LoginService {
   token?: string;
   constructor(
     private httpClientsService: HttpClientsService,
-    private localStorage: LocalStorageService
-  ) {}
+    private localStorage: LocalStorageService,
+    private tokenHandler: TokenHandlerService
+  ) {
+    this.tokenHandler.setToken(this.localStorage.getToken());
+  }
 
   getLoggedUser() {
     return this.loggedUser;
@@ -34,6 +36,8 @@ export class LoginService {
       this.token = response.token;
       this.localStorage.setToken(this.token!);
       this.isLogged = true;
+
+      this.tokenHandler.setToken(this.token!);
 
       this.httpClientsService.getUser(cpf).subscribe(
         (response) => {

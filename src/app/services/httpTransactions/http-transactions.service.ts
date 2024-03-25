@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from '../localStorage/local-storage.service';
+import { LoginService } from '../login/login.service';
+import { TokenHandlerService } from '../tokenHandler/token-handler.service';
 
 @Injectable({
   providedIn: 'root',
@@ -8,13 +10,14 @@ import { LocalStorageService } from '../localStorage/local-storage.service';
 export class HttpTransactionsService {
   constructor(
     private http: HttpClient,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private tokenHandler: TokenHandlerService
   ) {}
 
   private url = 'http://localhost:5260/api/Transactions/';
 
   get(cpf: string) {
-    const token = this.localStorage.getToken();
+    const token = this.tokenHandler.getToken();
     // console.log(cpf);
     return this.http.get<any>(this.url + '?cpf=' + cpf, {
       headers: {
@@ -24,7 +27,7 @@ export class HttpTransactionsService {
   }
 
   deposit(cpf: string, value: number, description?: string) {
-    const token = this.localStorage.getToken();
+    const token = this.tokenHandler.getToken();
     return this.http.post(
       this.url + 'deposit/' + cpf,
       {
@@ -40,7 +43,7 @@ export class HttpTransactionsService {
   }
 
   withdraw(cpf: string, value: number, description?: string) {
-    const token = this.localStorage.getToken();
+    const token = this.tokenHandler.getToken();
     return this.http.post(
       this.url + 'withdraw/' + cpf,
       {
@@ -61,7 +64,7 @@ export class HttpTransactionsService {
     value: number,
     description?: string
   ) {
-    const token = this.localStorage.getToken();
+    const token = this.tokenHandler.getToken();
     return this.http.post(
       this.url + 'transfer/' + cpf + '/' + cpftarget,
       {

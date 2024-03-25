@@ -16,7 +16,8 @@ export class LocalStorageService {
     this.cookieService.set(
       'simplifyPay-user',
       JSON.stringify(user),
-      this.inDays
+      this.inDays,
+      '/'
     );
   }
 
@@ -30,7 +31,8 @@ export class LocalStorageService {
     this.cookieService.set(
       'simplifyPay-token',
       JSON.stringify(token),
-      this.inDays
+      this.inDays,
+      '/'
     );
   }
   getToken(): string | undefined {
