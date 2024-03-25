@@ -78,7 +78,6 @@ export class FormSignUpComponent {
         password: new FormControl(this.userPassword.value, [
           Validators.required,
           Validators.minLength(8),
-          Validators.pattern('[a-zA-Z0-9]*'),
         ]),
         passwordConfirmation: new FormControl(this.userConfirmPassword.value, [
           Validators.required,
