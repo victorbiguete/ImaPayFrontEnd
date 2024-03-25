@@ -135,22 +135,20 @@
         </button>
       </div>
       <div id="second-part">
+        
         <div class="input-group mb-3">
           <span class="input-group-text">R$</span>
           <input
-            type="number"
-            min="0"
-            class="form-control"
-            aria-label="Dollar amount (with dot and two decimal places)"
-            placeholder="Valor a ser transferido:"
-            disabled
+              type="number"
+              min="0"
+              class="form-control"
+              aria-label="Dollar amount (with dot and two decimal places)"
+              placeholder="Valor a ser transferido:"
+              disabled
+              [value]="transferForm.get('amount')?.value"
           />
-          <span class="input-group-text">{{
-            transferForm.get("amount")?.value
-              ? (transferForm.get("amount")?.value | currency : "BRL")
-              : "R$0.00"
-          }}</span>
         </div>
+        
         <div class="input-group flex-nowrap mb-3">
           <span class="input-group-text" id="addon-wrapping"
             ><img src="../../../assets/imgs/login-cadastro/u_user.svg" alt="" />
