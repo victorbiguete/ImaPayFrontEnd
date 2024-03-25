@@ -4,12 +4,25 @@
   <h1>Sacar</h1>
   <section class="content">
     <form [formGroup]="withdrawForm" (ngSubmit)="submit()">
+      
       <div class="user-amount">
-        <p>{{ userAmount | currency : "BRL" }}</p>
+        <div class="img-eye">
+          <img
+          class="visible"
+          (click)="trocarImagem()"
+          [src]="
+            imagemVisivel
+              ? '../../../assets/imgs/visivel-white.png'
+              : '../../../assets/imgs/invisivel-white.png'
+          "
+          alt=""
+        />
+        </div>
+        <p>{{imagemVisivel ? "*****" : (userAmount | currency : "BRL") }}</p>
         <p>Saldo total</p>
       </div>
       <div class="input-group mb-3">
-        <span class="input-group-text">$</span>
+        <span class="input-group-text">R$</span>
         <input
           type="number"
           min="0"
@@ -45,7 +58,7 @@
       </div>
 
       <div class="input-group flex-nowrap mb-3">
-        <span class="input-group-text" id="addon-wrapping">{{ "@" }} </span>
+        <span class="input-group-text" id="addon-wrapping">CPF </span>
         <input
           type="text"
           class="form-control"

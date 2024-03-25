@@ -10,15 +10,15 @@
             (click)="trocarImagem()"
             [src]="
               imagemVisivel
-                ? '../../../assets/imgs/invisivel-white.png'
-                : '../../../assets/imgs/visivel-white.png'
+                ? '../../../assets/imgs/visivel-white.png'
+                : '../../../assets/imgs/invisivel-white.png'
             "
             alt="Saldo"
           />
+          
         </div>
-        <!-- <div class="item-saldo valor">R$ {{saldo}}</div> -->
         <div class="item-saldo valor">
-          {{ imagemVisivel ? "*****" : (saldo | currency : "BRL") }}
+          {{ imagemVisivel ? "*******" : (saldo | currency : "BRL") }}
         </div>
       </div>
     </div>
@@ -39,7 +39,6 @@
         (change)="aplicarFiltros()"
       >
         <option value="type">Tipo</option>
-        <option value="date">Data</option>
         <option value="name">Nome</option>
         <option value="value">Valor</option>
         <option value="description">Descrição</option>
@@ -72,6 +71,7 @@
           </tr>
         </thead>
         <tbody class="table-light">
+          
           <tr *ngFor="let transacao of transacoes">
             <td>{{ transacao.type }}</td>
             <td>

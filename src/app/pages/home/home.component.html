@@ -8,32 +8,42 @@
         <div class="content-acao-rapida">
           <div class="grid-icones">
             <div class="item-acao-rapida">
+              
               <div class="icon-card">
-                <img
-                  class="img-acao-rapida"
-                  src="../../assets/imgs/pix.png"
-                  alt="Pix"
-                />
+                <a routerLink="/transfer" class="mais">
+                  <img
+                    class="img-acao-rapida"
+                    src="../../assets/imgs/pix.png"
+                    alt="Pix"
+                  />
+                </a>
               </div>
               <p class="nome-icone">Área Pix</p>
+            
+            </div>
+      
+            <div class="item-acao-rapida">
+              
+                <div class="icon-card">
+                  <a routerLink="/deposit" class="mais">
+                    <img
+                      class="img-acao-rapida"
+                      src="../../assets/imgs/deposito.png"
+                      alt="Despositar"
+                    />
+                  </a>
+                </div>
+              <p class="nome-icone">Despositar</p>
+            
             </div>
             <div class="item-acao-rapida">
               <div class="icon-card">
-                <img
-                  class="img-acao-rapida"
-                  src="../../assets/imgs/pagar.png"
-                  alt="Pagar"
-                />
-              </div>
-              <p class="nome-icone">Pagar</p>
-            </div>
-            <div class="item-acao-rapida">
-              <div class="icon-card">
+                <a routerLink="/transfer" class="mais">
                 <img
                   class="img-acao-rapida"
                   src="../../assets/imgs/transf.png"
                   alt="transferencia"
-                />
+                /></a>
               </div>
               <p class="nome-icone">Transferir</p>
             </div>
@@ -72,8 +82,8 @@
             (click)="trocarImagem()"
             [src]="
               imagemVisivel
-                ? '../../../assets/imgs/visivel-black.png'
-                : '../../../assets/imgs/invisivel-black.png'
+                ? '../../../assets/imgs/invisivel-black.png'
+                : '../../../assets/imgs/visivel-black.png'
             "
             alt="visivel"
           />
@@ -164,8 +174,8 @@
             (click)="trocarImagemCarteira()"
             [src]="
               imagemVisivelCarteira
-                ? '../../../assets/imgs/visivel-black.png'
-                : '../../../assets/imgs/invisivel-black.png'
+                ? '../../../assets/imgs/invisivel-black.png'
+                : '../../../assets/imgs/visivel-black.png'
             "
             alt="visivel"
           />

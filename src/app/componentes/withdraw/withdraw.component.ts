@@ -26,6 +26,8 @@ import { LoggedUser } from '../../types/loggedUser';
   styleUrl: './withdraw.component.css',
 })
 export class WithdrawComponent {
+  imagemVisivel: boolean = true;
+  
   public withdrawForm = new FormGroup({
     amount: new FormControl(0, [Validators.required, Validators.min(1)]),
     userName: new FormControl(''),
@@ -37,6 +39,10 @@ export class WithdrawComponent {
     ]),
     date: new FormControl(new Date()),
   });
+
+  trocarImagem() {
+    this.imagemVisivel = !this.imagemVisivel;
+  }
 
   public userAmount: number = 0;
 

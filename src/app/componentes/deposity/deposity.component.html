@@ -5,7 +5,7 @@
   <section class="content">
     <form [formGroup]="deposityForm" (ngSubmit)="submit()">
       <div class="input-group mb-3">
-        <span class="input-group-text">$</span>
+        <span class="input-group-text">R$</span>
         <input
           type="number"
           min="0"
@@ -41,11 +41,11 @@
       </div>
 
       <div class="input-group flex-nowrap mb-3">
-        <span class="input-group-text" id="addon-wrapping">{{ "@" }} </span>
+        <span class="input-group-text" id="addon-wrapping">CPF </span>
         <input
           type="text"
           class="form-control"
-          placeholder="Cpf"
+          placeholder="CPF"
           aria-label="userEmail"
           aria-describedby="addon-wrapping"
           #userName
